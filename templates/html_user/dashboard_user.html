@@ -12,32 +12,30 @@
 			<div class="card border">
 			  <div class="card-body bg-dark text-light">
 				<h4>ค้นหาข้อมูล</h4>
-				<form method="GET" action="#">
+				<form method="GET">
 				{% csrf_token %}
 				{{ filter_user }}
 					<button type="submit" class="btn btn-primary">ค้นหาข้อมูล</button>
 					<a tpye='reset' class="btn btn-secondary " href="{% url 'home-user'%}"> รีเซ็ตการค้นหา </a>
-					
-					<a class = "btn btn-danger"href="{%url 'add-skill'%}"><i class="fa-solid fa-plus"></i> เพิ่มทักษะพิเศษ </a>
-					<a class = "btn btn-danger"href="{%url 'add-position'%}"><i class="fa-solid fa-plus"></i> เพิ่มตำแหน่ง </a>
-					
-	
-					
+					<a class = "btn btn-success"href="{%url 'add-position'%}"><i class="fa-solid fa-plus"></i> เพิมตำแหน่งงาน </a>
+					<a class = "btn btn-success"href="{%url 'add-skill'%}"><i class="fa-solid fa-plus"></i> เพิ่มทักษะพิเศษ </a>
 				</form>
 			  </div>
 			</div>
 
 		</div>
+
 		<div class="col-md-3">
 			<div class="card border p-3 bg-dark text-light">
 
 				<form method="POST">
 					{% csrf_token %}
 					{{ form_user |crispy }}
-					<input type="submit" value="ลงทะเบียนพนักงาน" class="btn btn-success btn-block ">
+					<input type="submit" value="เพิ่มรหัสพนักงาน" class="btn btn-success btn-block ">
 				</form>
 			</div>
 		</div>
+
 		<div class="col-md-9">
 				<table class="table table-striped ">
 	
@@ -62,7 +60,7 @@
 						<td> {{ user.nickname}}</td>
 						<td> {{ user.position }}</td> 
 						<td> {{ user.team}} </td>
-						<td> {{ user.working_skill}} </td>
+						<td> {{ user.working_skill|truncatechars_html:10}} </td>
 						<td> {{ user.worked_date}} </td>
 						<td>
 							
@@ -104,12 +102,8 @@
 						</div>
 					</div>
 			</div>
-
-			
-
-			
-
 		</div>
+		
 	</div>
 	</div>
 </div>

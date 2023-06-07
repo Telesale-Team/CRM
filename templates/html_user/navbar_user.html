@@ -1,7 +1,7 @@
 <div class="row bg-dark text-center">
 
     <div class="col-md-2 p-2">
-        <a href="#">
+        <a href="{% url 'home-user'%}">
             <div class="card border-primary bg-success text-light">
                 <div class="card-body">
                     <h4 class="card-title">{{ count_all }}</h4>
@@ -10,6 +10,17 @@
             </div>
         </a>      
     </div>
+
+    <div class="col-md-2 p-2">
+        <a href="#">
+          <div class="card border-success bg-secondary text-light">
+              <div class="card-body">
+                  <h4 class="card-title">{{ admin }}</h4>
+                  <p class="card-text">ตำแหน่ง แอดมิน</p>
+              </div>
+          </div>
+          </a>
+        </div>
 
     <div class="col-md-2 p-2">
       <a href="#">

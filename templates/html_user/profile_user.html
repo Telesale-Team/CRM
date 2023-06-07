@@ -5,22 +5,21 @@
 
 {% block content %}
 
+<p> Test: {{ user_profile.username }}</p>
 
 <div class="container-fluid">
 	<div class="row ">
 		<div class="col-md-3 ">
 			<div class="card border">
-			  <img class="card-img-top" src="{{ user.profileuser.image.url}}" alt="">
-
+			  <img class="card-img-top" src="{{ user_profile.profileuser.image.url}}" alt="">
 			</div>
-		
-			
 		</div>
+
 		<div class="col-md-4">
 			<div class="border p-3 bg-dark">
 				<div class="card text-light ">
 					<div class="card-body text-center">
-					  <h4 class="card-text"> อัพเดท/แก้ใข ข้อมูลพนักงาน a</h4>
+					  <h4 class="card-text"> อัพเดท/แก้ใข ข้อมูลพนักงาน</h4>
 					</div>
 				</div>
 				<hr>
@@ -38,6 +37,8 @@
 		</div>
 	</div>
 </div>
+
+
 
 {% endblock content %}
 

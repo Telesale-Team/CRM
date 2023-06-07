@@ -30,10 +30,11 @@ def dashboard (request):
 	page_stock = page.get_page(page_list)
 	
 	item_count_all = Stock.objects.all().count()
-	item_count_computer = Stock.objects.all().filter(category='8').count()
+	item_count_computer = Stock.objects.all().filter(category='13').count()
 	item_count_cable = Stock.objects.all().filter(category='9').count()
 	item_count_office = Stock.objects.all().filter(category='10').count()
 	item_count_telephone = Stock.objects.all().filter(category='11').count()
+	item_count_notebook = Stock.objects.all().filter(category='8').count()
 	context = {
 
 		"form_stock":form_stock,
@@ -45,6 +46,7 @@ def dashboard (request):
 		"item_count_cable":item_count_cable,
 		"item_count_office":item_count_office,
 		"item_count_telephone":item_count_telephone,
+		"item_count_notebook":item_count_notebook,
 
   
 

@@ -6,10 +6,11 @@ class ProfileFilter(django_filters.FilterSet):
     class Meta:
         model = ProfileUser
         fields = {
+                    
                   'nickname':['icontains'],
                   'team':['exact'],
                   'position':['exact'],
-
+                    'username':['exact'],
                   }
         
 class PositionFilter(django_filters.FilterSet):

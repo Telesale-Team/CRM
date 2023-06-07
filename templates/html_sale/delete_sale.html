@@ -1,0 +1,27 @@
+{% extends 'base/layout.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Delete User Page {% endblock title%}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6  offset-md-4 mt-5">
+        <div class="card border">
+          
+          <div class="card-body">
+            <h4 class="card-title">Delete Customer {{ customer.name }} <i class="fa-light fa-user-xmark"></i> </h4>
+            <p class="card-text">สนใจ : {{ customer.interest }} ?</p>
+            <p class="card-text">จำนวนการซื้อ : {{ customer.buy }} {{ customer.quantity }} {{customer.unit}}</p>
+
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class='btn btn-danger btn-block'>Delete</button>
+            </form>
+
+          </div>
+        </div> 
+    </div>
+</div>
+
+
+    {% endblock content %}

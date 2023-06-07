@@ -3,14 +3,14 @@
 {% block title %} Delete User Page {% endblock title%}
 
 {% block content %}
-
-<div class="row">
-    <div class="col-md-4">
-        <div class="card border">
-          <img class="card-img-top" src="{{ user.profileuser.image.url}}" alt="">
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+        <div class="card border offset-md-4" >
+          <img class="card-img-top" src="{{ profile.image_profile.url}}" alt="">
           <div class="card-body">
-            <h4 class="card-title">Delete User {{ user.profileuser.nickname }} </h4>
-            <p class="card-text">คุณต้องการลบผู้ใช้: {{ user.username }} ?</p>
+            <h4 class="card-title">Delete User {{ profile.nickname }} </h4>
+            <p class="card-text">คุณต้องการลบผู้ใช้: {{ profile.username }} ?</p>
 
             <form method="post">
                 {% csrf_token %}
@@ -21,6 +21,10 @@
         </div>
         
     </div>
+  </div>
 </div>
+    
+
+
 
     {% endblock content %}

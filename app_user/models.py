@@ -54,19 +54,25 @@ class ProfileUser(models.Model):
     bank_id = models.IntegerField('หมายเลขบัญชีธนาคาร',blank=True,null=True)#หมายเลขบัญชีธนาคาร
     image_bank = models.ImageField('สำเนาบัญชีธนาคาร',upload_to='image_bank',null=True,blank=True,default='default.png') #สำเนาบัญชีธนาคาร
     
+    level = models.TextChoices("Level", "ฝ่ายการตลาด ฝ่ายสต๊อกสินค้า ฝ่ายการเงินการบัญชี ฝ่ายบุคคล")
+    permission = models.CharField('สิทธิ์การใช้งาน',blank=True, choices=level.choices, max_length=21)#สิทธิ์การใช้งาน
+    
     team = models.ForeignKey(Team,on_delete=models.CASCADE,blank=True,null=True)#ฝาย
     position = models.ForeignKey(Positions,on_delete=models.CASCADE,blank=True,null=True)#ตำแหน่งงาน
 
     
-    MedalType = models.TextChoices("MedalType", "น้อยกว่า1 1ปี 2ปี มากกว่า3ปี")
-    working_experience = models.CharField('ประสบการณ์ทำงาน',blank=True, choices=MedalType.choices, max_length=10)#ประสบการณ์ทำงาน
+    MedalType = models.TextChoices("MedalType", "น้อยกว่า1ปี 1ปี 2ปี มากกว่า3ปี")
+    working_experience = models.CharField('ประสบการณ์ทำงาน',blank=True, choices=MedalType.choices, max_length=20)#ประสบการณ์ทำงาน
     
     working_skill = models.ForeignKey(Skill,on_delete=models.CASCADE,blank=True,null=True)#ทักษะการทำงาน
     worked_date = models.DateTimeField('วันเริ่มงาน',auto_now_add=True,blank=True,null=True)#วันเริ่มงาน
     
+    
+    
     image_check = models.BooleanField(default=False)
+    other = models.TextField('หมายเหตุ',max_length=255,blank=True)
 
-
+    
     
     class Meta:
         ordering = ["-username"]

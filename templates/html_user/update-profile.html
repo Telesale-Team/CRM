@@ -8,30 +8,45 @@
 
 <div class="container-fluid">
 	<div class="row ">
-		<div class="col-md-4 text-light">
-			
-			<div class="card border p-3 bg-dark">
-				<h4 class="text-center">{{ profile.nickname}} {{profile.username}} </h4>
-			  <img class="card-img-top" src="{{ profile.image.url}}" alt="">
 
+		<div class="col-md-4">
+			<div class="card border-success bg-dark text-light">
+			  <div class="card-body">
+
+
+				
+				<img class="card-img-top" src="{{ profile.image_profile.url}}" alt="" width="150" height="350"><hr/><br/>
+				<h4>{{ profile.nickname}} {{profile.username}} </h4><br>
+				<p class="card-text">ที่อยู่ : {{profile.address}}</p><br/>
+				<p class="card-text">เบอร์โทรศัพท์ : {{profile.phone}}</p><br/>
+				<p class="card-text">หมายเลขบัญชีธนาคาร: {{profile.bank_id}}</p><br/>
+				<p class="card-text">สังกัดฝ่าย : {{profile.team}}</p><br/>
+				<p class="card-text">ตำแหน่งงาน : {{profile.position}}</p><br/>
+				<p class="card-text">ประสบการณ์ทำงาน : {{profile.working_experience}}</p><br/>
+				<p class="card-text">ทักษะการทำงาน : {{profile.working_skill}}</p><br/>
+				<p class="card-text">วันเริ่มงาน :{{profile.worked_date}}</p><br/><hr/>
+				<p> สำเนาบัตรประจำตัวประชาชน :</p><img class="card-img-top" src="{{ profile.image_id_card.url}}" alt=""><br/><hr>
+				<p> สำเนาบัญชีธนาคาร :</p><img class="card-img-top" src="{{ profile.image_bank.url}}" alt=""><br/><hr>
+
+
+			  </div>
 			</div>
+		</div>
+
+		<div class="col-md-4 text-light">
 
 			<div class="border p-3 bg-dark">
+				<h4> Update UserProfile</h4><hr>
 				<form method="post" enctype="multipart/form-data" >
 					{% csrf_token %}
 					{{ profile_form |crispy }}
 					<hr>
 					<button type="submit" class="btn btn-warning btn-block text-light">อัพเดท</button>
-
-					
 				</form>
 			</div>
+		</div>
+
 		
-			
-		</div>
-		<div class="col-md-4">
-			
-		</div>
 	</div>
 </div>
 

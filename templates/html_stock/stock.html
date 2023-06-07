@@ -20,7 +20,6 @@
 				{{ filter_stock }}
 					<button type="submit" class="btn btn-primary">ค้นหา</button>
 					<a class="btn btn-secondary " href="{% url 'stock'%}"> รีเซ็ตการค้นหา </a><hr>
-					<a class="btn btn-danger " href="{% url 'add_Category'%}"> เพิ่มหมวดหมู่สินค้า </a>
 				</form>
 					
 			  </div>
@@ -56,9 +55,18 @@
 							{{ form_stock.user_account|as_crispy_field}}
 						</div>
 
+						<div class="col-md-6">
+							{{ form_stock.item_status|as_crispy_field}}
+						</div>
+
+						<div class="col-md-12">
+							{{ form_stock.stock_status|as_crispy_field}}
+						</div>
+
 						<div class="col-md-12">
 							{{ form_stock.detail|as_crispy_field}}
 						</div>
+
 					</div>
 
 					<input type="submit" value="เพิ่มสินค้าลงสต๊อก" class="btn btn-success btn-block ">
@@ -78,7 +86,8 @@
 						<th> จำนวน </th>
 						<th> หมวดหมู่ </th>
 						<th> ผู้รับผิดชอบ </th>
-						<th> สถานะ </th>
+						<th> สถานะสินค้า </th>
+						<th> สถานะสต๊อก </th>
 						<th> แก้ใข/อัพเดด </th>
 					  </tr>
 					</thead>
@@ -92,7 +101,28 @@
 						<td> {{ item.quatity }}</td>
 						<td> {{ item.category }} </td> 
 						<td> {{ item.user_account }}</td>
+
+						{% if item.item_status == 'ใช้งานได้' %}
+						<td> <span class="badge badge-success">ใช้งานได้</span></td>
+
+						{% elif item.item_status == 'ชำรุด' %}
+						<td> <span class="badge badge-danger">ชำรุด</span></td>
+
+						{% else %}
+						<td> <span class="badge badge-danger">ยังไม่ระบุสถานะ</span></td>
+						{% endif %}
+
+
+						{% if item.stock_status == 'สต๊อก' %}
 						<td> <span class="badge badge-success">อยู่ในคลัง</span></td>
+
+						{% elif item.stock_status == 'ยืม' %}
+						<td> <span class="badge badge-warning">ยืมใช้งาน</span></td>
+
+						{% else %}
+						<td> <span class="badge badge-danger">ยังไม่ระบบสถานะ</span></td>
+						{% endif %}
+
 						<td>
 							
 							<a href="{% url 'update-stock' item.pk %}"class="btn btn-warning" ><i class="bi bi-pencil"></i></a>

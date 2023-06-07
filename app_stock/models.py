@@ -13,7 +13,7 @@ class Category (models.Model):
     
     def __str__(self) :
         return self.name
-    
+
 
     
 class Stock (models.Model):
@@ -25,7 +25,13 @@ class Stock (models.Model):
     category = models.ForeignKey(Category,on_delete=models.CASCADE,null=True)
     user_account = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     date = models.DateTimeField('วันที่',auto_now_add=True,null=True,blank=True)
-    
+
+    status_item = models.TextChoices("สถานะการใช้งาน", "ใช้งานได้ ชำรุด")
+    item_status = models.CharField(blank=True, choices=status_item.choices, max_length=100,default="ใช้งานได้")
+
+    status_stock = models.TextChoices("สถานะคงคลัง", "สต๊อก ยืม")
+    stock_status = models.CharField(blank=True, choices=status_stock.choices, max_length=100,default="สต๊อก")
+
     class Meta:
 
         verbose_name_plural = "Stock"

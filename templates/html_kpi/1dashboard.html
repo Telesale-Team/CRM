@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+	<!-- Icon -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+
+<body>
+{% include 'base/navbar.html'%}
+<div class="container-fluid">
+	<div class="row">
+		
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card border bg-dark text-light">
+					  <div class="card-body">
+						<h4 class="card-title"style="font-size:50px;" ><i class="fas fa-otter"></i>  SEO Team  </h4>
+						<p class="card-text"> ผลรวมประจำเดือน <br>สลาก 25,000 | Duckbet 100 | 7RX7 20 </p>
+					  </div>
+					</div>		
+				</div>
+				<div class="col-md-12">
+					<div class="card border">
+						<div class="card-body bg-dark text-light">
+			
+							<table class="table table-dark table-hover">
+								<thead>
+								<tr>
+									<th>Product</th>
+									<th>Seo</th>
+									<th>Live</th>
+									<th>Ads</th>
+									<th>เติมเงิน</th>
+									<th>ยังไม่เติม</th>
+									<th>สมัครรวม</th>
+									
+								</tr>
+								</thead>
+			
+								<tbody>
+								<tr>
+									<td> 7RX7 </td>
+									<td> {{ seo_rx_buy }} </td>
+									<td> {{ seo_rx_nobuy }} </td>
+									<td> {{ seo_rx}} </td>
+									<td> {{ seo_rx}} </td>
+									<td> {{ seo_rx}} </td>
+									<td> {{ seo_rx}} </td>
+			
+								</tr>
+			
+								<tr>
+									<td> Duckbet </td>
+									<td> {{seo_duckbet_buy}} </td>
+									<td> {{seo_duckbet_nobuy}} </td>
+									<td> {{seo_duckbet}} </td>
+								</tr>
+			
+								<tr>
+									<td> Thaibaan </td>
+									<td> {{ seo_thaibaan_nobuy }}</td>
+									<td> {{ seo_thaibaan_buy }} </td>
+									<td> {{ seo_thaibaan_all }}  </td>
+								</tr>
+			
+								<tr>
+									<td> Mughuay </td>
+									<td> {{ seo_thaibaan_nobuy }}</td>
+									<td> {{ seo_thaibaan_buy }} </td>
+									<td> {{ seo_thaibaan_all }}  </td>
+								</tr>
+			
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6">
+			<div class="card-body bg-dark ">
+				<h4 class="card-title text-center text-light"> </h4>
+
+				<table class="table table-dark table-hover">
+					<thead>
+					
+					  <tr>
+						<th>พนักงาน</th>
+						<th>ปิดการขาย</th>
+						<th>จำนวน</th>
+						<th>ฟุตบอล</th>
+						<th>คาสิโน</th>
+						<th>บาคาร่า</th>
+						<th>สล็อต</th>
+						<th>หวยออนไลน์</th>
+						<th>สลากไทบ้าน</th>
+
+					  </tr>
+					</thead>
+					<tbody>
+					{% for thaibaan in all_data %}
+					  <tr>
+						<td>{{thaibaan.user_account}}</td>
+						<td>{{thaibaan.quantity}}</td>
+						
+					  </tr>
+					{% endfor %}
+					</tbody>
+				  </table>
+			</div>
+		</div>
+
+
+	</div>
+</div>
+
+
+
+
+
+
+</body>
+</html>

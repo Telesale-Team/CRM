@@ -1,0 +1,34 @@
+{% extends 'base/layout.html' %}
+{% block title%} Profile User {% endblock title %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+
+<div class="container-fluid">
+	<div class="row ">
+		
+		<div class="col-md-4 ">
+			<div class="border p-3 bg-dark text-light">
+				<div class="card ">
+					<div class="card-body text-center">
+					  <h4 class="card-text bg-warnning text-dark ">อัพเดดข้อมูล</h4>
+					</div>
+				</div>
+				<hr>
+				
+				<form method="post" enctype="multipart/form-data" >
+
+					{% csrf_token %}
+					{{ form_update_sale|crispy }}
+					<hr>
+					<button type="submit" class="btn btn-primary btn-block text-light">อัพเดด</button>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

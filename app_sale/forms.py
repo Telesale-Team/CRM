@@ -13,6 +13,3 @@ class SaleForm(forms.ModelForm):
         
         
 
-        
-
-        

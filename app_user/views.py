@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 
 from django.contrib.auth.models import User
@@ -15,22 +15,26 @@ from django.core.paginator import Paginator
 
 @login_required(login_url='')
 def Dashboard (request):
-    
+	
 	user_filter = ProfileFilter(request.GET,queryset=ProfileUser.objects.all())
 	filter_user = user_filter.form
 	user = user_filter.qs
 	all_unit = user.count()
-	if request.method == "POST":
-		form_user = ProfileForm(request.POST)
+	users = ProfileUser.objects.all()
+	if request.method == 'POST':
+		form_user = UserForms(request.POST)
 		if form_user.is_valid():
-			form_user.save()
-			return redirect("home-user")
+			username = form_user.save()
+			ProfileUser.objects.create(username=username)
+			
+			return redirect('/user')  # Redirect to user profile page
 	else:
-		form_user = ProfileForm()
+		form_user = UserForms()
  	
 	page = Paginator(user,10)
 	page_list = request.GET.get("page")
 	page_user = page.get_page(page_list)
+ 
 	
 	count_all = ProfileUser.objects.all().count()
 	enterterment = ProfileUser.objects.all().filter(position='8').count()
@@ -42,7 +46,9 @@ def Dashboard (request):
 	ads = ProfileUser.objects.all().filter(position='2').count()
 	graphic = ProfileUser.objects.all().filter(position='1').count()
 	seo = ProfileUser.objects.all().filter(position='9').count()
-  
+	admin = ProfileUser.objects.all().filter(position='10').count()
+ 
+	
 	context = {
 
 		"filter_user": filter_user,
@@ -59,6 +65,7 @@ def Dashboard (request):
 		"ads":ads,
 		"graphic":graphic,
 		"seo":seo,
+		"admin":admin,
 
 
 	}
@@ -70,18 +77,18 @@ def Dashboard (request):
 @login_required(login_url="/")
 def Profile (request,pk ):
 	
-	user = ProfileUser.objects.get( pk = pk )
+	user_profile = ProfileUser.objects.get( pk = pk )
 
 	if request.method == "POST":
-		form = ProfileForm(request.POST,instance=user)
+		form = ProfileForm(request.POST,instance=user_profile)
 		if form.is_valid():
 			form.save()
 			return redirect("/user")
 	else:
-		form = ProfileForm(instance=user)
+		form = ProfileForm(instance=user_profile)
 		
 	context = {
-		"user":user,
+		"user_profile":user_profile,
 		"form": form,
 	}
 
@@ -108,13 +115,15 @@ def Update_profile (request,pk):
 @login_required
 def Delete_profile(request,pk):
 	
-	user = get_object_or_404(ProfileUser, pk = pk)
+	profile = ProfileUser.objects.get(pk=pk)
 	
 	if request.method == 'POST':
-		user.delete()
+		profile.delete()
 		return redirect('/user')  # Redirect to home page or any other appropriate page
 	else:
-		return render(request, 'html_user/delete_profile.html', {'user': user})
+		return render(request, 'html_user/delete_profile.html', {'profile': profile})
+
+
 
 @login_required(login_url="/")
 def Add_Position (request ):

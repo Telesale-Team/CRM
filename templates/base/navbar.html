@@ -1,37 +1,52 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark border-bottom shadow-sm">
   
-	<h5 class="my-0 mr-md-auto font-weight-normal text-light"><img src="{{ user.profileuser.image_profile.url }}" width="40" height="40"class="rounded-circle" ></h5>
+	<h5 class = "my-0 mr-md-auto font-weight-normal text-light"><img src="{{ user.profileuser.image_profile.url }}" width="40" height="40"class="rounded-circle" > {{ user.username}}</h5>
+	<h5 class = "my-0 mr-md-auto font-weight-normal text-light">{{ user.profileuser.permission  }}</h5>
 	
-
+	
 	<nav class="my-2 my-md-0 mr-md-3  ">	
-		<h5 class="my-0 mr-md-auto font-weight-normal text-light"><a href ="/dashboard/"><i class="bi bi-speedometer fa-5x" style="font-size:24px;"></i></a></h5>
-		
+		<h5 class="my-0 mr-md-auto font-weight-normal text-light"><a href ="/dashboard/"><i class="bi bi-speedometer fa-5x" style="font-size:24px;"></i></a></h5>		
 	</nav>
-
+	
+	{% if user.is_authenticated and user.is_superuser and user.is_staff %}
 	<nav class="my-2 my-md-0 mr-md-3">	
 		<h5 class="my-0 mr-md-auto font-weight-normal text-light"><a href ="/user/"><i class="bi bi-person-video2" style="font-size:24px;"></i></a></h5>
-
 	</nav>
 
 	<nav class="my-2 my-md-0 mr-md-3">	
 		<h5 class="my-0 mr-md-auto font-weight-normal text-light"><a href="/stock/"><i class="bi bi-cart2" style="font-size:24px;"></i></a></h5>
-
 	</nav>
-
-	<nav class="my-2 my-md-0 mr-md-3">	
+	<nav class="my-2 my-md-0 mr-md-3">
 		<h5 class="my-0 mr-md-auto mr-md-auto font-weight-normal text-light"><a href="/money/"><i class="bi bi-coin" style="font-size:24px;"></i></a></h5>
-
 	</nav>
-
 	<nav class="my-2 my-md-0 mr-md-3">	
 		<h5 class="my-0 mr-md-auto mr-md-auto font-weight-normal text-light"><a href="/sale/"><i class="bi bi-headset" style="font-size:24px;"></i></a></h5>
-
 	</nav>
 
+	{% elif  user.is_authenticated and user.profileuser.permission == "ฝ่ายบุคคล" %}
+	<nav class="my-2 my-md-0 mr-md-3">	
+		<h5 class="my-0 mr-md-auto font-weight-normal text-light"><a href ="/user/"><i class="bi bi-person-video2" style="font-size:24px;"></i></a></h5>
+	</nav>
+
+	{% elif  user.is_authenticated and user.profileuser.permission == "ฝ่ายสต๊อกสินค้า" %}
+	<nav class="my-2 my-md-0 mr-md-3">	
+		<h5 class="my-0 mr-md-auto font-weight-normal text-light"><a href="/stock/"><i class="bi bi-cart2" style="font-size:24px;"></i></a></h5>
+	</nav>
+
+	{% elif  user.is_authenticated and user.profileuser.permission == "ฝ่ายการเงินการบัญชี" %}
+	<nav class="my-2 my-md-0 mr-md-3">
+		<h5 class="my-0 mr-md-auto mr-md-auto font-weight-normal text-light"><a href="/money/"><i class="bi bi-coin" style="font-size:24px;"></i></a></h5>
+	</nav>
+
+	{% elif  user.is_authenticated and user.profileuser.permission == "ฝ่ายการตลาด" %}
+	<nav class="my-2 my-md-0 mr-md-3">	
+		<h5 class="my-0 mr-md-auto mr-md-auto font-weight-normal text-light"><a href="/sale/"><i class="bi bi-headset" style="font-size:24px;"></i></a></h5>
+	</nav>
+	{% endif %}
 	<nav class="my-2 my-md-0 mr-md-3">	
 		
 		<a href="/logout"><i class="bi bi-box-arrow-right" style="font-size:24px;" ></i></a>
 	</nav>
 	
-  
+	
 </div>

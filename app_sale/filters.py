@@ -8,6 +8,8 @@ class SaleFilter(django_filters.FilterSet):
         fields = {
             "name":['icontains'],
             "interest":['exact'],
+            "source":['exact'],
+            "web":['exact'],
             "sex":['exact'],
             "buy":['exact'],
     }

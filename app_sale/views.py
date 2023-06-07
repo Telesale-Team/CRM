@@ -51,3 +51,39 @@ def Index (request):
   
   
 	return render(request,'html_sale/sale.html',context)
+
+
+@login_required(login_url="/")
+def Update_Sale (request,pk ):
+	
+
+	customer = get_object_or_404(Sale, pk=pk)
+
+	if request.method == "POST":
+		form_update_sale = SaleForm(request.POST,request.FILES,instance=customer)
+		if form_update_sale.is_valid():
+			form_update_sale.save()
+			return redirect("sale-home")
+	else:
+		form_update_sale = SaleForm(instance=customer)
+		
+		
+	context = {
+
+		"form_update_sale": form_update_sale,
+		"customer":customer,
+	}
+
+	return render (request,'html_sale/update_sale.html',context)
+
+
+@login_required
+def Delete_Sale(request,pk):
+	
+	customer = Sale.objects.get(pk=pk)
+	
+	if request.method == 'POST':
+		customer.delete()
+		return redirect('sale-home')  # Redirect to home page or any other appropriate page
+	else:
+		return render(request, 'html_sale/delete_sale.html', {'customer': customer})

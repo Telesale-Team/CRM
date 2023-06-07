@@ -16,343 +16,201 @@
 
 <body>
 	{% include 'base/navbar.html'%}
-<div class="container-fluid mt-2">
-	<div class="row text-center text-light">
-		<div class="col-md-4">
-			<div class="card border-primary bg-dark">
-			  <div class="card-body">
-				<h4 class="card-title"style="font-size:50px;" ><i class="fas fa-otter"></i>  SEO Team  </h4>
-				<p class="card-text"> ผลรวมประจำเดือน <br>สลาก 25,000 | Duckbet 100 | 7RX7 20 </p>
-			  </div>
+	<div class="container-fluid mt-2">
+
+		<div class="row text-center text-light">
+			<div class="col-md-3">
+				<div class="card border-success bg-dark">
+				<div class="card-body">
+					<p class="card-text"> <br> Admin </p>
+					<h4 class="card-title"style="font-size:50px;" ><i class="fas fa-otter"></i> {{seo_all_product}} </h4>
+
+				</div>
+				</div>
+				
+			</div>
+
+			<div class="col-md-3">
+				<div class="card border-success bg-dark">
+				<div class="card-body">
+					<p class="card-text"> <br> Telesale </p>
+					<h4 class="card-title"style="font-size:50px;" ><i class="fas fa-hippo"></i></i> {{ads_all_product}} </h4>
+
+				</div>
+				</div>
+				
+			</div>
+
+			<div class="col-md-3">
+				<div class="card border-success bg-dark">
+				<div class="card-body">
+					<p class="card-text"> <br> Live Team  </p>
+					<h4 class="card-title"style="font-size:50px;" ><i class="fas fa-cat"></i> {{ live_all_product }} </h4>
+
+				</div>
+				</div>
+				
+			</div>
+
+			<div class="col-md-3">
+				<div class="card border-success bg-dark">
+				<div class="card-body">
+					<p class="card-text"> <br> Ads Team  </p>
+					<h4 class="card-title"style="font-size:50px;" ><i class="fas fa-cat"></i> {{ live_all_product }} </h4>
+
+				</div>
+				</div>
+				
 			</div>
 			
 		</div>
-
-		<div class="col-md-4">
-			<div class="card border-primary bg-dark">
-			  <div class="card-body">
-				<h4 class="card-title"style="font-size:50px;" ><i class="fas fa-hippo"></i></i> Ads Team  </h4>
-				<p class="card-text"> ผลรวมประจำเดือน <br>สลาก 25,000 | Duckbet 100 | 7RX7 20 </p>
-			  </div>
-			</div>
+		<div class="row mt-2">
 			
-		</div>
+			<div class="col-md-6">
+				<div class="card border">
+				<div class="card-body bg-dark text-light">
+					<h4 class="card-title">Team Table Recording</h4>
+					<p class="card-text">จำนวนสมาชิก {{user|length}}/10 มาทำงาน 8 คน ขาดลา 2 คน</p>
 
-		<div class="col-md-4">
-			<div class="card border-primary bg-dark">
-			  <div class="card-body">
-				<h4 class="card-title"style="font-size:50px;" ><i class="fas fa-cat"></i> Live Team  </h4>
-				<p class="card-text"> ผลรวมประจำเดือน <br>สลาก 25,000 | Duckbet 100 | 7RX7 20 </p>
-			  </div>
-			</div>
-			
-		</div>
-	</div>
+					<table class="table table-dark table-hover">
+						<thead>
+						<tr>
+							<th>Product</th>
+							<th> Ads </th>
+							<th> Live </th>
+							<th> Seo </th>
+							<th>เติมเงิน</th>
+							<th>ยังไม่เติม</th>
+							<th>สมัครรวม</th>
+							
+						</tr>
+						</thead>
 
-	<div class="row mt-2">
-		
-		<div class="col-md-4">
-			<div class="card border-primary">
-			<div class="card-body bg-dark text-light">
-				<h4 class="card-title">SEO Team</h4>
-				<p class="card-text">จำนวนสมาชิก 8/10 มาทำงาน 8 คน ขาดลา 2 คน</p>
+						<tbody>
+						
+						<tr>
+							<td> 7RX7 </td>
+							<td> {{ADS_rx}} </td>
+							<td> {{live_rx}}</td>
+							<td> {{seo_rx}} </td>
+							<th>เติมเงิน</th>
+							<th>ยังไม่เติม</th>
+							<th>สมัครรวม</th>
+						</tr>
 
-				<table class="table table-dark table-hover">
-					<thead>
-					<tr>
-						<th>Product</th>
-						<th>ผู้สมัคร</th>
-						<th>เติมเงิน</th>
-						<th>จำนวนรวม</th>
-						<th>สถานะ</th>
-					</tr>
-					</thead>
-
-					<tbody>
-					<tr>
-						<td> 7RX7 </td>
-						<td> 80 </td>
-						<td> 30 </td>
-						<td> 100 </td>
-						<td> <span class="badge badge-success">Success</span> </td>
-					</tr>
-
-					<tr>
-						<td> duckbet </td>
-						<td> 80 </td>
-						<td> 30 </td>
-						<td> 100 </td>
-						<td> <span class="badge badge-success">Success</span> </td>
-					</tr>
-
-					<tr>
-						<td> สลากไทบ้าน </td>
-						<td> 80 </td>
-						<td> 30 </td>
-						<td> 100 </td>
-						<td> <span class="badge badge-success">Success</span> </td>
-					</tr>
-
-					</tbody>
-				</table>
-			</div>
-			</div>
-		</div>
-
-		<div class="col-md-4">
-			<div class="card border-primary">
-			  <div class="card-body bg-dark text-light">
-				<h4 class="card-title">Ads Team</h4>
-				<p class="card-text">จำนวนสมาชิก 8/10 มาทำงาน 8 คน ขาดลา 2 คน</p>
-
-				<table class="table table-dark table-hover">
-					<thead>
-					  <tr>
-						<th>Product</th>
-						<th>ผู้สมัคร</th>
-						<th>เติมเงิน</th>
-						<th>จำนวนรวม</th>
-						<th>สถานะ</th>
-					  </tr>
-					</thead>
-
-					<tbody>
-					  <tr>
-						<td> 7RX7 </td>
-						<td> 80 </td>
-						<td> 30 </td>
-						<td> 100 </td>
-						<td> <span class="badge badge-success">Success</span> </td>
-					  </tr>
-
-					  <tr>
-						<td> duckbet </td>
-						<td> 80 </td>
-						<td> 30 </td>
-						<td> 100 </td>
-						<td> <span class="badge badge-success">Success</span> </td>
-					  </tr>
-
-					  <tr>
-						<td> สลากไทบ้าน </td>
-						<td> 80 </td>
-						<td> 30 </td>
-						<td> 100 </td>
-						<td> <span class="badge badge-success">Success</span> </td>
-					  </tr>
-
-					</tbody>
-				  </table>
-			  </div>
-			</div>
-		</div>
-
-		<div class="col-md-4">
-			<div class="card border-primary">
-			  <div class="card-body bg-dark text-light">
-				<h4 class="card-title">Live Team</h4>
-				<p class="card-text">จำนวนสมาชิก 8/10 มาทำงาน 8 คน ขาดลา 2 คน</p>
-
-				<table class="table table-dark table-hover">
-					<thead>
-					  <tr>
-						<th>Product</th>
-						<th>ผู้สมัคร</th>
-						<th>เติมเงิน</th>
-						<th>จำนวนรวม</th>
-						<th>สถานะ</th>
-					  </tr>
-					</thead>
-
-					<tbody>
-					  <tr>
-						<td> 7RX7 </td>
-						<td> 80 </td>
-						<td> 30 </td>
-						<td> 100 </td>
-						<td> <span class="badge badge-success">Success</span> </td>
-					  </tr>
-
-					  <tr>
-						<td> duckbet </td>
-						<td> 80 </td>
-						<td> 30 </td>
-						<td> 100 </td>
-						<td> <span class="badge badge-success">Success</span> </td>
-					  </tr>
-
-					  <tr>
-						<td> สลากไทบ้าน </td>
-						<td> 80 </td>
-						<td> 30 </td>
-						<td> 100 </td>
-						<td> <span class="badge badge-success">Success</span> </td>
-					  </tr>
-
-					</tbody>
-				  </table>
-			  </div>
-			</div>
-		</div>
+						<tr>
+							
+							<td> Duckbet </td>
+							<td> {{ADS_duckbet}} </td>
+							<td> {{live_duckbet}} </td>
+							<td> {{seo_duckbet}} </td>
+							<th>เติมเงิน</th>
+							<th>{{seo_duckbet_nobuy}}</th>
+							<th>สมัครรวม</th>
+						</tr>
 		
 
+						<tr>
+							<td> Thaibaan </td>
+							<td> {{ ADS_thaibaan_all }}</td>
+							<td> {{ live_thaibaan_all }} </td>
+							<td> {{ seo_thaibaan_all }}  </td>
+							<th>เติมเงิน</th>
+							<th>ยังไม่เติม</th>
+							<th>สมัครรวม</th>
+						</tr>
+
+						<tr>
+							<td> Mughuay </td>
+							<td> {{ ADS_mughuay_all }}</td>
+							<td> {{ live_mughuay_all }} </td>
+							<td> {{ seo_mughuay_all }}  </td>
+							<th>เติมเงิน</th>
+							<th>ยังไม่เติม</th>
+							<th>สมัครรวม</th>
+						</tr>
+
+						<tr>
+							<td> รวม </td>
+							<td>ads {{ ads_all_product }}</td>
+							<td>live {{ ads_all_product }}</td>
+							<td>seo {{ live_all_product }} </td>
+							<td>เติมเงิน {{ seo_all_product }}  </td>
+							<td>ไม่เติมเงิน {{ seo_all_product }}  </td>
+							<td>สมัครรวม  </td>
+						</tr>
+
+						</tbody>
+					</table>
+				</div>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="card-body bg-dark ">
+					<h4 class="card-title text-center text-light"> 10 อันดับนักปิดการขาย</h4>
+
+					<table class="table table-dark table-hover">
+						<thead>
+						
+						<tr>
+							<th>พนักงาน</th>
+							<th>ปิดการขาย</th>
+							<th>จำนวน</th>
+
+						</tr>
+						</thead>
+						<tbody>
+						{% for thaibaan in data %}
+						<tr>
+							<td>{{thaibaan.user_account}}</td>
+							<td>{{thaibaan.quantity}}</td>
+							<td>{{thaibaan.web}}</td>
+							
+						</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="card-body bg-dark ">
+					<h4 class="card-title text-center text-light"> 5 อันดับเทเลเซลล์ </h4>
+
+					<table class="table table-dark table-hover">
+						<thead>
+						
+						<tr>
+							<th>พนักงาน</th>
+							<th>ปิดการขาย</th>
+							<th>จำนวน</th>
+							<th>ตำแหน่ง</th>
+
+						</tr>
+						</thead>
+						<tbody>
+						{% for sale in sale_user %}
+
+						
+
+						<tr>
+							<td>{{sale.user_account}}</td>
+							<td>{{sale.quantity}}</td>
+							<td>{{sale.web}}</td>
+							<td>1{{sale.user_account.userprofile.username}}</td>
+							
+						</tr>
+
+						{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			
+
+		</div>
 	</div>
-	
-	<div class="row mt-2">
-		<div class="col-md-4 mt-1">
-			<div class="card-body bg-dark ">
-				<h4 class="card-title text-center text-light"> 5 อันดับ สลากไทบ้าน</h4>
-
-				<table class="table table-dark table-hover">
-					<thead>
-					  <tr>
-						<th>พนักงาน</th>
-						<th>ปิดการขาย</th>
-						<th>จำนวน</th>
-						<th>สถานะ</th>
-					  </tr>
-					</thead>
-					<tbody>
-					  <tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
-						<td> <span class="badge badge-warning">รอยืนยัน</span> </td>
-					  </tr>
-
-					  <tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
-						<td> <span class="badge badge-warning">รอยืนยัน</span> </td>
-					  </tr>
-					  <tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
-						<td> <span class="badge badge-warning">รอยืนยัน</span> </td>
-					  </tr>
-					  <tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
-						<td> <span class="badge badge-warning">รอยืนยัน</span> </td>
-					  </tr>
-					  <tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
-						<td> <span class="badge badge-warning">รอยืนยัน</span> </td>
-					  </tr>
-
-					</tbody>
-				  </table>
-			</div>
-		</div>
-
-		<div class="col-md-4 mt-1">
-			<div class="card-body bg-dark ">
-				<h4 class="card-title text-center text-light">5 อันดับ 7RX7</h4>
-
-				<table class="table table-dark table-hover">
-					<thead>
-					  <tr>
-						<th>พนักงาน</th>
-						<th>ปิดการขาย</th>
-						<th>จำนวน</th>
-						<th>สถานะ</th>
-					  </tr>
-					</thead>
-					<tbody>
-					  <tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
-						<td> <span class="badge badge-warning">รอยืนยัน</span> </td>
-					  </tr>
-
-					  <tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
-						<td> <span class="badge badge-warning">รอยืนยัน</span> </td>
-					  </tr>
-					  <tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
-						<td> <span class="badge badge-warning">รอยืนยัน</span> </td>
-					  </tr>
-					  <tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
-						<td> <span class="badge badge-warning">รอยืนยัน</span> </td>
-					  </tr>
-					  <tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
-						<td> <span class="badge badge-warning">รอยืนยัน</span> </td>
-					  </tr>
-
-					</tbody>
-				  </table>
-			</div>
-		</div>
-
-		<div class="col-md-4 mt-1">
-			<div class="card-body bg-dark ">
-				<h4 class="card-title text-center text-light">5 อันดับ Duckbet </h4>
-
-				<table class="table table-dark table-hover">
-					<thead>
-					  <tr>
-						<th>พนักงาน</th>
-						<th>ปิดการขาย</th>
-						<th>จำนวน</th>
-						<th>สถานะ</th>
-					  </tr>
-					</thead>
-					<tbody>
-					  <tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
-						<td> <span class="badge badge-warning">รอยืนยัน</span> </td>
-					  </tr>
-
-					  <tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
-						<td> <span class="badge badge-warning">รอยืนยัน</span> </td>
-					  </tr>
-					  <tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
-						<td> <span class="badge badge-warning">รอยืนยัน</span> </td>
-					  </tr>
-					  <tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
-						<td> <span class="badge badge-warning">รอยืนยัน</span> </td>
-					  </tr>
-					  <tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
-						<td> <span class="badge badge-warning">รอยืนยัน</span> </td>
-					  </tr>
-
-					</tbody>
-				  </table>
-			</div>
-		</div>
-
-	</div>
-</div>
 </body>
 </html>
