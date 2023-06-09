@@ -29,6 +29,7 @@ def dashboard (request):
 	page_list = request.GET.get("page")
 	page_stock = page.get_page(page_list)
 	
+	item_count_other = Stock.objects.all().filter(category='14').count()
 	item_count_all = Stock.objects.all().count()
 	item_count_computer = Stock.objects.all().filter(category='13').count()
 	item_count_cable = Stock.objects.all().filter(category='9').count()
@@ -47,6 +48,7 @@ def dashboard (request):
 		"item_count_office":item_count_office,
 		"item_count_telephone":item_count_telephone,
 		"item_count_notebook":item_count_notebook,
+		"item_count_other":item_count_other,
 
   
 

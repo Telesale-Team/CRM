@@ -52,7 +52,7 @@ class Sale(models.Model):
     
     choice_callback = models.TextChoices("choice_callback", "Line Facebook Tiktok Youtube Website Other")
     call_back = models.CharField('ช่องทางติดต่อกลับ',choices=choice_callback.choices,max_length=100,null=True,blank=True)
-    other = models.TextField('หมายเหุต',null=True,blank=True)#หมายเหตุ
+    other = models.TextField('หมายเหตุการติดต่อ',null=True,blank=True)#หมายเหตุ
     
     user_account = models.ForeignKey(User,on_delete=models.CASCADE)#ผู้ลงทะเบียน
     create_date = models.DateTimeField(auto_now_add=True) #วันลงทะเบียน

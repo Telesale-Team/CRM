@@ -15,143 +15,131 @@ def Dashboards (request):
 
     # 10Rank user
 
-    data = Sale.objects.all().order_by('-quantity')[:10]
+    Rank_Quatity_data = Sale.objects.all().order_by('-quantity')[:3]
+    all_customer = Sale.objects.all()
 
+    #RX7 Data
+    rx7 = all_customer.filter(web=1).count()  
+    rx7_ads = all_customer.filter(source=1,web=1).count()
+    rx7_seo = all_customer.filter(source=2,web=1).count()
+    rx7_live = all_customer.filter(source=3,web=1).count()  
+    rx7_buy = all_customer.filter(web=1,buy='ซื้อ').count()
+    rx7_nobuy = all_customer.filter(web=1,buy='ยังไม่ซื้อ').count()
 
+    #Thaibaan Data
+    Thaibaan = all_customer.filter(web=2).count()  
+    Thaibaan_ads = all_customer.filter(source=1,web=2).count()
+    Thaibaan_seo = all_customer.filter(source=2,web=2).count()
+    Thaibaan_live = all_customer.filter(source=3,web=2).count()  
+    Thaibaan_buy = all_customer.filter(web=2,buy='ซื้อ').count()
+    Thaibaan_nobuy = all_customer.filter(web=2,buy='ยังไม่ซื้อ').count()
 
-    sale_user = Sale.objects.all().order_by('-quantity')
+    #Duckbet Data
+    Duckbet = all_customer.filter(web=3).count()  
+    Duckbet_ads = all_customer.filter(source=1,web=3).count()
+    Duckbet_seo = all_customer.filter(source=2,web=3).count()
+    Duckbet_live = all_customer.filter(source=3,web=3).count()  
+    Duckbet_buy = all_customer.filter(web=3,buy='ซื้อ').count()
+    Duckbet_nobuy = all_customer.filter(web=3,buy='ยังไม่ซื้อ').count()
+    
+    #Mughuay Data
+    Mughuay = all_customer.filter(web=4).count()  
+    Mughuay_ads = all_customer.filter(source=1,web=4).count()
+    Mughuay_seo = all_customer.filter(source=2,web=4).count()
+    Mughuay_live = all_customer.filter(source=3,web=4).count()  
+    Mughuay_buy = all_customer.filter(web=4,buy='ซื้อ').count()
+    Mughuay_nobuy = all_customer.filter(web=4,buy='ยังไม่ซื้อ').count()
+    
+    #Total
+    ads = all_customer.filter(source=1)
+    seo = all_customer.filter(source=2)
 
+    live = all_customer.filter(source=3)
+    
+    #สื่อทำการตลาด
+    web = Web.objects.all()[:3]
+    interest = Interest.objects.all()[:3]
+    source = Source.objects.all()[:3]
+    
+    
+    all_register = all_customer
+    customer_register_buy = all_customer.filter(buy="ซื้อ")
+    customer_register_nobuy = all_customer.filter(buy="ยังไม่ซื้อ")
+    
 
+    
     context = {
+        
         # source = Live(3) SEO(2) ADS(1)
         # Web = Mughuay(4) Duckbet(3) Thaibaan(2) 7RX7(1)
         
-
-        ######## SEO ########
-
-        #SEO 7RX7
-        "seo_rx" : Sale.objects.all().filter(source=2,web=1).count(), 
-        "seo_rx_buy" : Sale.objects.all().filter(source=2,web=1,buy="ซื้อ").count(),
-        "seo_rx_nobuy" : Sale.objects.all().filter(source=2,web=1,buy="ยังไม่ซื้อ").count(),
+        "all_customer":all_customer,
+        "web":web,
+        "interest":interest,
+        "source":source,
         
-        # SEO Duckbet
-        "seo_duckbet" : Sale.objects.all().filter(source=2,web=3).count(),
-        "seo_duckbet_buy" : Sale.objects.all().filter(source=2,web=3,buy="ซื้อ").count(),
-        "seo_duckbet_nobuy" : Sale.objects.all().filter(source=2,web=3,buy="ยังไม่ซื้อ").count(),
+        #rx7
         
-        # SEO Thaibaan
-        "seo_thaibaan_all" : Sale.objects.all().filter(source=2,web=2).count(),
-        "seo_thaibaan_buy" : Sale.objects.all().filter(source=2,web=2,buy="ซื้อ").count(),
-        "seo_thaibaan_nobuy" : Sale.objects.all().filter(source=2,web=2,buy="ยังไม่ซื้อ").count(),
+        "rx7":rx7,
+        "rx7_ads":rx7_ads,
+        "rx7_seo":rx7_seo,
+        "rx7_live":rx7_live,
+        "rx7_buy":rx7_buy,
+        "rx7_nobuy":rx7_nobuy,
         
-        # SEO Munghuay
-        "seo_mughuay_all" : Sale.objects.all().filter(source=2,web=4).count(),
-        "seo_mughuay_buy" : Sale.objects.all().filter(source=2,web=4,buy="ซื้อ").count(),
-        "seo_mughuay_nobuy" : Sale.objects.all().filter(source=2,web=4,buy="ยังไม่ซื้อ").count(),
-
-
-        "Total seo_buy" :
-        Sale.objects.all().filter(source=2,web=1,buy="ซื้อ").count()+
-        Sale.objects.all().filter(source=2,web=2,buy="ซื้อ").count()+
-        Sale.objects.all().filter(source=2,web=3,buy="ซื้อ").count()+
-        Sale.objects.all().filter(source=2,web=4,buy="ซื้อ").count(),
-
-        "Total seo_nobuy" : 
-        Sale.objects.all().filter(source=2,web=1,buy="ยังไม่ซื้อ").count()+
-        Sale.objects.all().filter(source=2,web=2,buy="ยังไม่ซื้อ").count()+
-        Sale.objects.all().filter(source=2,web=3,buy="ยังไม่ซื้อ").count()+
-        Sale.objects.all().filter(source=2,web=4,buy="ยังไม่ซื้อ").count(),
-
-        # SEO Buy All Product
-        "seo_all_product" : 
-        Sale.objects.all().filter(source=2,web=1).count()+ 
-        Sale.objects.all().filter(source=2,web=3).count()+
-        Sale.objects.all().filter(source=2,web=2).count()+
-        Sale.objects.all().filter(source=2,web=4).count(),
-
-
-
-        ######## 7RX7 ########
-
-        #ADS 7RX7
-        "ADS_rx" : Sale.objects.all().filter(source=1,web=1).count(), 
-        "ADS_rx_buy" : Sale.objects.all().filter(source=1,web=1,buy="ซื้อ").count(),
-        "ADS_rx_nobuy" : Sale.objects.all().filter(source=1,web=1,buy="ยังไม่ซื้อ").count(),
+        #Thaibaan
+        "Thaibaan":Thaibaan,
+        "Thaibaan_ads":Thaibaan_ads,
+        "Thaibaan_seo":Thaibaan_seo,
+        "Thaibaan_live":Thaibaan_live,
+        "Thaibaan_buy":Thaibaan_buy,
+        "Thaibaan_nobuy":Thaibaan_nobuy,
         
-        # ADS Thaibaan
-        "ADS_thaibaan_all" : Sale.objects.all().filter(source=1,web=2).count(),
-        "ADS_thaibaan_buy" : Sale.objects.all().filter(source=1,web=2,buy="ซื้อ").count(),
-        "ADS_thaibaan_nobuy" : Sale.objects.all().filter(source=1,web=2,buy="ยังไม่ซื้อ").count(),
-
-        # ADS Duckbet
-        "ADS_duckbet" : Sale.objects.all().filter(source=1,web=3).count(),
-        "ADS_duckbet_buy" : Sale.objects.all().filter(source=1,web=3,buy="ซื้อ").count(),
-        "ADS_duckbet_nobuy" : Sale.objects.all().filter(source=1,web=3,buy="ยังไม่ซื้อ").count(),
+        #Duckbet
+        "Duckbet":Duckbet,
+        "Duckbet_ads":Duckbet_ads,
+        "Duckbet_seo":Duckbet_seo,
+        "Duckbet_live":Duckbet_live,
+        "Duckbet_buy":Duckbet_buy,
+        "Duckbet_nobuy":Duckbet_nobuy,
         
-        # ADS Munghuay
-        "ADS_mughuay_all" : Sale.objects.all().filter(source=1,web=4).count(),
-        "ADS_mughuay_buy" : Sale.objects.all().filter(source=1,web=4,buy="ซื้อ").count(),
-        "ADS_mughuay_nobuy" : Sale.objects.all().filter(source=1,web=4,buy="ยังไม่ซื้อ").count(),
-
-        #ADS Buy
-
-
-
-        #Live 7RX7
-        "live_rx" : Sale.objects.all().filter(source=1,web=1).count(), 
-        "live_rx_buy" : Sale.objects.all().filter(source=1,web=1,buy="ซื้อ").count(),
-        "live_rx_nobuy" : Sale.objects.all().filter(source=1,web=1,buy="ยังไม่ซื้อ").count(),
+        #Mughuay
+        "Mughuay":Mughuay,
+        "Mughuay_ads":Mughuay_ads,
+        "Mughuay_seo":Mughuay_seo,
+        "Mughuay_live":Mughuay_live,
+        "Mughuay_buy":Mughuay_buy,
+        "Mughuay_nobuy":Mughuay_nobuy,
         
-        # live Thaibaan
-        "live_thaibaan_all" : Sale.objects.all().filter(source=1,web=2).count(),
-        "live_thaibaan_buy" : Sale.objects.all().filter(source=1,web=2,buy="ซื้อ").count(),
-        "live_thaibaan_nobuy" : Sale.objects.all().filter(source=1,web=2,buy="ยังไม่ซื้อ").count(),
-
-        # live Duckbet
-        "live_duckbet" : Sale.objects.all().filter(source=1,web=3).count(),
-        "live_duckbet_buy" : Sale.objects.all().filter(source=1,web=3,buy="ซื้อ").count(),
-        "live_duckbet_nobuy" : Sale.objects.all().filter(source=1,web=3,buy="ยังไม่ซื้อ").count(),
-        
-        # live Munghuay
-        "live_mughuay_all" : Sale.objects.all().filter(source=1,web=4).count(),
-        "live_mughuay_buy" : Sale.objects.all().filter(source=1,web=4,buy="ซื้อ").count(),
-        "live_mughuay_nobuy" : Sale.objects.all().filter(source=1,web=4,buy="ยังไม่ซื้อ").count(),
+        #Total
+        "ads":ads,
+        "seo":seo,
+        "live":live,
+        "all_register":all_register,
+        "customer_register_buy":customer_register_buy,
+        "customer_register_nobuy":customer_register_nobuy,
+        "Rank_Quatity_data":Rank_Quatity_data,
         
         
-
-        # source = Live(3) SEO(2) ADS(1)
-        # Web = Mughuay(4) Duckbet(3) Thaibaan(2) 7RX7(1)
-
-
-
-        # ADS All Product
-        "ads_all_product" : 
-        Sale.objects.all().filter(source=1,web=1).count()+
-        Sale.objects.all().filter(source=1,web=2).count()+
-        Sale.objects.all().filter(source=1,web=3).count()+
-        Sale.objects.all().filter(source=1,web=4).count(),
-
+        #Dashboard
+        "count_all":all_customer,
+		"count_thaibarn":Sale.objects.all().filter(interest=1).count(),
+		"count_huay_online":Sale.objects.all().filter(interest=2).count(),
+		"count_huay_football":Sale.objects.all().filter(interest=6).count(),
+		"count_huay_casino":Sale.objects.all().filter(interest=5).count(),
+  		"count_huay_bacara":Sale.objects.all().filter(interest=4).count(),
+		"count_huay_slot":Sale.objects.all().filter(interest=3).count(),
+		"buy":Sale.objects.all().filter(buy="ซื้อ").count(),
+  		"nobuy":Sale.objects.all().filter(buy="ยังไม่ซื้อ").count(),
+        "total":Sale.objects.all().filter(buy="ซื้อ").order_by('-quantity')[:3]
         
-
-        #Live All Product
-        "live_all_product" :
-        Sale.objects.all().filter(source=3,web=1).count()+
-        Sale.objects.all().filter(source=3,web=2).count()+
-        Sale.objects.all().filter(source=3,web=3).count()+
-        Sale.objects.all().filter(source=3,web=4).count(),
-
-        
-
-
-        "data":data,
-        "sale_user":sale_user,
-
-
 
 
 	}
     
     return render (request,'html_kpi/dashboard.html',context)  
+
+
 
 
 
@@ -197,3 +185,6 @@ def Thaibans (request):
     }
      
     return render (request,'html_kpi/thaiban.html',context)   
+
+
+
