@@ -4,6 +4,7 @@ from app_kpi.models import *
 from app_kpi.forms import *
 from app_team.models import *
 from app_stock.models import *
+from app_sale.models import *
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
@@ -109,12 +110,12 @@ def Edit_custom (request):
 
 
 @login_required(login_url="/")
-def Update_custom (request):
+def Update_custom (request,pk):
     
-    thaiban = Customer_Interest.objects.all()
+    customer = Sale.objects.filter(pk=pk)
     
     context = {
-        'thaiban':thaiban,
+        'customer':customer,
     }
     return render (request,'html_customer/edit_customer.html',context)
 @login_required(login_url="/")
@@ -132,22 +133,16 @@ def Report_custom (request):
 
 
 @login_required(login_url="/")
-def Profile_customer (request,id):
+def Profile_customer (request,pk):
     
-    thaiban = Customer_Interest.objects.get(id=id)
-    if request.method == "POST":
-        form = ThaibanForm(request.POST,instance=thaiban)
-        if form.is_valid():
-            form.save()
-            return redirect("/customer")
-    else:
-        form = ThaibanForm(instance=thaiban)
-        
-
+    profile_custermer = Sale.objects.filter(pk=pk)
+    
+    print("CURRENT :",profile_custermer)
+    
     context = {
 
-		"form": form,
-        "thaiban":thaiban,
+		"profile_custermer": profile_custermer,
+
 
 
 	}

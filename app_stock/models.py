@@ -21,16 +21,16 @@ class Stock (models.Model):
     name = models.CharField('ชื่อสินค้า',max_length=60,null=True)
     serial = models.CharField("รหัสสินค้า",max_length=60,null=True)
     quatity = models.PositiveIntegerField('จำนวน',default=0)
-    detail = models.TextField('อุปกรณ์เสริม',max_length=255,null=True)
+    detail = models.TextField('หมายเหตุ',max_length=255,null=True)
     category = models.ForeignKey(Category,on_delete=models.CASCADE,null=True)
     user_account = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     date = models.DateTimeField('วันที่',auto_now_add=True,null=True,blank=True)
 
     status_item = models.TextChoices("สถานะการใช้งาน", "ใช้งานได้ ชำรุด")
-    item_status = models.CharField(blank=True, choices=status_item.choices, max_length=100,default="ใช้งานได้")
+    item_status = models.CharField(blank=True, choices=status_item.choices, max_length=100,default="")
 
     status_stock = models.TextChoices("สถานะคงคลัง", "สต๊อก ยืม")
-    stock_status = models.CharField(blank=True, choices=status_stock.choices, max_length=100,default="สต๊อก")
+    stock_status = models.CharField(blank=True, choices=status_stock.choices, max_length=100,default="")
 
     class Meta:
 

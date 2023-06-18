@@ -20,7 +20,9 @@ def Dashboard (request):
 	filter_user = user_filter.form
 	user = user_filter.qs
 	all_unit = user.count()
-	users = ProfileUser.objects.all()
+ 
+ 
+
 	if request.method == 'POST':
 		form_user = UserForms(request.POST)
 		if form_user.is_valid():
@@ -31,7 +33,7 @@ def Dashboard (request):
 	else:
 		form_user = UserForms()
  	
-	page = Paginator(user,10)
+	page = Paginator(user,50)
 	page_list = request.GET.get("page")
 	page_user = page.get_page(page_list)
  
@@ -112,6 +114,40 @@ def Update_profile (request,pk):
 	}
 	return render(request, 'html_user/update-profile.html', context)
 
+
+@login_required
+def Delete_user(request,pk):
+	
+	Remove_User = User.objects.get(pk=pk)
+	
+	if request.method == 'POST':
+		Remove_User.delete()
+		return redirect('/user')  # Redirect to home page or any other appropriate page
+
+	else:
+		return render(request, 'html_user/delete_user.html', {'Remove_User': Remove_User})
+
+def Update_user (request,pk):
+    
+	user_data = User.objects.get(pk=pk)
+ 
+	if request.method == 'POST':
+		user_form= UserUpdateForms(request.POST,instance = user_data)
+		if user_form.is_valid():
+			user_form.save()
+			return redirect('/register')
+
+	else:
+		user_form= UserUpdateForms(instance=user_data)
+
+	context = {
+
+		"user_form":user_form,
+		"profile":user_data
+	}
+	return render(request, 'html_user/update_user.html', context)
+
+
 @login_required
 def Delete_profile(request,pk):
 	
@@ -120,6 +156,7 @@ def Delete_profile(request,pk):
 	if request.method == 'POST':
 		profile.delete()
 		return redirect('/user')  # Redirect to home page or any other appropriate page
+
 	else:
 		return render(request, 'html_user/delete_profile.html', {'profile': profile})
 

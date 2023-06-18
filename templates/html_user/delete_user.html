@@ -5,16 +5,21 @@
 {% block content %}
 <div class="container">
   <div class="row">
-    <div class="col-md-6  offset-md-4 mt-5">
-        <div class="card border">
+    <div class="col-md-8 mt-5 text-center offset-md-2">
+        <div class="card border-danger">
 
-          <div class="card-body">
-            <h4 class="card-title">Delete User {{ customer.name }} <i class="fa-light fa-user-xmark"></i> </h4>
-            <p class="card-text">คุณต้องการลบผู้ใช้: {{ customer.source }} ?</p>
+          <div class="card-body text-center">
+            <p class="card-text">คุณต้องการลบรหัส <strong>{{ Remove_User.profileuser.nickname }} </strong></p>
+            <h3 class="card-title"><i class="bi bi-x-circle-fill" style="font-size:300px;color:red;" ></i></h3>
+            
+
+            <div class="alert alert-danger">
+              <strong>ลบรหัส!</strong> เลขที่ <a href="#" class="alert-link">{{ Remove_User.username }} </a>.
+            </div>
 
             <form method="post">
                 {% csrf_token %}
-                <button type="submit" class='btn btn-danger btn-block'>Delete</button>
+                <button type="submit" class='btn btn-danger btn-block'> ลบข้อมูลออกจากระบบ </button>
             </form>
 
           </div>

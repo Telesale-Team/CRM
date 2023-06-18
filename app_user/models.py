@@ -75,7 +75,7 @@ class ProfileUser(models.Model):
     
     
     class Meta:
-        ordering = ["username"]
+        ordering = ["-username"]
         verbose_name_plural = "Profile"
         verbose_name = "Member"
 

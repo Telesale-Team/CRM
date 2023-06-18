@@ -12,11 +12,22 @@ from app_user.models import ProfileUser
 # Create your views here.
 @login_required(login_url="/")
 def Dashboards (request):
+    # source = Live(3) SEO(2) ADS(1)
+        # Web = Mughuay(4) Duckbet(3) Thaibaan(2) 7RX7(1)
 
     # 10Rank user
 
-    Rank_Quatity_data = Sale.objects.all().order_by('-quantity')[:3]
+    
     all_customer = Sale.objects.all()
+    
+    #rank
+    First_rank = all_customer.order_by('-quantity')[:1]
+    Rx7_rank = all_customer.filter(web=1).order_by('-quantity')[:3]
+    Thaibaan_rank = all_customer.filter(web=2).order_by('-quantity')[:4]
+    Duckbet_rank = all_customer.filter(web=3).order_by('-quantity')[:3]
+    Mughuay_rank = all_customer.filter(web=4).order_by('-quantity')[:3]
+    Rank_Quatity_data = Sale.objects.all().order_by('-quantity')[:8]
+    
 
     #RX7 Data
     rx7 = all_customer.filter(web=1).count()  
@@ -49,6 +60,16 @@ def Dashboards (request):
     Mughuay_live = all_customer.filter(source=3,web=4).count()  
     Mughuay_buy = all_customer.filter(web=4,buy='ซื้อ').count()
     Mughuay_nobuy = all_customer.filter(web=4,buy='ยังไม่ซื้อ').count()
+
+    
+    # Thaibaan_interest (1) Huay_interest (2) Game_interest(3)  Casino_interest (4) Spot_interest (5) Esport_interest(7)
+    Thaibaan_interest = all_customer.filter(interest=1)
+    Huay_interest = all_customer.filter(interest=2)
+    Game_interest = all_customer.filter(interest=3)
+    Casino_interest = all_customer.filter(interest=5)
+    Spot_interest = all_customer.filter(interest=6)
+    Esport_interest = all_customer.filter(interest=7)
+    
     
     #Total
     ads = all_customer.filter(source=1)
@@ -62,11 +83,23 @@ def Dashboards (request):
     source = Source.objects.all()[:3]
     
     
-    all_register = all_customer
+    customer_all_register = all_customer
     customer_register_buy = all_customer.filter(buy="ซื้อ")
     customer_register_nobuy = all_customer.filter(buy="ยังไม่ซื้อ")
     
+    
+    # Percent 
+    # print("Display Score : ",len(customer_register_buy)/len(all_customer)*100)
+    
 
+    
+    
+    try:
+        Percen_data =len(customer_register_buy) / len(customer_all_register)*100
+        Percen_Score= int(Percen_data)
+    except ZeroDivisionError:        
+        Percen_Score = 0
+        
     
     context = {
         
@@ -77,6 +110,14 @@ def Dashboards (request):
         "web":web,
         "interest":interest,
         "source":source,
+        
+        #rank
+        "First_rank":First_rank,
+        "Rx7_rank":Rx7_rank,
+        "Thaibaan_rank":Thaibaan_rank,
+        "Duckbet_rank":Duckbet_rank,
+        "Mughuay_rank":Mughuay_rank,
+        "Rank_Quatity_data":Rank_Quatity_data,
         
         #rx7
         
@@ -115,10 +156,22 @@ def Dashboards (request):
         "ads":ads,
         "seo":seo,
         "live":live,
-        "all_register":all_register,
+        "customer_all_register":customer_all_register,
         "customer_register_buy":customer_register_buy,
         "customer_register_nobuy":customer_register_nobuy,
-        "Rank_Quatity_data":Rank_Quatity_data,
+        
+  
+        
+        #interest
+        "Percen_Score":Percen_Score,
+        
+        # Thaibaan_interest (1) Huay_interest (2) Game_interest(3)  Casino_interest (4) Sport_interest (5) Esport_interest(7)
+        "Thaibaan_interest":Thaibaan_interest,
+        "Huay_interest":Huay_interest,
+        "Game_interest":Game_interest,
+        "Casino_interest":Casino_interest,
+        "Spot_interest":Spot_interest,
+        "Esport_interest":Esport_interest,
         
         
         #Dashboard

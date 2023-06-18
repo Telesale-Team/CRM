@@ -1,0 +1,337 @@
+
+{% extends 'base/layout.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Sale Page {% endblock title%}
+
+
+{% block content%}
+<form method="POST">
+	<input type="hidden" name="csrfmiddlewaretoken" value="y2w1CVDIJ253m5B1YPl0UGGuyZo1cpVkLWBBssluDtWbV9g8oiX4Oj3ToxNAeg9v">
+	<div class="row p-2">
+
+		<!-- ชื่อลูกค้า -->
+		<div class="col-md-5 p-2 ">
+
+			<div id="div_id_name" class="form-group">
+				
+				<label for="id_name" class=" requiredField">ชื่อลูกค้า<span class="asteriskField">*</span></label>
+				
+				<div>
+					<input type="text" name="name" maxlength="255" class="textinput form-control" required id="id_name">
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- ชื่อเพศ -->
+		<div class="col-md-4 p-2">
+
+
+
+			<p>เลือกเพศ</p>
+			<div class="form-check">
+				<label class="form-check-label" for="id_sex">
+				  <input type="radio" class="form-check-input" id="id_sex" name="sex" value="20">20+
+				</label>
+			</div>
+
+			<div class="form-check">
+				<label class="form-check-label" for="id_sex">
+				  <input type="radio" class="form-check-input" id="id_sex" name="sex" value="30">30+
+				</label>
+			</div>
+
+			<div class="form-check">
+				<label class="form-check-label" for="id_sex">
+				  <input type="radio" class="form-check-input" id="id_sex" name="sex" value="40">40+
+				</label>
+			</div>
+
+			<div class="form-check">
+				<label class="form-check-label" for="id_sex">
+				  <input type="radio" class="form-check-input" id="id_sex" name="sex" value="50">50+
+				</label>
+			</div>
+
+			<div class="form-check">
+				<label class="form-check-label" for="id_sex">
+				  <input type="radio" class="form-check-input" id="id_sex" name="sex" value="1">60+
+				</label>
+			</div>
+
+
+
+		</div>
+
+		<!-- ชื่ออายุ -->
+		<div class="col-md-3 p-2">
+
+			<p>เลือกเพศ</p>
+			<div class="form-check">
+				<label class="form-check-label" for="id_sex">
+				  <input type="radio" class="form-check-input" id="id_sex" name="sex" value="ชาย">ชาย
+				</label>
+			</div>
+
+			<div class="form-check">
+				<label class="form-check-label" for="id_sex">
+				  <input type="radio" class="form-check-input" id="id_sex" name="sex" value="หญิง">หญิง
+				</label>
+			</div>
+
+
+		</div>
+
+		<!-- ความสนใจ -->
+		<div class="col-md-5 p-2">
+			
+			<div id="div_id_interest" class="form-group">
+				<label for="id_interest" class=" requiredField">Interest<span class="asteriskField">*</span></label>
+				<div>
+			
+					<select name="interest" class="select form-control" required id="id_interest">
+
+
+						<option value="1">สลากไทบ้าน</option>
+
+						<option value="2">หวย</option>
+
+						<option value="3">เกมส์</option>
+
+						<option value="4">คาสิโน</option>
+
+						<option value="5">กีฬา</option>
+
+						<option value="6">อีสปอร์ต</option>
+
+					</select>
+				</div>
+			</div>
+		</div>
+		
+		<!-- จำนวน  -->
+		<div class="col-md-4 p-2">
+
+			<div id="div_id_quantity" class="form-group">	
+				<label for="id_quantity" class="">	จำนวน </label>	
+			<div>
+		
+			
+				<input type="number" name="quantity" value="1" class="numberinput form-control" id="id_quantity"></div>
+		</div>
+
+
+
+		</div>
+
+		<!-- หน่วย  -->
+		<div class="col-md-3 p-2" >
+				<div id="div_id_unit" class="form-group">
+
+					<label for="id_unit" class="">หน่วย</label><div>
+
+					<select name="unit" class="select form-control" id="id_unit">
+
+						<option value="บาท" selected>บาท</option>
+
+					</select>
+				</div>
+		</div>
+</div>
+
+		<!-- ลูกค้าของเว็บ  -->
+		<div class="col-md-5 p-2" >
+			
+
+
+
+				<div id="div_id_web" class="form-group">
+					<label for="id_web" class=" requiredField">	Web<span class="asteriskField">*</span></label>
+				<div>
+		
+			
+				<select name="web" class="select form-control" required id="id_web">
+					<option value="" selected>---------</option>
+
+					<option value="1">7RX7</option>
+
+					<option value="2">Thaibarn</option>
+
+					<option value="3">Duckbet</option>
+
+					<option value="4">Mughuay</option>
+
+				</select>
+		</div>
+
+
+</div>
+
+
+
+		</div>
+
+		<!-- สถานะซื้อ  -->
+		<div class="col-md-4 p-2 " >			
+			<div id="div_id_buy" class="form-group">
+				<label for="id_buy" class="">สถานะซื้อ</label>
+				<div>
+				
+					<select name="buy" class="select form-control" id="id_buy">
+
+
+						<option value="ซื้อ">ซื้อ</option>
+
+						<option value="ยังไม่ซื้อ" selected>ยังไม่ซื้อ</option>
+					</select>
+
+				</div>
+
+			</div>
+		</div>
+
+		
+		<!-- ที่มาของลูกค้า  -->
+		<div class="col-md-3 p-2" >			
+				<div id="div_id_source" class="form-group">
+						<label for="id_source" class=" requiredField">	ที่มาของลูกค้า<span class="asteriskField">*</span></label>
+				<div>
+						
+							
+				<select name="source" class="select form-control" required id="id_source">
+
+					<option value="" selected>ที่มา</option>
+
+					<option value="1">ADS</option>
+
+					<option value="2">SEO</option>
+
+					<option value="3">Live</option>
+
+				</select>
+		
+			</div>
+		</div>
+
+
+
+		</div>
+		<!-- ติดต่อกลับ  -->
+		<div class="col-md-6 p-2" >
+			
+
+
+
+<div id="div_id_call_back" class="form-group">
+
+
+<label for="id_call_back" class="">
+	ติดต่อลูกค้า
+</label>
+
+
+
+
+
+
+
+
+	<div>
+		
+			
+				<select name="call_back" class="select form-control" id="id_call_back">
+<option value="" selected>ติดต่อกลับ</option>
+
+<option value="Line">Line</option>
+
+<option value="Facebook">Facebook</option>
+
+<option value="Tiktok">Tiktok</option>
+
+<option value="Youtube">Youtube</option>
+
+<option value="Website">Website</option>
+
+<option value="Other">Other</option>
+
+</select>
+			
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+
+
+</div>
+
+
+
+		</div>
+
+		
+		<!-- ผู้ลงทะเบียน ( พนักงาน )  -->
+		<div class="col-md-6 p-2" >
+			
+
+
+
+<div id="div_id_user_account" class="form-group">
+	<label for="id_user_account" class=" requiredField">ผู้ลงทะเบียน<span class="asteriskField">*</span></label>
+
+
+
+
+
+
+
+
+	<div>
+		
+			
+				<input type="text" name="user_account" maxlength="10" class="textinput form-control" required id="id_user_account">
+			
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+
+
+</div>
+
+
+
+		</div>
+
+		<!-- เวลาลงทะเบียน  -->
+		<div class="col-md-12 p-2">		
+				<div id="div_id_other" class="form-group">
+					<label for="id_other" class="">	หมายเหตุ</label>
+					<div><textarea name="other" cols="40" rows="10" class="textarea form-control" id="id_other"></textarea></div>
+				</div>
+			</div>
+		</div>
+		<input type="submit" value="ลงทะเบียนลูกค้า" class="btn btn-success btn-block ">
+</form>
+
+{% endblock content%}

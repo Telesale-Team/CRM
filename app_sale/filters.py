@@ -6,6 +6,8 @@ class SaleFilter(django_filters.FilterSet):
     class Meta:
         model = Sale
         fields = {
+
+            "user_account":['exact'],
             "name":['icontains'],
             "interest":['exact'],
             "source":['exact'],

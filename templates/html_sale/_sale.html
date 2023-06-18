@@ -1,0 +1,316 @@
+{% extends 'base/layout.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Sale Page {% endblock title%}
+
+{% block content%}
+
+{% if user.is_authenticated and user.is_superuser and user.is_staff %}
+	<div class="card border">
+
+	<div class="card-body bg-dark text-light">
+		<div class="row ">
+
+			<div class="col-md-2 p-2">
+				<a href='#'>
+					<div class="card border-success">
+						<div class="card-body bg-secondary text-light">
+						<h4 class="card-title">{{Thaibaan_interest.count}}</h4>
+						<p class="card-text">สลากไทบ้าน</p>
+						</div>
+					</div>
+				</a>  
+			</div>
+
+			<div class="col-md-2 p-2">
+				<a href='#'>
+					<div class="card border-success">
+						<div class="card-body bg-secondary text-light">
+						<h4 class="card-title">{{Huay_interest.count}}</h4>
+						<p class="card-text">หวย</p>
+						</div>
+					</div>
+				</a>  
+			</div>
+		
+			<div class="col-md-2 p-2 ">
+			<a href="#">
+				<div class="card border-success">
+					<div class="card-body bg-secondary text-light">
+						<h4 class="card-title">{{Sport_interest.count}}</h4>
+						<p class="card-text">กีฬา</p>              
+					</div>
+				</div>
+			</a>
+			</div>
+		
+			<div class="col-md-2 p-2 ">
+			<a href="#">
+				<div class="card border-success">
+					<div class="card-body bg-secondary text-light">
+						<h4 class="card-title">{{Game_interest.count}}</h4>
+						<p class="card-text">เกมส์</p>              
+					</div>
+				</div>
+			</a>
+			</div>
+		
+			<div class="col-md-2 p-2 ">
+			<a href="#">
+				<div class="card border-success">
+					<div class="card-body bg-secondary text-light">
+						<h4 class="card-title">{{Eport_interest.count}}</h4>
+						<p class="card-text">อีสปอร์ต</p>              
+					</div>
+				</div>
+			</a>
+			</div>
+
+			<div class="col-md-2 p-2 ">
+				<a href="#">
+					<div class="card border-success">
+					<div class="card-body bg-secondary text-light">
+						<h4 class="card-title">{{Casino_interest.count}}</h4>
+						<p class="card-text">คาสิโน</p>              
+					</div>
+					</div>
+				</a>
+			</div>
+			
+
+			<div class="col-md-2 p-2">
+				<a href='#'>
+					<div class="card border-success">
+						<div class="card-body bg-success text-light">
+						<h4 class="card-title">{{customer_register_buy.count}}</h4>
+						<p class="card-text">สมัครซื้อ</p>
+						</div>
+					</div>
+				</a>  
+			</div>
+
+			<div class="col-md-2 p-2">
+				<a href='#'>
+					<div class="card border-success">
+						<div class="card-body bg-danger text-light">
+						<h4 class="card-title">{{customer_register_nobuy.count}}</h4>
+						<p class="card-text">สมัครไม่ซื้อ</p>
+						</div>
+					</div>
+				</a>  
+			</div>
+
+			<div class="col-md-2 p-2">
+				<a href='#'>
+					<div class="card border-success">
+						<div class="card-body bg-info text-light">
+						<h4 class="card-title">{{customer_all_register.count}}</h4>
+						<p class="card-text">ลูกค้าทั้งหมด</p>
+						</div>
+					</div>
+				</a>  
+			</div>
+
+			
+
+			
+
+		</div>
+	</div>
+	</div>
+
+	<div class="row">
+
+		<div class="col-sm-12 ">
+			<div class="card border">
+			<div class="card-body bg-dark text-light">
+				<h4>ค้นหาข้อมูล</h4>
+				
+				<form method="GET" action="#">
+				{% csrf_token %}
+				{{ filter_sale }}
+
+					<button type="submit" class="btn btn-primary">ค้นหา</button>
+					<a class="btn btn-secondary " href="{% url 'sale-home'%}"> รีเซ็ตการค้นหา </a>
+
+				</form>
+					
+			</div>
+			</div>
+
+		</div>
+
+		<div class="col-sm-4">
+			<div class="card border p-3 bg-dark text-light">
+
+				<form method="POST">
+					{% csrf_token %}
+
+			
+					<div class="row">
+
+						<!-- ชื่อลูกค้า -->
+						<div class="col-md-6 p-2 ">
+							{{ form_sale.name|as_crispy_field}}
+						</div>
+						<!-- ชื่อเพศ -->
+						<div class="col-md-3 p-2">
+							{{ form_sale.sex|as_crispy_field}}
+						</div>
+
+						
+						<!-- ชื่ออายุ -->
+						<div class="col-md-3 p-2">
+							{{ form_sale.age|as_crispy_field}}
+						</div>
+
+						<!-- ความสนใจ -->
+						<div class="col-md-6 p-2">
+							{{ form_sale.interest|as_crispy_field}}
+						</div>
+						
+						<!-- จำนวน  -->
+						<div class="col-md-3 p-2">
+							{{ form_sale.quantity|as_crispy_field}}
+						</div>
+
+						<!-- หน่วย  -->
+						<div class="col-md-3 p-2" >
+							{{ form_sale.unit|as_crispy_field}}
+						</div>
+
+						<!-- ลูกค้าของเว็บ  -->
+						<div class="col-md-4 p-2" >
+							{{ form_sale.web|as_crispy_field}}
+						</div>
+
+						<!-- สถานะซื้อ  -->
+						<div class="col-md-4 p-2 " >
+							{{ form_sale.buy|as_crispy_field}}
+						</div>
+
+						
+						<!-- ที่มาของลูกค้า  -->
+						<div class="col-md-4 p-2" >
+							{{ form_sale.source|as_crispy_field}}
+						</div>
+
+						<!-- ติดต่อกลับ  -->
+						<div class="col-md-4 p-2" >
+							{{ form_sale.call_back|as_crispy_field}}
+						</div>
+
+						
+						<!-- ผู้ลงทะเบียน ( พนักงาน )  -->
+						<div class="col-md-8 p-2" >
+							{{ form_sale.user_account |as_crispy_field}}
+						</div>
+
+						<!-- เวลาลงทะเบียน  -->
+						<div class="col-md-12 p-2">
+							{{ form_sale.other|as_crispy_field}}
+						</div>
+
+
+					</div>
+
+					<input type="submit" value="ลงทะเบียนลูกค้า" class="btn btn-success btn-block ">
+				</form>
+			</div>
+		</div>
+
+		<div class="col-sm-8">
+
+			<div class="card border">
+				<table class="table table-striped ">
+
+					<thead class="bg-dark text-light">
+					<tr>
+						<th> ชื่อลูกค้า </th>
+						<th> เพศ </th>
+						<th> ช่วยอายุ </th>
+						<th> สมัครเว็บ </th>
+						<th> ความสนใจ </th>
+						<th> นักปิดการขาย </th>
+						<th> ที่มา </th>
+						<th> ช่องทางติดต่อกลับ </th>
+						<th> วันที่ลงทะเบียน</th>
+						<th> สถานะ </th>
+						<th> แก้ใข/อัพเดด </th>
+
+				
+				
+					</tr>
+					</thead>
+					
+					<tbody>
+					{% for item in page_sale %}
+					
+					<tr>
+
+						<td> {{ item.name }}</td>
+						<td> {{ item.sex }}</td>
+						<td> {{ item.age }}</td>
+						<td> {{ item.web }} </td>
+						<td> {{ item.interest }}</td>
+						<td> {{ item.user_account }} </td>
+						<td> {{ item.source | truncatechars_html:10}} </td>
+						<td> {{ item.call_back }} </td>
+						<td> {{ item.create_date }}</td>
+
+						{% if item.buy == 'ซื้อ'%}
+						<td> <span class="badge badge-success">ซื้อแล้ว</span></td>
+						{% else%}
+						<td> <span class="badge badge-danger">ยังไม่ซื้อ</span></td>
+						{%endif%}
+
+						<td>
+							
+							<a href="{% url 'update-sale' item.pk %}"class="btn btn-warning" ><i class="bi bi-pencil"></i></a>
+							<a  href="{% url 'delete-sale' item.pk %}" class="btn btn-danger"><i class="bi bi-x-circle"></i></a>
+							
+						
+						</td>
+
+
+						</tr>
+					{% endfor %}
+					</tbody>
+					
+				</table>
+				<!-- Paginator-->
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							
+							<nav aria-label="Page navigation example">
+								<p>Page {{page_sale.number}}/{{page_sale.paginator.num_pages}} </p>
+
+								<ul class="pagination">
+									<li class="page-item"> {% if page_sale.has_previous%} <a class="page-link" href="{% url 'sale-home'%}?page={{ page_sale.previous_page_number }}">Previous</a> {% endif %} </li>
+									
+									{% for num_page in page_sale.paginator.page_range %}
+									
+									{% if page_sale.number == num_page %}
+										<li class="page-item"><a class="page-link" href="{% url 'sale-home'%}?page={{ num_page }}">{{ num_page }}</a></li>
+									{% else %}
+										<li class="page-item"><a class="page-link" href="{% url 'sale-home'%}?page={{ num_page }}">{{ num_page }}</a></li>
+									{% endif %}
+
+									{% endfor %}
+
+									<li class="page-item">{% if page_sale.has_next%} <a class="page-link" href="{% url 'sale-home'%}?page={{ page_sale.next_page_number }}">Next</a>{% endif %} </li>
+								</ul>
+
+							</nav>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+	
+{% endif %}
+	
+{% endblock content %}

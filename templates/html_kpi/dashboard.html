@@ -14,331 +14,472 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 	
 </head>
+
 {% include 'base/navbar.html'%}
+
 <body>
+
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-9 ">
-				<div class="container-fluid">
-					<div class="row bg-dark">
+			<div class="col-9">
+
+				<div class="row ">
 				
 						
-						<div class="col-md-2 p-2">
-							<a href='#'>
-							<div class="card border-success">
-								<div class="card-body bg-secondary text-light">
-								<h4 class="card-title">{{count_thaibarn}}</h4>
-								<p class="card-text">สลากไทบ้าน</p>
-								</div>
+					<div class="col-md-2 p-2">
+						<a href='#'>
+						<div class="card border-success">
+							<div class="card-body bg-dark text-light">
+							<h4 class="card-title">{{Thaibaan_interest.count}}</h4>
+							<p class="card-text">สลากไทบ้าน</p>
 							</div>
-							</a>  
 						</div>
-				
-						<div class="col-md-2 p-2">
-							<a href='#'>
-							<div class="card border-success">
-								<div class="card-body bg-secondary text-light">
-								<h4 class="card-title">{{count_huay_online}}</h4>
-								<p class="card-text">หวยออนไลน์</p>
-								</div>
+						</a>  
+					</div>
+			
+					<div class="col-md-2 p-2">
+						<a href='#'>
+						<div class="card border-success">
+							<div class="card-body bg-dark text-light">
+							<h4 class="card-title">{{Huay_interest.count}}</h4>
+							<p class="card-text">หวย</p>
 							</div>
-							</a>  
 						</div>
-					
-						<div class="col-md-2 p-2 ">
-						  <a href="#">
-							  <div class="card border-success">
-							  <div class="card-body bg-secondary text-light">
-								  <h4 class="card-title">{{count_huay_football}}</h4>
-								  <p class="card-text">ฟุตบอล</p>              
-							  </div>
-							  </div>
-						  </a>
-						</div>
-					
-						<div class="col-md-2 p-2 ">
-						  <a href="#">
-							  <div class="card border-success">
-							  <div class="card-body bg-secondary text-light">
-								  <h4 class="card-title">{{count_huay_casino}}</h4>
-								  <p class="card-text">คาสิโน</p>              
-							  </div>
-							  </div>
-						  </a>
-						</div>
-					
-						<div class="col-md-2 p-2 ">
-						  <a href="#">
-							  <div class="card border-success">
-							  <div class="card-body bg-secondary text-light">
-								  <h4 class="card-title">-</h4>
-								  <p class="card-text">สล็อต</p>              
-							  </div>
-							  </div>
-						  </a>
-						</div>
-						<div class="col-md-2 p-2 ">
-							<a href="#">
-								<div class="card border-success">
-								<div class="card-body bg-secondary text-light">
-									<h4 class="card-title">-</h4>
-									<p class="card-text">บาคาร่า</p>              
-								</div>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-2 p-2 ">
-							<a href="#">
-								<div class="card border-success">
-								<div class="card-body bg-secondary text-light">
-									<h4 class="card-title">-</h4>
-									<p class="card-text">คาสิโน</p>              
-								</div>
-								</div>
-							</a>
-						</div>
-						
-						<div class="col-md-2 p-2">
-							<a href='#'>
+						</a>  
+					</div>
+
+					<div class="col-md-2 p-2 ">
+					  <a href="#">
+						  <div class="card border-success">
+						  <div class="card-body bg-dark text-light">
+							  <h4 class="card-title">{{Spot_interest.count}}</h4>
+							  <p class="card-text">กีฬา</p>              
+						  </div>
+						  </div>
+					  </a>
+					</div>
+
+					<div class="col-md-2 p-2 ">
+						<a href="#">
 							<div class="card border-success">
-								<div class="card-body bg-success text-light">
-								<h4 class="card-title">{{buy}}</h4>
-								<p class="card-text">สมัครซื้อ</p>
-								</div>
+							<div class="card-body bg-dark text-light">
+								<h4 class="card-title">{{Game_interest.count}}</h4>
+								<p class="card-text">เกมส์</p>              
 							</div>
-							</a>  
-						</div>
-				
-						<div class="col-md-2 p-2">
-							<a href='#'>
+							</div>
+						</a>
+					</div>
+
+					<div class="col-md-2 p-2 ">
+						<a href="#">
 							<div class="card border-success">
-								<div class="card-body bg-danger text-light">
-								<h4 class="card-title">{{nobuy}}</h4>
-								<p class="card-text">สมัครไม่ซื้อ</p>
-								</div>
+							<div class="card-body bg-dark text-light">
+								<h4 class="card-title">{{Esport_interest.count}}</h4>
+								<p class="card-text">อีสปอร์ต</p>              
+							</div>
+							</div>
+						</a>
+					</div>
+
+					<div class="col-md-2 p-2 ">
+						<a href="#">
+							<div class="card border-success">
+							<div class="card-body bg-dark text-light">
+								<h4 class="card-title">{{Casino_interest.count}}</h4>
+								<p class="card-text">คาสิโน</p>              
+							</div>
+							</div>
+						</a>
+					</div>
+					
+					<div class="col-md-2 p-2">
+						<a href='#'>
+						<div class="card border-success">
+							<div class="card-body bg-success text-light">
+							<h4 class="card-title">{{customer_register_buy.count}}</h4>
+							<p class="card-text">สมัครซื้อ</p>
+							</div>
+						</div>
+						</a>  
+					</div>
+			
+					<div class="col-md-2 p-2">
+						<a href='#'>
+						<div class="card border-success">
+							<div class="card-body bg-danger text-light">
+							<h4 class="card-title">{{customer_register_nobuy.count}}</h4>
+							<p class="card-text">สมัครไม่ซื้อ</p>
+							</div>
+						</div>
+						</a>  
+					</div>
+
+					<div class="col-md-2 p-2">
+						<a href='#'>
+						<div class="card border-success">
+							<div class="card-body bg-primary text-light">
+							<h4 class="card-title">{{customer_all_register.count}}</h4>
+							<p class="card-text">รวมทุกช่องทาง</p>
+							</div>
+						</div>
+						</a>  
+					</div>
+
+					<div class="col-md-2 p-2">
+						<a href='#'>
+						<div class="card border-success">
+							<div class="card-body bg-info text-light">
+							<h4 class="card-title">{{customer_all_register.count}}</h4>
+							<p class="card-text"> Inbox Facebook </p>
+							</div>
+						</div>
+						</a>  
+					</div>
+
+					<div class="col-md-2 p-2">
+						<a href='#'>
+						<div class="card border-success">
+							<div class="card-body bg-success text-light">
+							<h4 class="card-title">{{Percen_Score}} %</h4>
+							<p class="card-text">ปิดการขายสำเร็จ</p>
+							</div>
+						</div>
+						</a>  
+					</div>
+
+					<div class="col-md-2 p-2">
+						<a href='#'>
+						<div class="card border-success">
+							<div class="card-body bg-info text-light">
+							<h4 class="card-title"><strog>472 ใบ</strog></h4>
+							<p class="card-text">สถิติปิดการขายสูงสูด</p>
+							</div>
+						</div>
+						</a>  
+					</div>
+
+				</div>
+
+	
+				<div class="row ">
+				<!-- ยอดขายรวมประจำวัน -->
+					<div class="col-md-8 ">
+		
+						<button type="button" class="btn btn-dark btn-block"><i class="bi bi-coin"> </i>ยอดขายรวมประจำวัน </button>
+						<table class="table table-striped table-hover text-light bg-dark">
+							<thead class="bg-dark ">
+								<tr>
+									<th>Product</th>
+									<th> Ads </th>
+									<th> Live </th>
+									<th> Seo </th>
+									<th>สมัครรวม</th>
+									<th>เติมเงิน</th>
+									<th>ยังไม่เติม</th>
+								</tr>
+							</thead>
+							
+							<tbody >
+								<tr>
+									<td> 7RX7 </td>
+									<td> {{rx7_ads}} </td>
+									<td> {{rx7_live}}</td>
+									<td> {{rx7_seo}} </td>
+									<th>{{rx7}}</th>
+									<th>{{rx7_buy}}</th>
+									<th>{{rx7_nobuy}}</th>
+								</tr>
+								<tr>
+									<td> Duckbet </td>
+									<td> {{Duckbet_ads}} </td>
+									<td> {{Duckbet_live}} </td>
+									<td> {{Duckbet_seo}} </td>
+									<th>{{Duckbet}}</th>
+									<th>{{Duckbet_buy}}</th>
+									<th>{{Duckbet_nobuy}}</th>
+								</tr>
+								<tr>
+									<td> Thaibaan </td>
+									<td> {{ Thaibaan_ads }}</td>
+									<td> {{ Thaibaan_live }} </td>
+									<td> {{ Thaibaan_seo }} </td>
+									<th>{{ Thaibaan }}</th>
+									<th>{{ Thaibaan_buy }}</th>
+									<th>{{ Thaibaan_nobuy }}</th>
+								</tr>
+								<tr>
+									<td> Mughuay </td>
+									<td> {{ Mughuay_ads }}</td>
+									<td> {{ Mughuay_live }} </td>
+									<td> {{ Mughuay_seo }} </td>
+									<th>{{ Mughuay }}</th>
+									<th>{{ Mughuay_buy }}</th>
+									<th>{{ Mughuay_nobuy }}</th>
+								</tr>
+									<tr>
+									<td > รวม </td>
+									<td><span>{{ ads.count }}</span></td>
+									<td><span>{{ live.count }}</span></td>
+									<td><span>{{ seo.count }}</span></td>
+									<td><span>{{ customer_all_register.count }}</span> </td>
+									<td><span>{{ customer_register_buy.count }}</span> </td>
+									<td><span>{{customer_register_nobuy.count }}</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				<!-- อันดับนักขาย สลากไทบ้าน -->
+					<div class="col-md-4 ">
+						<button type="button" class="btn btn-dark btn-block"><i class="bi bi-coin">  </i>นักขาย สลากไทบ้าน </button>
+						<table class="table table-striped table-hover bg-dark">
+
+							<thead class="bg-dark text-light">
+								<tr>
+								<th>อันดับ</th>
+								<th>จำนวน</th>
+								<th>ดัชนี</th>
+								</tr>
+							</thead>
+
+							<thead class="bg-dark text-light">
+							{% for employee in Thaibaan_rank %}
+								<tr>
+								
+								<td><img src="{{ employee.user_account.profileuser.image_profile.url}}" width="35" height="35"class="rounded-circle" > {{employee.user_account}} </td>
+								<td>{{employee.quantity}} </td>
+
+								{% if employee.quantity >= 100 %}
+								<td><i class="bi bi-arrow-up-circle" style="font-size:20px;color:green;" ></i></td>
+
+								{% else %} 
+								<td><i class="bi bi-arrow-down-circle" style="font-size:20px;color:red;"></i></td>
+								{% endif %}
+
+								</tr>
+								{% endfor %}
+								</tr>
+							</tbody>
+
+						</table>
+							
+
+					</div>
+					
+				</div>
+
+				<div class="row">
+
+					<!--3 อันดับนักขาย 7RX7  -->
+					<div class="col-md-4 ">
+						<button type="button" class="btn btn-dark btn-block"><i class="bi bi-coin">  </i> 3 อันดับนักขาย 7RX7 </button>
+						<table class="table table-striped table-hover ">
+		
+							<thead class="bg-dark text-light">
+								<tr>
+								<th>อันดับ</th>
+								<th>จำนวน</th>
+								<th>ดัชนี</th>
+								</tr>
+							</thead>
+		
+							<thead class="bg-dark text-light">
+							{% for employee in Rx7_rank %}
+								<tr>
+								
+								<td><img src="{{employee.user_account.profileuser.image_profile.url}}" width="35" height="35"class="rounded-circle" > {{employee.user_account}} </td>
+								<td>{{employee.quantity}} </td>
+		
+								{% if employee.quantity >= 30 %}
+								<td><i class="bi bi-arrow-up-circle" style="font-size:20px;color:green;" ></i></td>
+		
+								{% else %} 
+								<td><i class="bi bi-arrow-down-circle" style="font-size:20px;color:red;"></i></td>
+								{% endif %}
+		
+								</tr>
+								{% endfor %}
+								</tr>
+							</tbody>
+		
+						</table>
+							
+		
+					</div>
+
+				<!-- อันดับนักขาย ดั๊กเบ็ท -->			
+					<div class="col-md-4 ">
+						<button type="button" class="btn btn-dark btn-block"><i class="bi bi-coin">  </i> นักขาย Duckbet </button>
+						<table class="table table-striped table-hover ">
+
+							<thead class="bg-dark text-light">
+								<tr>
+								<th>อันดับ</th>
+								<th>จำนวน</th>
+								<th>ดัชนี</th>
+								</tr>
+							</thead>
+
+							<thead class="bg-dark text-light">
+							{% for employee in Duckbet_rank %}
+								<tr>
+								
+								<td><img src="{{employee.user_account.profileuser.image_profile.url}}" width="35" height="35"class="rounded-circle" > {{employee.user_account}} </td>
+								<td>{{employee.quantity}} </td>
+
+								{% if employee.quantity >= 30 %}
+								<td><i class="bi bi-arrow-up-circle" style="font-size:20px;color:green;" ></i></td>
+
+								{% else %} 
+								<td><i class="bi bi-arrow-down-circle" style="font-size:20px;color:red;"></i></td>
+								{% endif %}
+
+								</tr>
+								{% endfor %}
+								</tr>
+							</tbody>
+
+						</table>
+							
+
+					</div>
+
+				<!-- อันดับนักขาย มักหวย -->
+					<div class="col-md-4 ">
+						<button type="button" class="btn btn-dark btn-block"><i class="bi bi-coin">  </i>นักขาย Mughuay</button>
+						<table class="table table-striped table-hover ">
+		
+							<thead class="bg-dark text-light">
+								<tr>
+								<th>อันดับ</th>
+								<th>ความสนใจ</th>
+								<th>ดัชนี</th>
+								</tr>
+							</thead>
+		
+							<thead class="bg-dark text-light">
+							{% for employee in Mughuay_rank %}
+								<tr>
+								<td><img src="{{employee.user_account.profileuser.image_profile.url}}" width="35" height="35"class="rounded-circle" > {{employee.user_account}} </td>
+								<td>{{employee.quantity}} </td>
+								<td>ดัชนี</td>
+		
+								</tr>
+								{% endfor %}
+							</tbody>
+		
+						</table>
+							
+		
+					</div>
+
+				</div>
+			</div>
+
+			<div class="col-3">
+				<div class="row">
+
+						<div class="col-md-12 p-2 text-center">
+							<a href='#'>
+
+							<div class="card border-primary ">
+								{% for i in First_rank %}
+								<div class="card-body bg-success text-light ">
+									<h4 class="card-title">
+										
+
+										<img src="{{ i.user_account.profileuser.image_profile.url }}" width="60" height="60"class="rounded-circle" >
+										
+										
+										
+									</h4>
+									<p class="card-text">{{i.quantity}}</p>
+									</div>
+								{% endfor %}
 							</div>
 							</a>  
 						</div>
 		
-						<div class="col-md-2 p-2">
+						<div class="col-md-6 p-2 text-center">
 							<a href='#'>
-							<div class="card border-success">
-								<div class="card-body bg-info text-light">
-								<h4 class="card-title">{{count_all.count}}</h4>
-								<p class="card-text">ลูกค้าทั้งหมด {{ day }}</p>
+							<div class="card border-primary">
+								<div class="card-body bg-warning text-light">
+									{% for i in First_rank %}
+								<h4 class="card-title">
+									
+
+									<img src="{{ i.user_account.profileuser.image_profile.url }}" width="40" height="40"class="rounded-circle" >
+									
+									
+									
+								</h4>
+								<p class="card-text">{{i.quantity}}</p>
 								</div>
+								{% endfor %}
 							</div>
 							</a>  
 						</div>
 
-					</div>
-				
-					<div class="row bg-dark">
-						<div class="col-md-12 mt-2">
-			
-							<button type="button" class="btn btn-secondary btn-block"><i class="bi bi-coin"> Success</i></button>
-							<table class="table table-striped table-hover text-light">
-								<thead class="bg-dark ">
-									<tr>
-										<th>Product</th>
-										<th> Ads </th>
-										<th> Live </th>
-										<th> Seo </th>
-										<th>สมัครรวม</th>
-										<th>เติมเงิน</th>
-										<th>ยังไม่เติม</th>
-									</tr>
-								</thead>
-								
-								<tbody >
-									<tr>
-										<td> 7RX7 </td>
-										<td> {{rx7_ads}} </td>
-										<td> {{rx7_live}}</td>
-										<td> {{rx7_seo}} </td>
-										<th>{{rx7}}</th>
-										<th>{{rx7_buy}}</th>
-										<th>{{rx7_nobuy}}</th>
-									</tr>
-									<tr>
-										<td> Duckbet </td>
-										<td> {{Duckbet_ads}} </td>
-										<td> {{Duckbet_live}} </td>
-										<td> {{Duckbet_seo}} </td>
-										<th>{{Duckbet}}</th>
-										<th>{{Duckbet_buy}}</th>
-										<th>{{Duckbet_nobuy}}</th>
-									</tr>
-									<tr>
-										<td> Thaibaan </td>
-										<td> {{ Thaibaan_ads }}</td>
-										<td> {{ Thaibaan_live }} </td>
-										<td> {{ Thaibaan_seo }} </td>
-										<th>{{ Thaibaan }}</th>
-										<th>{{ Thaibaan_buy }}</th>
-										<th>{{ Thaibaan_nobuy }}</th>
-									</tr>
-									<tr>
-										<td> Mughuay </td>
-										<td> {{ Mughuay_ads }}</td>
-										<td> {{ Mughuay_live }} </td>
-										<td> {{ Mughuay_seo }} </td>
-										<th>{{ Mughuay }}</th>
-										<th>{{ Mughuay_buy }}</th>
-										<th>{{ Mughuay_nobuy }}</th>
-									</tr>
-										<tr>
-										<td > รวม </td>
-										<td><span>{{ ads.count }}</span></td>
-										<td><span>{{ live.count }}</span></td>
-										<td><span>{{ seo.count }}</span></td>
-										<td><span>{{ all_register.count }}</span> </td>
-										<td><span>{{ customer_register_buy.count }}</span> </td>
-										<td><span>{{customer_register_nobuy.count }}</span></td>
-									</tr>
-								</tbody>
-							</table>
+						<div class="col-md-6 p-2 text-center">
+							<a href='#'>
+							<div class="card border-primary">
+								{% for i in First_rank %}
+								<div class="card-body bg-danger text-light">
+									<h4 class="card-title">
+										
+
+										<img src="{{ i.user_account.profileuser.image_profile.url }}" width="40" height="40"class="rounded-circle" >
+										
+										
+										
+									</h4>
+									<p class="card-text">{{i.quantity}}</p>
+								</div>
+								{% endfor %}
+							</div>
+							</a>  
 						</div>
-					</div>
-			
-					<div class="row bg-dark">
-			
-						<div class="col-md-4">
-							<button type="button" class="btn btn-secondary btn-block"><i class="bi bi-coin">  </i>อันดับสื่อทำการตลาด</button>
+
+						<div class="col-md-12 p-2">
 							<table class="table table-striped table-hover ">
-			
+								<button type="button" class="btn btn-dark btn-block"><i class="bi bi-coin"> </i>อันดับนักขาย</button>
 								<thead class="bg-dark text-light">
 									<tr>
 									<th>อันดับ</th>
-									<th>สื่อ</th>
-									<th>ดัชนี</th>
+									<th>ยอดซื้อ</th>
+									<th>โปรดัก</th>
+									<th>สถานะ</th>
 									</tr>
 								</thead>
 			
-								<tbody class= 'text-light'>
-								{% for employee in source %}
-									<tr>
+								<tbody class="bg-dark text-light">
+								{% for employee in Rank_Quatity_data %}
 									
-									<td>{{employee.name}} </td>
-									<td>{{employee.name}} </td>
-			
+									<tr>
+		
+									<td><img src="{{employee.user_account.profileuser.image_profile.url}}" width="35" height="35"class="rounded-circle" > {{employee.user_account}}</td>
+									<td>{{employee.quantity}}</td>
+									<td>{{employee.web}}</td>
 									{% if employee.quantity >= 30 %}
 									<td><i class="bi bi-arrow-up-circle" style="font-size:20px;color:green;" ></i></td>
-			
+					
 									{% else %} 
 									<td><i class="bi bi-arrow-down-circle" style="font-size:20px;color:red;"></i></td>
 									{% endif %}
+		
+		
 			
 									</tr>
 									{% endfor %}
-									</tr>
 								</tbody>
 			
 							</table>
-								
-			
-						</div>
-			
-						<div class="col-md-4">
-							<button type="button" class="btn btn-secondary btn-block"><i class="bi bi-coin">  </i> อันดับเว็บการตลาด</button>
-							<table class="table table-striped table-hover ">
-			
-								<thead class="bg-dark text-light">
-									<tr>
-									<th>อันดับ</th>
-									<th>พนักงาน</th>
-									<th>ดัชนี</th>
-									</tr>
-								</thead>
-			
-								<thead class="bg-dark text-light">
-								{% for employee in web %}
-									<tr>
-									
-									<td>{{employee.name}} </td>
-									<td> Test </td>
-									<td><i class="bi bi-arrow-up-circle" style="font-size:20px;color:green;" ></i></td>
-			
-			
-			
-									</tr>
-								{% endfor %}
-								</tbody>
-			
-							</table>
-								
-			
 						</div>
 
-						<div class="col-md-4">
-							<button type="button" class="btn btn-secondary btn-block"><i class="bi bi-coin">  </i>อันดับความสนใจ</button>
-							<table class="table table-striped table-hover ">
-			
-								<thead class="bg-dark text-light">
-									<tr>
-									<th>อันดับ</th>
-									<th>ความสนใจ</th>
-									<th>ดัชนี</th>
-									</tr>
-								</thead>
-			
-								<thead class="bg-dark text-light">
-								{% for employee in interest %}
-									<tr>
-									<td>{{employee.name}} </td>
-									<td>จำนวน</td>
-									<td>ดัชนี</td>
-			
-									</tr>
-									{% endfor %}
-								</tbody>
-			
-							</table>
-								
-			
-						</div>
-			
-					</div>
 				</div>
-			</div>
-			<div class="col-3">
-
-					<table class="table table-striped table-hover ">
-						<button type="button" class="btn btn-secondary btn-block"><i class="bi bi-coin"> </i>อันดับนักขาย</button>
-						<thead class="bg-dark text-light">
-							<tr>
-							<th>อันดับ</th>
-							<th>ชื่อลูกค้า</th>
-							<th>ยอดซื้อ</th>
-							<th>นักขาย</th>
-							<th>สถานะ</th>
-							</tr>
-						</thead>
-	
-						<tbody class="bg-dark text-light">
-						{% for employee in all_customer %}
-							
-							<tr>
-
-							<td>-</td>
-							<td>{{employee.name}} </td>
-							<td>{{employee.quantity}}</td>
-							<td>{{employee.user_account}}</td>
-
-							{% if employee.quantity >= 30 %}
-							<td><i class="bi bi-arrow-up-circle" style="font-size:20px;color:green;" ></i></td>
-			
-							{% else %} 
-							<td><i class="bi bi-arrow-down-circle" style="font-size:20px;color:red;"></i></td>
-							{% endif %}
 
 
-	
-							</tr>
-							{% endfor %}
-						</tbody>
-	
-					</table>
+					
 			</div>
 		</div>
 	</div>

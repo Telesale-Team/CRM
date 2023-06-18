@@ -10,43 +10,57 @@ from django.core.paginator import Paginator
 
 @login_required(login_url="/")
 def Index (request):
-	sale = Sale.objects.all()
-	count_all=sale.count()
-	
-	
-	#Form
-	if request.method == "POST":
-		form_sale = SaleForm(request.POST)
-		if form_sale.is_valid():
-			form_sale.save()
-			return redirect("sale-home")
-	else:
-		form_sale = SaleForm()	
-	
+	all_customer = Sale.objects.all()
+
 	#Filter
 	filter = SaleFilter(request.GET,queryset=Sale.objects.all())
 	filter_sale = filter.form
 	query_sale = filter.qs
 	
  
+
+	# Thaibaan_interest (1) Huay_interest (2) Game_interest(3)  Casino_interest (4) Sport_interest (5) Esport_interest(6)
+	Thaibaan_interest = all_customer.filter(interest=1)
+	Huay_interest = all_customer.filter(interest=2)
+	Game_interest = all_customer.filter(interest=3)
+	Casino_interest = all_customer.filter(interest=4)
+	Sport_interest = all_customer.filter(interest=5)
+	Esport_interest = all_customer.filter(interest=6)
+
+	#Form
+	if request.method == "POST":
+		form_sale = SaleForm(request.POST)		
+		if form_sale.is_valid():
+			form_sale.save()			
+			return redirect("sale-home")
+
+	else:
+		form_sale = SaleForm()	
+	
+
 	#Paginator
-	page = Paginator(query_sale,20)
+	page = Paginator(query_sale,50)
 	page_list = request.GET.get("page")
 	page_sale = page.get_page(page_list)
+ 
+ 
 	context = {
 
 		"form_sale":form_sale,
 		"filter_sale":filter_sale,
 		"page_sale":page_sale,
-		"count_all":count_all,
-		"count_thaibarn":Sale.objects.all().filter(interest=1).count(),
-		"count_huay_online":Sale.objects.all().filter(interest=2).count(),
-		"count_huay_football":Sale.objects.all().filter(interest=6).count(),
-		"count_huay_casino":Sale.objects.all().filter(interest=5).count(),
-  		"count_huay_bacara":Sale.objects.all().filter(interest=4).count(),
-		"count_huay_slot":Sale.objects.all().filter(interest=3).count(),
-		"buy":Sale.objects.all().filter(buy="ซื้อ").count(),
-  		"nobuy":Sale.objects.all().filter(buy="ยังไม่ซื้อ").count(),
+
+  
+		"Thaibaan_interest":Thaibaan_interest,
+		"Huay_interest":Huay_interest,
+		"Sport_interest":Sport_interest,
+  		"Eport_interest":Esport_interest,
+		"Casino_interest":Casino_interest,
+		"Game_interest":Game_interest,
+
+		"customer_all_register":all_customer,
+		"customer_register_buy":Sale.objects.all().filter(buy="ซื้อ"),
+  		"customer_register_nobuy":Sale.objects.all().filter(buy="ยังไม่ซื้อ"),
 	}
   
   

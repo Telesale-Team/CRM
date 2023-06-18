@@ -8,35 +8,31 @@
 
 	<div class="row mt-1">
 
-		<div class="col-md-12 ">
+		<div class="col-md-12">
 			<div class="card border">
 			  <div class="card-body bg-dark text-light">
 				<h4>ค้นหาข้อมูล</h4>
 				<form method="GET">
 				{% csrf_token %}
 				{{ filter_user }}
-					<button type="submit" class="btn btn-primary">ค้นหาข้อมูล</button>
-					<a tpye='reset' class="btn btn-secondary " href="{% url 'home-user'%}"> รีเซ็ตการค้นหา </a>
-					<a class = "btn btn-success"href="{%url 'add-position'%}"><i class="fa-solid fa-plus"></i> เพิมตำแหน่งงาน </a>
-					<a class = "btn btn-success"href="{%url 'add-skill'%}"><i class="fa-solid fa-plus"></i> เพิ่มทักษะพิเศษ </a>
+					<button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> </button>
+					<a tpye='reset' class="btn btn-secondary " href="{% url 'home-user'%}"><i class="bi bi-arrow-clockwise"></i>  </a>
+					
 				</form>
+			  </div>
+			  <div class="card border-success">
+
+				<div class="card-body">
+					<a class = "btn btn-success"href="{%url 'register'%}"> <i class="bi bi-person-add"></i> เพิ่มผู้ใช้งาน</a>
+					<a class = "btn btn-success"href="{%url 'add-position'%}"><i class="bi bi-plus-circle-fill"></i> เพิมตำแหน่งงาน </a>
+					<a class = "btn btn-success"href="{%url 'add-skill'%}"><i class="bi bi-plus-circle-fill"></i> เพิ่มความสามารถ </a>
+				</div>
 			  </div>
 			</div>
 
 		</div>
 
-		<div class="col-md-3">
-			<div class="card border p-3 bg-dark text-light">
-
-				<form method="POST">
-					{% csrf_token %}
-					{{ form_user |crispy }}
-					<input type="submit" value="เพิ่มรหัสพนักงาน" class="btn btn-success btn-block ">
-				</form>
-			</div>
-		</div>
-
-		<div class="col-md-9">
+		<div class="col-md-12">
 				<table class="table table-striped ">
 	
 					<thead class="bg-dark text-light">
@@ -65,7 +61,7 @@
 						<td>
 							
 							<a href="{% url 'profile-update' user.pk %}" class="btn btn-warning"><i class="bi bi-pencil"></i></a>
-							<a href="{% url 'profile-delete' user.pk %}" class="btn btn-danger"><i class="bi bi-x-circle"></i></a>
+							
 						
 						</td>
 
@@ -74,33 +70,36 @@
 					</tbody>
 				</table>
 				<!-- Paginator-->
-					<div class="container-fluid mt-2">
-						<div class="row">
-							<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-12">
+						
+						<nav aria-label="Page navigation example">
+							<p>Page {{page_user.number}}/{{page_user.paginator.num_pages}} </p>
+
+							<ul class="pagination">
+							<li class="page-item"> {% if page_user.has_previous%} <a class="page-link" href="{% url 'home-user'%}?page={{ page_user.previous_page_number }}">Previous</a> {% endif %} </li>
+							
+							{% for num_page in page_user.paginator.page_range %}
+							
+							
+								{% if page.number == num_page %}
+									<li class="page-item"><a class="page-link" href="{% url 'home-user'%}?page={{ num_page }}">{{ num_page }}</a></li>
 								
-								<nav aria-label="Page navigation example">
-									<p>Page {{page_user.number}}/{{page_user.paginator.num_pages}} </p>
-		
-									<ul class="pagination">
-									<li class="page-item"> {% if page_user.has_previous%} <a class="page-link" href="{% url 'home-user'%}?page={{ page_user.previous_page_number }}">Previous</a> {% endif %} </li>
-									
-									{% for num_page in page_user.paginator.page_range %}
-									
-									{% if page.number == num_page %}
-										<li class="page-item"><a class="page-link" href="{% url 'home-user'%}?page={{ num_page }}">{{ num_page }}</a></li>
-									{% else %}
-										<li class="page-item"><a class="page-link" href="{% url 'home-user'%}?page={{ num_page }}">{{ num_page }}</a></li>
-									{% endif %}
-		
-									{% endfor %}
-		
-									<li class="page-item">{% if page_user.has_next%} <a class="page-link" href="{% url 'home-user'%}?page={{ page_user.next_page_number }}">Next</a>{% endif %} </li>
-									</ul>
-		
-								</nav>
-							</div>
-						</div>
+								{% else %}
+									<li class="page-item"><a class="page-link" href="{% url 'home-user'%}?page={{ num_page }}">{{ num_page }}</a></li>
+								
+								{% endif %}
+
+							{% endfor %}
+
+							<li class="page-item">{% if page_user.has_next%} <a class="page-link" href="{% url 'home-user'%}?page={{ page_user.next_page_number }}">Next</a>{% endif %} </li>
+							</ul>
+
+						</nav>
 					</div>
+				</div>
+						
+
 			</div>
 		</div>
 		

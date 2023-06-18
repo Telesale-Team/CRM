@@ -9,6 +9,7 @@ class Subject (models.Model):
         return self.name
     
 class ReceiptInvoice (models.Model): # การเบิกเงิน
+    
     user = models.OneToOneField(User,on_delete=models.CASCADE)#ผู้เบิก
     subject = models.OneToOneField(Subject,on_delete=models.CASCADE) # เรื่องขอเบิก
     details = models.TextField(null=True,blank=True) #รายละเอียดการเบิก
@@ -18,16 +19,20 @@ class ReceiptInvoice (models.Model): # การเบิกเงิน
     
     
     def __str__(self):
-        return str(self.user)
+        return self.user
     
-    
+
 class Sorary (models.Model): # เงินเดือน
 
     money = models.IntegerField(default=0) #เงินเดือน
     outmoney = models.PositiveIntegerField(default=0)
     
+    class Meta:
+        ordering = ["-id"]
+        verbose_name_plural = "Sorary"
+        verbose_name = "Money"
     
     
     def __str__(self):
-        return str(self.outmoney)+' '+ str(self.money)
+        return self.money
     

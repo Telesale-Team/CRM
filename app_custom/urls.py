@@ -16,10 +16,10 @@ urlpatterns = [
     path('bacara/',Add_bacara),
     path('game/',Add_game),
     path('lulet/',Add_lulet),
-    path('profile_customer/<int:id>',Profile_customer),
-    path('update_customer/',Update_custom),
-    path('delete_customer/',Delete_custom),
-    path('edit_customer/',Edit_custom),
+    path('profile_customer/<int:pk>',Profile_customer,name='profile-customer'),
+    path('update_customer/<int:pk>',Update_custom,name='update-customer'),
+    path('delete_customer/',Delete_custom,name='delete-customer'),
+    path('edit_customer/',Edit_custom,name='edit-customer'),
     path('report_customer/',Report_custom),
     
    

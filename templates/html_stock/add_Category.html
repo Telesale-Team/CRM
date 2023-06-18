@@ -40,7 +40,10 @@
                 {% for item in items %}
                 <tr>
                   <td> {{ item.name }} </td>
-                  <td> <input name="" id="" class="btn btn-warning" type="button" value="อัพเดท"> <input name="" id="" class="btn btn-danger" type="button" value="ลบ"></td>
+                  <td> 
+                    <a class="btn btn-warning " href="{% url 'update-category' item.pk %}"> <i class="bi bi-pencil"></i> </a>
+                    <a class="btn btn-danger " href="{% url 'delete-category' item.pk %}"> <i class="bi bi-x-circle"></i></a>
+                  </td>
 
         
                 </tr>

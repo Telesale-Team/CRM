@@ -11,4 +11,17 @@ class RegistrationForm (UserCreationForm):
     
     class Meta:
         model = User
-        fields =["username","email","password1","password2","is_active"]
+        fields =["username","first_name","email","last_name","password1","password2"]
+        labels = {
+            'username':'รหัสพนักงาน',
+            'Email':'อีเมลล์',
+            'first_name':'ชื่อจริง',
+            'last_name':'นามสกุล',
+            'password1':'พาสเวิร์ด',
+            
+        }
+        widgets = {
+            'username': forms.TextInput(attrs={'placeholder':'รหัสพนักงาน เช่น 1001'}),
+            'first_name': forms.TextInput(attrs={'placeholder': 'เช่น กิ่งแก้ว'}),
+            'last_name': forms.TextInput(attrs={'placeholder': 'เช่น ปานจะงาม'}),
+        }

@@ -8,8 +8,19 @@ class UserForms (UserCreationForm):
     
     class Meta:
         model = User
-        fields =["username","email","password1","password2","is_active"]
+        fields =["username","email","password1","password2"]
+
+
+class UserUpdateForms (UserCreationForm):
+    email = forms.EmailField()
+    
+    
+    class Meta:
+        model = User
+        fields = ["username","email","first_name","last_name"]
         
+        
+              
 class ProfileForm(forms.ModelForm):
 
     class Meta:

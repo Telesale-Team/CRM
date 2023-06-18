@@ -3,26 +3,110 @@
 {% load crispy_forms_tags %}
 
 {% block content%}
-<div class="container-fluid">
-    <div class="row ">
-        <div class="col-md-8">
-            <div class="card">
+<div class="container">
 
-              <div class="card-border p-3">
-                <h4 class="card-title">แก้ใข/อัพเดด ลูกค้า</h4><hr>
-  
-                <form action="" method="post">
-                    {% csrf_token %}
+<div class="row">
+	<div class="col-md-12 text-center mt-5">
+		<h1>Customer Profile Infomations</h1>
+	</div><hr><br>
+</div>
 
-                    {{ form | crispy}}
 
-                   <input type="submit" value="Update" class="btn btn-warning btn-block ">
-                </form>
-                
-              </div>
-            </div>
-            
-        </div>
-    </div>
+	{% for i in profile_custermer %}
+
+		
+		<div class="row">
+
+			<div class="col-sm-8 p-2">
+				<div class="card border-success bg-dark text-light">
+
+						<div class="card-body">
+							<h4 class="card-title"><a href= "#" style="font-size: 25px;color: green;" ><i class="bi bi-person-lines-fill" ></i> ข้อมูลลูกค้า</a></h4><hr>
+							
+							<span> เบอร์โทรศัพท์ : </span>{{ i.name }}<hr>
+							<span> เพศ : </span>{{ i.sex }}<hr>
+							<span> อายุ : </span>{{ i.age }}<hr>
+							<span> ลูกค้าเว็บ : </span>{{ i.web }}<hr>
+							<span> ความสนใจ : </span>{{ i.interest }}<hr>
+							<a href="{% url 'update-sale' i.pk %}"> แก้ใขข้อมูลทั้งหมด </a>
+						</div>
+				</div>
+				
+			</div>
+
+			<div class="col-sm-4 p-2">
+				<div class="card border-success bg-dark text-light">
+
+					<div class="card-body">
+						<h4 class="card-title"><a href= "#" style="font-size: 25px;color: green;" ><i class="bi bi-cash-coin"></i> ข้อมูลการซื้อ</a></h4><hr>
+
+						<span> ที่มา : </span>{{ i.source }}<hr>
+						<span> สถานะการซื้อ : </span>
+						{% if i.buy == 'ยังไม่ซื้อ'%}
+							<span class="badge badge-danger">ยังไม่ซื้อ</span>
+						{% else%}
+							<span class="badge badge-success">ซื้อแล้ว</span>
+						{%endif%}
+						<hr>
+						<span> จำนวนการซื้อ : </span>{{ i.quantity }} {{i.unit}} <hr>
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-4 p-2">
+				<div class="card border-success bg-dark text-light">
+
+						<div class="card-body">
+							<h4 class="card-title"><a href= "#" style="font-size: 25px;color: green;" ><i class="bi bi-person-lock"></i> User Login & password </a></h4><hr>
+							<span> username : </span>{{ i.user_id_customer }}<hr>
+							<span> password : </span>{{ i.user_password_customer }}<hr>
+							<span> วันสมัคร : </span>{{ i.create_date }}<hr>
+
+						</div>
+				</div>
+				
+			</div>
+
+			<div class="col-sm-4 p-2">
+				<div class="card border-success bg-dark text-light">
+
+						<div class="card-body">
+							<h4 class="card-title"><a href= "#" style="font-size: 25px;color: green;" ><i class="bi bi-coin"></i> ข้อมูลธนาคาร </a></h4><hr>
+
+
+							<span> ชื่อบัญชี : </span>{{ i.user_bank_name }}<hr>  
+							<span> ธนาคาร : </span>{{ i.user_bank_name }}<hr>              
+							<span> เลขบัญชีธนาคาร : </span>{{ i.user_id_bank }}<hr>
+
+						</div>
+				</div>
+			</div>
+
+			<div class="col-sm-4 p-2">
+				<div class="card border-success bg-dark text-light">
+
+					<div class="card-body">
+						<h4 class="card-title"><a href= "#" style="font-size: 25px;color: green;" ><i class="bi bi-telephone-plus"></i> ช่องทางติดตาม</a></h4><hr>
+
+						
+						<span> ช่องทางการติดตามหลัก : </span>{{ i.call_back }}<hr>
+						<span> สำรองช่องทางที่ 1 : </span>{{ i.facebook }}<hr>
+						<span> สำรองช่องทางที่ 2 : </span>{{ i.line }}<hr>
+					</div>
+				</div>
+				
+				
+					
+			</div>
+
+		</div>
+	{% endfor %}
+
+	 
+		
+
+</div>
+	
 </div>
 {% endblock content%}

@@ -19,14 +19,16 @@ urlpatterns = [
 
 
 	path('profile/update/<int:pk>/',Update_profile,name='profile-update'),
-	path('profile/delete/<str:pk>/',Delete_profile, name='profile-delete'),
+	path('profile/delete/<int:pk>/',Delete_profile, name='profile-delete'),
 	
 
 	path('add_position/',Add_Position,name='add-position'),
  	path('position/update/<int:id>/',Update_Position,name='position-update'),
 	path('position/delete/<int:id>/',Delete_Position,name='position-delete'),
 	
- 
+
+	path('Id/update/<int:pk>/',Update_user,name='user-update'),
+	path('Id/delete/<int:pk>/',Delete_user, name='user-delete'),
  
  	path('hr/',Hr,name='hr'),
 	path('at/',At,name='at'),

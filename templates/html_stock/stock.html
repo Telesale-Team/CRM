@@ -8,6 +8,7 @@
 
 	{% include 'html_stock/base_stock.html'%}
 
+
 	<div class="row mt-1">
 
 		<div class="col-md-12 ">
@@ -18,8 +19,9 @@
 				<form method="GET" action="#">
 				{% csrf_token %}
 				{{ filter_stock }}
-					<button type="submit" class="btn btn-primary">ค้นหา</button>
-					<a class="btn btn-secondary " href="{% url 'stock'%}"> รีเซ็ตการค้นหา </a><hr>
+					<button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> ค้นหา</button>
+					<a class="btn btn-secondary " href="{% url 'stock'%}"> <i class="bi bi-arrow-clockwise"></i> รีเฟรส</a><hr>
+					<a class="btn btn-success " href="{% url 'add_Category'%}"><i class="bi bi-plus-circle"> </i> หมวดหมู่ </a><hr>
 				</form>
 					
 			  </div>
@@ -52,24 +54,27 @@
 							{{ form_stock.category|as_crispy_field}}
 						</div>
 						<div class="col-md-6">
-							{{ form_stock.user_account|as_crispy_field}}
-						</div>
-
-						<div class="col-md-6">
 							{{ form_stock.item_status|as_crispy_field}}
 						</div>
 
-						<div class="col-md-12">
+						<div class="col-md-6">
 							{{ form_stock.stock_status|as_crispy_field}}
+						</div>
+						<div class="col-md-12">
+							{{ form_stock.user_account|as_crispy_field}}
 						</div>
 
 						<div class="col-md-12">
 							{{ form_stock.detail|as_crispy_field}}
 						</div>
 
+						
+
+						
+
 					</div>
 
-					<input type="submit" value="เพิ่มสินค้าลงสต๊อก" class="btn btn-success btn-block ">
+					<input type="submit" value="บันทึกข้อมูล" class="btn btn-success btn-block ">
 				</form>
 			</div>
 			

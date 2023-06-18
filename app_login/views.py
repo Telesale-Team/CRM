@@ -6,25 +6,43 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from app_user.models import ProfileUser
 from .forms import *
-from django import forms
+from app_user.filters import UserFilter
+from django.core.paginator import Paginator,EmptyPage,InvalidPage
 
 # Create your views here.
 
 def register(request):
-    users = ProfileUser.objects.all()
-    if request.method == 'POST':
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            username = form.save()
-            ProfileUser.objects.create(username=username)
-            
-            return redirect('/user')  # Redirect to user profile page
-    else:
-        form = RegistrationForm()
-        
-        
-    context = {
-        "users":users,
-        "form":form,
-    }
-    return render(request, 'html_login/register.html', context)
+    
+	users = ProfileUser.objects.all()
+
+	
+	user_filter = UserFilter(request.GET,queryset=User.objects.all())
+	filter_user = user_filter.form
+	user_data = user_filter.qs
+ 
+	page = Paginator(user_data,10)
+	page_list = request.GET.get("page")
+	page_data = page.get_page(page_list)
+
+	
+
+ 
+	if request.method == 'POST':
+		form_user = RegistrationForm(request.POST)
+		
+		if form_user.is_valid():
+			username = form_user.save()
+			ProfileUser.objects.create(username=username)
+			return redirect('/user')  # Redirect to user profile page
+	else:
+		form_user = RegistrationForm()
+	
+	
+	
+	context = {
+		"users":users,
+		"form_user":form_user,
+		"filter_user":filter_user,
+		"page_data":page_data,
+	}
+	return render(request, 'html_login/register.html', context)
