@@ -1,0 +1,52 @@
+{% extends 'base/layout.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Dashboard User {% endblock title %}
+
+{% block content%}
+<div class="container-fluid">
+	<div class="row mt-5">
+		<div class="col-md-12">
+			<h4>ค้นหาข้อมูล</h4>
+		
+			<form method="GET" action="#">
+			{% csrf_token %}
+			{{ filter_user | crispy}}
+				<button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> ค้นหา</button>
+				<a class="btn btn-secondary " href="{% url 'stock'%}"> <i class="bi bi-arrow-clockwise"></i> รีเฟรส</a><hr>
+			</form>
+		</div>
+		
+		<div class="col-md-12 ">
+			<table class="table table-striped ">
+				<thead class="bg-dark text-light">
+					<tr>
+						<th> รหัสพนักงาน </th>
+						<th> ชื่อจริง </th>
+						<th> นามสกุล </th>
+						<th> อีเมลล์ </th>
+						<th> วันลงทะเบียน </th>
+					</tr>
+				</thead>
+				
+				<tbody class='text-light'>
+					  {% for user_data in page_data %}
+					<tr>
+		
+						<td> {{ user_data.username }}</td>
+						<td> {{ user_data.first_name }}</td>
+						<td> {{ user_data.lastname }}</td>
+						<td> {{ user_data.email }}</td>
+						<td> {{ user_data.date_joined }} </td> 
+		
+					</tr>
+					{% endfor %}
+				</tbody>	
+			</table>
+			
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock content%}

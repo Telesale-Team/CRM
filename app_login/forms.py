@@ -11,7 +11,7 @@ class RegistrationForm (UserCreationForm):
     
     class Meta:
         model = User
-        fields =["username","first_name","email","last_name","password1","password2"]
+        fields =["username","first_name","last_name","email"]
         labels = {
             'username':'รหัสพนักงาน',
             'Email':'อีเมลล์',

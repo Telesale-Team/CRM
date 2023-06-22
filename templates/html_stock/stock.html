@@ -19,13 +19,21 @@
 				<form method="GET" action="#">
 				{% csrf_token %}
 				{{ filter_stock }}
-					<button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> ค้นหา</button>
-					<a class="btn btn-secondary " href="{% url 'stock'%}"> <i class="bi bi-arrow-clockwise"></i> รีเฟรส</a><hr>
-					<a class="btn btn-success " href="{% url 'add_Category'%}"><i class="bi bi-plus-circle"> </i> หมวดหมู่ </a><hr>
+					<button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> </button>
+					<a class="btn btn-secondary " href="{% url 'stock'%}"><i class="bi bi-arrow-clockwise"></i></a><hr>
 				</form>
 					
 			  </div>
 			</div>
+
+		</div>
+		<div class="col-md-12">
+			<div class="card border bg-dark">
+			  <div class="card-body">
+				<a class="btn btn-primary " href="{% url 'add_Category'%}"><i class="bi bi-plus-circle"> </i> หมวดหมู่ </a>
+			  </div>
+			</div>
+			
 
 		</div>
 
@@ -74,7 +82,7 @@
 
 					</div>
 
-					<input type="submit" value="บันทึกข้อมูล" class="btn btn-success btn-block ">
+					<input type="submit" value="บันทึกข้อมูล" class="btn btn-primary btn-block ">
 				</form>
 			</div>
 			

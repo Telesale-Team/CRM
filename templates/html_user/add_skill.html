@@ -5,8 +5,23 @@
 
 {% block content %}
 
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
+
+		<div class="col-md-12">
+			
+			<div class="card-border  bg-dark text-light p-3">
+				<h4>เพิ่มหน้าที่ทำงาน</h4>
+				<form action="" method="post">
+					{% csrf_token %}
+					{{ form |crispy }}
+
+					<input type="submit" value="เพิ่มตำแหน่งงาน" class="btn btn-primary">
+					<a href='{% url "home-user" %}' class = 'btn btn-secondary '>ยกเลิก</a>
+				</form>
+			</div>
+		</div>
+
 		<div class="col-md-12 mt-1">
 			<div class="card border">
 				
@@ -15,9 +30,10 @@
 				<form method="GET" action="#">
 				{% csrf_token %}
 				{{ filter }}
-					<button type="submit" class="btn btn-primary">ค้นหาข้อมูล</button>
-					<a  class="btn btn-secondary " href="{%url 'add-skill'%}"> รีเฟรส </a>
-					
+				<button type="submit" class="btn btn-primary"><i class="bi bi-search" ></i> </button>
+
+				<a tpye='reset' class="btn btn-secondary " href="{%url 'add-skill'%}"><i class="bi bi-arrow-clockwise"></i>  </a>
+	
 				</form>
 			  </div>
 			</div>
@@ -25,30 +41,18 @@
 		</div>
 	</div>
 
-	<div class="row mt-1">
+	<div class="row">
 		
-		<div class="col-md-4">
-			
-			<div class="card-border  bg-dark text-light p-3">
-				<h4>เพิ่มข้อมูล</h4>
-				<form action="" method="post">
-					{% csrf_token %}
-					{{ form |crispy }}
+		
 
-					<input type="submit" value=" + เพิ่มตำแหน่งงาน" class="btn btn-success">
-					
-				</form>
-			</div>
-		</div>
-
-		<div class="col-md-8">
+		<div class="col-md-12">
 			<div class="card border">
 
 				<table class="table table-striped">      
 					<thead class="bg-dark text-light">
 						<tr>
 							<th>ทักษะทำงาน</th>
-							<th><i class='far fa-edit' style='font-size:20px'></i>แก้ใข</th>
+							<th class="col-sm-2 text-center" ><i class='far fa-edit' style='font-size:20px'></i>แก้ใข</th>
 
 						</tr>
 					</thead>
@@ -57,9 +61,9 @@
 						{% for skill in skill %}
 						<tr>
 
-							<td> {{ skill.name }} </td>
+							<td class="col-sm-10 "> {{ skill.name }} </td>
 							
-							<td>
+							<td class="col-sm-2 text-center">
 								<a href="{% url 'update-skill' skill.id %}" class = "btn btn-warning"><i class="bi bi-pencil"></i></a>
 								<a href="{% url 'delete-skill' skill.id %}"class = "btn btn-danger" ><i class="bi bi-x-circle"></i></a>
 

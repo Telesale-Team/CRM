@@ -42,21 +42,23 @@ class Team (models.Model):
 
 
 class ProfileUser(models.Model):
-    
+     
     username = models.OneToOneField(User,on_delete=models.CASCADE) # ชื่อพนักงาน
     image_profile = models.ImageField('รูปภาพโปรไฟล์',upload_to='image_profile',null=True,blank=True,default='default.png')#รูปภาพโปรไฟล์
     
-    nickname = models.CharField('ชื่อพนักงาน',max_length=20,blank=True)	# ชื่อเล่นพนักงาน
+    nickname = models.CharField('ชื่อเล่น',max_length=20,blank=True)	# ชื่อเล่นพนักงาน
     address = models.CharField('ที่อยู่',max_length=255,blank=True,null=True)# ที่อยู่ 
     phone = models.CharField('เบอร์โทรศัพท์',max_length=10,blank=True) #  เบอร์โทรศัพท์
     image_id_card = models.ImageField('สำเนาบัตรประชาชน',upload_to='image_id_card',null=True,blank=True,default='default.png')#สำเนาบัตรประชาชน
     
+    
+    bank_username = models.CharField('ชื่อบัญชี',max_length=255,blank=True)
+    bank_name = models.CharField('ธนาคาร',max_length=255,blank=True) 
     bank_id = models.IntegerField('หมายเลขบัญชีธนาคาร',blank=True,null=True)#หมายเลขบัญชีธนาคาร
     image_bank = models.ImageField('สำเนาบัญชีธนาคาร',upload_to='image_bank',null=True,blank=True,default='default.png') #สำเนาบัญชีธนาคาร
     
     level = models.TextChoices("Level", "ฝ่ายการตลาด ฝ่ายสต๊อกสินค้า ฝ่ายการเงินการบัญชี ฝ่ายบุคคล")
     permission = models.CharField('สิทธิ์การใช้งาน',blank=True, choices=level.choices, max_length=21)#สิทธิ์การใช้งาน
-    
     team = models.ForeignKey(Team,on_delete=models.CASCADE,blank=True,null=True)#ฝาย
     position = models.ForeignKey(Positions,on_delete=models.CASCADE,blank=True,null=True)#ตำแหน่งงาน
 
@@ -64,7 +66,7 @@ class ProfileUser(models.Model):
     MedalType = models.TextChoices("MedalType", "น้อยกว่า1ปี 1ปี 2ปี มากกว่า3ปี")
     working_experience = models.CharField('ประสบการณ์ทำงาน',blank=True, choices=MedalType.choices, max_length=20)#ประสบการณ์ทำงาน
     
-    working_skill = models.ForeignKey(Skill,on_delete=models.CASCADE,blank=True,null=True)#ทักษะการทำงาน
+    working_skill = models.ForeignKey(Skill,on_delete=models.CASCADE,blank=True,null=True)#หน้าที่ปฏิบัติงาน
     worked_date = models.DateTimeField('วันเริ่มงาน',auto_now_add=True,blank=True,null=True)#วันเริ่มงาน
     
     

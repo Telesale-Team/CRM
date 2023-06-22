@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-
+from app_login.forms import RegistrationForm
 from .forms import *
 from .models import *
 from .filters import *
@@ -24,14 +24,14 @@ def Dashboard (request):
  
 
 	if request.method == 'POST':
-		form_user = UserForms(request.POST)
+		form_user = RegistrationForm(request.POST)
 		if form_user.is_valid():
 			username = form_user.save()
 			ProfileUser.objects.create(username=username)
 			
 			return redirect('/user')  # Redirect to user profile page
 	else:
-		form_user = UserForms()
+		form_user = RegistrationForm()
  	
 	page = Paginator(user,50)
 	page_list = request.GET.get("page")
@@ -95,6 +95,28 @@ def Profile (request,pk ):
 	}
 
 	return render (request,'html_user/profile_user.html',context)
+
+
+@login_required(login_url="/")
+def Edit_user (request,pk ):
+	
+	user_profile = ProfileUser.objects.get( pk = pk )
+
+	if request.method == "POST":
+		form = ProfileForm(request.POST,instance=user_profile)
+		if form.is_valid():
+			form.save()
+			return redirect("/user")
+	else:
+		form = ProfileForm(instance=user_profile)
+		
+	context = {
+		"user_profile":user_profile,
+		"form": form,
+	}
+
+	return render (request,'html_user/edit_user.html',context)
+
 
 def Update_profile (request,pk):
 	profile = ProfileUser.objects.get(pk=pk)

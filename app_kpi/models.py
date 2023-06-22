@@ -25,7 +25,7 @@ class Kpi (models.Model):
     created = models.DateTimeField(default=timezone.now) #วันที่
 
     def __str__(self):
-        return str(self.created)+" "+str(self.team)
+        return str(self.created)
     
 class Dashboard (models.Model):
     
@@ -53,6 +53,6 @@ class Customer_Interest (models.Model):
     
     
     def __str__(self):
-        return f'{str(self.username)} ลูกค้า {str(self.user_customer)}'
+        return str(self.username)
     
     

@@ -4,12 +4,133 @@
 
 
 {% block content%}
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form |crispy }}
 
-    <input type="submit" value="update" class="btn btn-success btn-block ">
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-5">
+            <div class="card border-success text-light">
+              <img class="card-img-top" src="holder.js/100px180/" alt="">
+              <div class="card-body bg-dark">
+
+                <form action="" method="post">
+                    {% csrf_token %}
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2>ข้อมูลส่วนบุคคล</h2><hr style="height:1px;border-width:0;color:gray;background-color:white">
+                        </div>
+
+                        <div class="col-md-2">
+                            {{ form.username|as_crispy_field}}
+                        </div>
+
+                        
+
+                        <div class="col-md-2">
+                            {{ form.username|as_crispy_field}}
+                        </div>
+
+                        <div class="col-md-4">
+                            {{ form.nickname|as_crispy_field}}
+                        </div>
+
+                        <div class="col-md-4">
+                            {{ form.address|as_crispy_field}}
+                        </div>
+
+                        <div class="col-md-2">
+                            {{ form.phone|as_crispy_field}}
+                        </div>
+
+                        <div class="col-md-3">
+                            {{ form.image_profile|as_crispy_field}}
+                        </div>
+
+                        <div class="col-md-3">
+                            {{ form.image_id_card|as_crispy_field}}
+                        </div>
+
+
+                    </div><br><br>
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2>ข้อมูลการเงิน</h2><hr style="height:1px;border-width:0;color:gray;background-color:white">
+                        </div>
+
+                        <div class="col-md-3">
+                            {{ form.bank_name|as_crispy_field}}
+                        </div>
+
+                        <div class="col-md-3">
+                            {{ form.bank_username|as_crispy_field}}
+                        </div>
+
+                        <div class="col-md-3">
+                            {{ form.bank_id|as_crispy_field}}
+                        </div>
+
+                        <div class="col-md-3">
+                            {{ form.image_bank|as_crispy_field}}
+                        </div>
+
+                    </div><br><br>
+
+                    <div class="row">
+                        
+                        <div class="col-md-12">
+                            <h2>สิทธิ์การใช้งาน</h2><hr style="height:1px;border-width:0;color:gray;background-color:white">
+                        </div>
     
-</form>
+                        <div class="col-md-3">
+                            {{ form.permission|as_crispy_field}}
+                        </div>
+
+                        <div class="col-md-3">
+                            {{ form.team|as_crispy_field}}
+                        </div>
+
+                        <div class="col-md-3">
+                            {{ form.position|as_crispy_field}}
+                        </div>
+
+                        <div class="col-md-3">
+                            {{ form.working_experience|as_crispy_field}}
+                        </div>
+
+                        <div class="col-md-3">
+                            {{ form.working_skill|as_crispy_field}}
+                        </div> 
+
+                    </div><br><br>
+
+
+
+                    <div class="row mt-3">
+
+                        <div class="col-md-12">
+                            <h2>บันทึกหมายเหตุ</h2><hr style="height:1px;border-width:0;color:gray;background-color:white">
+                        </div>
+
+                        <div class="col-md-12">
+                            {{ form.other|as_crispy_field}}
+                        </div>
+                    </div>
+
+
+                    
+                
+                    <input type="submit" value="update" class="btn btn-success btn-block ">
+                    
+                </form>
+              </div>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
+
 
 {% endblock content %}

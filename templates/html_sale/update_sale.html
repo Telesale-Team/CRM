@@ -4,34 +4,148 @@
 
 
 {% block content %}
+<form method="POST">
+	{% csrf_token %}
+	<div class="container-fluid mt-4">
+		<div class="row">
 
+			<div class="col-md-4">
+				<div class="card border-success bg-dark text-light">
+					<div class="card-body">
+						<div class="card-body bg-dark text-light">
+							<h4> ข้อมูลส่วนบุคคล</h4> <hr style="height:1px;border-width:0;color:gray;background-color:white">
+							<div class="col-md-12 ">					
+								
+									<div class="row">
 
-<div class="container">
-	<div class="row ">
-		
-		<div class="col-md-12 ">
-			<div class="border">
-				<div class="card text-light bg-dark p-3">
-
-					<h4>อัพเดดข้อมูล</h4><hr>
-
-
-					<form method="post" enctype="multipart/form-data" >
-
-						{% csrf_token %}
-						{{ form_update_sale|crispy }}
-						<hr>
-						<button type="submit" class="btn btn-warning btn-block ">อัพเดด</button>
-	
-					</form>
+										<div class="col-md-10">
+											{{ form_update_sale.name|as_crispy_field}}						
+										</div>
 				
+										<div class="col-md-6">
+											{{ form_update_sale.user_id_customer|as_crispy_field}}						
+										</div>
+
+										<div class="col-md-6">
+											{{ form_update_sale.user_password_customer|as_crispy_field}}
+										</div>
+										<div class="col-md-6">
+											{{ form_update_sale.sex|as_crispy_field}}
+										</div>
+
+										<div class="col-md-6">
+											{{ form_update_sale.age|as_crispy_field}}
+										</div>
+
+										<div class="col-md-6">
+											{{ form_update_sale.bank_name|as_crispy_field}}
+										</div>
+
+										<div class="col-md-6">
+											{{ form_update_sale.user_bank_name|as_crispy_field}}
+										</div>
+
+										<div class="col-md-12">
+											{{ form_update_sale.user_id_bank|as_crispy_field}}
+										</div>
+
+										
+
+										<div class="col-md-12">
+											{{ form_update_sale.other|as_crispy_field}}
+										</div>
+
+									</div>	
+							</div>
+							
+							
+						</div>
+					</div>
 				</div>
-				<hr>
+			</div>
+
+			<div class="col-md-4">
+				<div class="card border-success bg-dark text-light">
+					<div class="card-body">
+						<div class="card-body bg-dark text-light">
+							<h4> ข้อมูลการติดต่อ</h4> <hr style="height:1px;border-width:0;color:gray;background-color:white">
+							<div class="col-md-12 ">					
+								
+									<div class="row">
+
+										<div class="col-md-10">
+											{{ form_update_sale.web|as_crispy_field}}
+										</div>
 				
-				
+										<div class="col-md-6">
+											{{ form_update_sale.interest|as_crispy_field}}
+										</div>
+										
+										<div class="col-md-6">
+											{{ form_update_sale.source|as_crispy_field}}
+										</div>
+
+
+										<div class="col-md-6">
+											{{ form_update_sale.quantity|as_crispy_field}}
+										</div>
+
+										<div class="col-md-6">
+											{{ form_update_sale.unit|as_crispy_field}}
+										</div>
+
+										<div class="col-md-6">
+											{{ form_update_sale.call_back|as_crispy_field}}
+										</div>
+
+										<div class="col-md-12">
+											{{ form_update_sale.line|as_crispy_field}}
+										</div>
+
+										<div class="col-md-12">
+											{{ form_update_sale.facebook|as_crispy_field}}
+										</div>
+
+									</div>	
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="col-md-12">
+					<div class="card border-success bg-dark text-light">
+
+					  <div class="card-body">
+						<div class="col-md-12">
+							{{ form_update_sale.check_user|as_crispy_field}}
+						</div>
+	
+						<div class="col-md-12">
+							{{ form_update_sale.user_account|as_crispy_field}}
+						</div>
+
+						<div class="col-md-12 mt-1">
+							<button type="submit" class="btn btn-primary btn-block">บันทึกข้อมูล</button>
+						</div>
+
+						<div class="col-md-12 mt-1">
+							<a href='#'class="btn btn-secondary btn-block">ยกเลิก</a>
+						</div>
+
+					  </div>
+					</div>
+					
+				</div>
+
 			</div>
 		</div>
-	</div>
-</div>
+	</div>	
+</form>
+
+
+
 
 {% endblock content %}

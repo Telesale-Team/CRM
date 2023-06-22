@@ -4,40 +4,49 @@
 
 
 {% block content%}
-<div class="container-fluid">	
+<div class="container">	
 	<div class="row mt-1">
-		<div class="col-md-12 ">
+
+
+		<div class="col-md-12">
+			<div class="card border bg-dark text-light">
+			  <div class="card-body">
+				<h4>เพิ่มตำแหน่งงาน</h4><hr>
+				<form action="" method="post">
+
+					{% csrf_token %}
+					{{ form |crispy}}
+
+					<input type="submit" value="บันทึกข้อมูล" class="btn btn-primary ">
+					<a href='{% url "home-user" %}' class = 'btn btn-secondary '>ยกเลิก</a>
+
+				</form>
+
+					
+					
+
+
+			  </div>
+			</div>
+		</div>
+
+		<div class="col-md-12">
 			<div class="card border">
 			  <div class="card-body bg-dark text-light">
-				<h4>ค้นหาข้อมูล</h4>
-				<form method="GET" action="#">
+				<h4>ค้นหาข้อมูล</h4><hr>
+				<form method="GET" >
 				{% csrf_token %}
 				{{ filter }}
-					<button type="submit" class="btn btn-primary">ค้นหาข้อมูล</button>
-					<a  class="btn btn-secondary " href="/user/add_position/"> Refrest </a>
+				<button type="submit" class="btn btn-primary"><i class="bi bi-search" ></i> </button>
+				<a tpye='reset' class="btn btn-secondary " href="{% url 'add-position'%}"><i class="bi bi-arrow-clockwise"></i>  </a>
 					
 				</form>
 			  </div>
 			</div>
 
 		</div>
-	</div>
-
-	<div class="row mt-1">
-		<div class="col-md-4 ">
-			<div class="card-border bg-dark text-light p-3">
-				<form action="" method="post">
-					<h4>เพิ่มข้อมูล</h4>
-					{% csrf_token %}
-					{{ form |crispy}}
-
-					<input type="submit" value="บันทึกข้อมูล" class="btn btn-success ">
-					<input name="searchposition" id="" class="btn btn-primary" type="button" value="ค้นหาข้อมูล">
-				</form>
-			</div>
-		</div>
-
-		<div class="col-md-8">
+		
+		<div class="col-md-12">
 			<div class="card border">
 
 				<table class="table table-striped">      
@@ -52,8 +61,8 @@
 					<tbody>
 						{% for positions in position %}
 						<tr>
-							<td> {{ positions.name }} </td>
-							<td>
+							<td class="col-sm-10 "> {{ positions.name }} </td>
+							<td class="col-sm-2 ">
 								<a href="{% url 'position-update' positions.id%}" class= "btn btn-warning"><i class="bi bi-pencil"></i></a>
 								<a href="{% url 'position-delete' positions.id%}" class = "btn btn-danger"><i class="bi bi-x-circle"></i> </a>
 							</td>
@@ -62,11 +71,8 @@
 						{% endfor %}
 					</tbody>          
 				</table>
-
-			</div>
-			
-		</div>
-
+			</div>			
+		</div>		
 	</div>
 </div>
 {% endblock content %}

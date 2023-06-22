@@ -57,7 +57,9 @@ def Dashboards (request):
     Mughuay = all_customer.filter(web=4).count()  
     Mughuay_ads = all_customer.filter(source=1,web=4).count()
     Mughuay_seo = all_customer.filter(source=2,web=4).count()
-    Mughuay_live = all_customer.filter(source=3,web=4).count()  
+    Mughuay_live = all_customer.filter(source=3,web=4).count()
+    
+      
     Mughuay_buy = all_customer.filter(web=4,buy='ซื้อ').count()
     Mughuay_nobuy = all_customer.filter(web=4,buy='ยังไม่ซื้อ').count()
 

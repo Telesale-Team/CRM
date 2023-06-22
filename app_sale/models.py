@@ -44,7 +44,7 @@ class Sale(models.Model):
     user_password_customer = models.CharField('Password',max_length=255,blank=True)#พาสลูกค้า
     
     #ส่วนของธนาคาร
-    
+    bank_name = models.CharField('ธนาคาร',max_length=255,blank=True) #ธนาคาร
     user_bank_name = models.CharField('ชื่อบัญชี',max_length=255,blank=True) #เลขบัญชีธนาคาร
     user_id_bank = models.CharField('หมายเลขบัญชีธนาคาร',max_length=255,blank=True)#ชื่อลูกค้า
     
@@ -71,10 +71,8 @@ class Sale(models.Model):
     
     facebook = models.CharField('ช่องทางติดต่อ FB',max_length=255,blank=True)
     line = models.CharField('ช่องทางติดต่อ Line',max_length=255,blank=True)
-    check = models.BooleanField(default='')
-
     
-    check_user = models.BooleanField(default=True)
+    check_user = models.BooleanField('อนุมัติ',default=True,blank=True)
     
     class Meta:
         ordering = ["-id"]

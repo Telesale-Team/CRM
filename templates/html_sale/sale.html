@@ -315,8 +315,9 @@
 			<form method="GET" action="#">
 			{% csrf_token %}
 			{{ filter_sale }}
-				<button type="submit" class="btn btn-primary">ค้นหา</button>
-				<a class="btn btn-secondary " href="{% url 'sale-home'%}"> รีเซ็ตการค้นหา </a>
+				
+				<button type="submit" class="btn btn-primary"><i class="bi bi-search" ></i> </button>
+				<a tpye='reset' class="btn btn-secondary " href="{% url 'sale-home'%}"><i class="bi bi-arrow-clockwise"></i>  </a>
 
 			</form>
 				
@@ -342,16 +343,13 @@
 						{{ form_sale.name|as_crispy_field}}
 					</div>
 
-
 					<div class="col-md-3 p-2">
 						{{ form_sale.sex|as_crispy_field}}
 					</div>
 
-
 					<div class="col-md-3 p-2">
 						{{ form_sale.age|as_crispy_field}}
 					</div>
-
 
 					<div class="col-md-6 p-2" >
 						{{ form_sale.web|as_crispy_field}}
@@ -361,29 +359,21 @@
 						{{ form_sale.interest|as_crispy_field}}
 					</div>
 
-
 					<div class="col-md-4 p-2 " >
 						{{ form_sale.buy|as_crispy_field}}
 					</div>
-
 
 					<div class="col-md-5 p-2">
 						{{ form_sale.quantity|as_crispy_field}}
 					</div>
 
-
 					<div class="col-md-3 p-2" >
 						{{ form_sale.unit|as_crispy_field}}
 					</div>
 										
-
 					<div class="col-md-4 p-2" >
 						{{ form_sale.source|as_crispy_field}}
 					</div>
-
-
-					
-
 
 					<div class="col-md-4 p-2" >
 						{{ form_sale.call_back|as_crispy_field}}
@@ -414,8 +404,7 @@
 					<th> เพศ </th>
 					<th> ช่วยอายุ </th>
 					<th> สมัครเว็บ </th>
-					<th> ความสนใจ </th>
-					
+					<th> ความสนใจ </th>					
 					<th> ที่มา </th>
 					<th> ช่องทางติดต่อกลับ </th>
 					<th> วันที่ลงทะเบียน</th>
@@ -429,30 +418,30 @@
 				
 				<tbody>
 				{% for item in page_sale %}
-				{% if item.user_account == user %}
-				<tr>
-					<td><img src="{{item.user_account.profileuser.image_profile.url}}" width="35" height="35"class="rounded-circle" > {{employee.user_account}}</td>
-					<td> {{ item.name }}</td>
-					<td> {{ item.sex }}</td>
-					<td> {{ item.age }}</td>
-					<td> {{ item.web }} </td>
-					<td> {{ item.interest }}</td>						
-					<td> {{ item.source |truncatechars_html:10}} </td>
-					<td> {{ item.call_back }} </td>
-					<td> {{ item.create_date }}</td>
-					{% if item.buy == 'ซื้อ'%}
-					<td> <span class="badge badge-success">ซื้อแล้ว</span></td>
-					{% else%}
-					<td> <span class="badge badge-danger">ยังไม่ซื้อ</span></td>
-					{%endif%}
-					<td>
+					{% if item.user_account == user %}
+					<tr>
+						<td><img src="{{item.user_account.profileuser.image_profile.url}}" width="35" height="35"class="rounded-circle" > {{employee.user_account}}</td>
+						<td> {{ item.name }}</td>
+						<td> {{ item.sex }}</td>
+						<td> {{ item.age }}</td>
+						<td> {{ item.web }} </td>
+						<td> {{ item.interest }}</td>						
+						<td> {{ item.source | truncatechars_html:10}} </td>
+						<td> {{ item.call_back }} </td>
+						<td> {{ item.create_date }}</td>
+							{% if item.buy == 'ซื้อ'%}
+							<td> <span class="badge badge-success">ซื้อแล้ว</span></td>
+							{% else%}
+							<td> <span class="badge badge-danger">ยังไม่ซื้อ</span></td>
+							{%endif%}
+							<td>
+							
+							<a href="{% url 'update-sale' item.pk %}"class="btn btn-warning" ><i class="bi bi-pencil"></i></a>
+							<a  href="{% url 'delete-sale' item.pk %}" class="btn btn-danger"><i class="bi bi-x-circle"></i></a>
+							
 						
-						<a href="{% url 'update-sale' item.pk %}"class="btn btn-warning" ><i class="bi bi-pencil"></i></a>
-						<a  href="{% url 'delete-sale' item.pk %}" class="btn btn-danger"><i class="bi bi-x-circle"></i></a>
-						
-					
-					</td>
-				{% endif %}
+						</td>
+					{% endif %}
 
 					</tr>
 				{% endfor %}

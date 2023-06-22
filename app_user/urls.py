@@ -1,5 +1,6 @@
 from django.urls import path,include
 from app_user.views import *
+from app_login.views import Search_user
 
 urlpatterns = [
 	path('',Dashboard,name="home-user"),
@@ -26,9 +27,10 @@ urlpatterns = [
  	path('position/update/<int:id>/',Update_Position,name='position-update'),
 	path('position/delete/<int:id>/',Delete_Position,name='position-delete'),
 	
-
-	path('Id/update/<int:pk>/',Update_user,name='user-update'),
-	path('Id/delete/<int:pk>/',Delete_user, name='user-delete'),
+	path('edit/<int:pk>/',Edit_user,name='user-edit'),
+	path('update/<int:pk>/',Update_user,name='user-update'),
+	path('delete/<int:pk>/',Delete_user, name='user-delete'),
+ 	path('Search/<int:pk>/',Search_user, name='user-search'),
  
  	path('hr/',Hr,name='hr'),
 	path('at/',At,name='at'),

@@ -8,14 +8,15 @@
     <div class="col-md-8 mt-5 text-center offset-md-2">
         <div class="card border-danger">
 
-          <div class="card-body text-center">
-            <p class="card-text">คุณต้องการลบรหัส <strong>{{ Remove_User.profileuser.nickname }} </strong></p>
+          <div class="card-body text-center bg-dark">
+            <div class="alert alert-warning">
+              <strong>ลบรหัส!</strong> เลขที่ <a href="#" class="alert-link">{{ Remove_User.username }} </a>.
+            </div>
+            <p class="card-text text-light">คุณต้องการลบรหัส <strong>{{ Remove_User.profileuser.nickname }} </strong></p>
             <h3 class="card-title"><i class="bi bi-x-circle-fill" style="font-size:300px;color:red;" ></i></h3>
             
 
-            <div class="alert alert-danger">
-              <strong>ลบรหัส!</strong> เลขที่ <a href="#" class="alert-link">{{ Remove_User.username }} </a>.
-            </div>
+            
 
             <form method="post">
                 {% csrf_token %}

@@ -4,51 +4,99 @@
 
 
 {% block content %}
-
-
 <div class="container-fluid">
-	<div class="row ">
-
-		<div class="col-md-4">
-			<div class="card border-success bg-dark text-light">
-			  <div class="card-body">
-
-
-				
-				<img class="card-img-top" src="{{ profile.image_profile.url}}" alt="" width="150" height="350"><hr/><br/>
-				<h4>{{ profile.nickname}} {{profile.username}} </h4><br>
-				<p class="card-text">ที่อยู่ : {{profile.address}}</p><br/>
-				<p class="card-text">เบอร์โทรศัพท์ : {{profile.phone}}</p><br/>
-				<p class="card-text">หมายเลขบัญชีธนาคาร: {{profile.bank_id}}</p><br/>
-				<p class="card-text">สังกัดฝ่าย : {{profile.team}}</p><br/>
-				<p class="card-text">ตำแหน่งงาน : {{profile.position}}</p><br/>
-				<p class="card-text">ประสบการณ์ทำงาน : {{profile.working_experience}}</p><br/>
-				<p class="card-text">ทักษะการทำงาน : {{profile.working_skill}}</p><br/>
-				<p class="card-text">วันเริ่มงาน :{{profile.worked_date}}</p><br/><hr/>
-				<p> สำเนาบัตรประจำตัวประชาชน :</p><img class="card-img-top" src="{{ profile.image_id_card.url}}" alt=""><br/><hr>
-				<p> สำเนาบัญชีธนาคาร :</p><img class="card-img-top" src="{{ profile.image_bank.url}}" alt=""><br/><hr>
-
-
-			  </div>
-			</div>
-		</div>
-
-		<div class="col-md-4 text-light">
-
-			<div class="border p-3 bg-dark">
-				<h4> Update UserProfile</h4><hr>
-				<form method="post" enctype="multipart/form-data" >
-					{% csrf_token %}
-					{{ profile_form |crispy }}
-					<hr>
-					<button type="submit" class="btn btn-warning btn-block text-light">อัพเดท</button>
-				</form>
-			</div>
-		</div>
-
+	<div class="row">
 		
+		<div class="col-md-4 p-3">
+			
+			
+			<div class="card border-success">
+				<div class="card-body bg-dark text-light">	
+					<div class="row">
+						<div class="col-md-6">
+							<img src="{{ profile.image_profile.url }}" width="200" height="200"class="rounded-circle" >
+							<br><hr>
+							<p><stong>เลขบัตรประชาชน : </stong> {{profile.bank_id}}
+							<p><stong>รหัสประจำตัว : </stong> {{profile.username}}
+							<p><stong>สังกัดฝ่าย : </stong> {{ profile.permission }}
+							<a href='{% url "user-update" profile.username.pk %}' ><p><stong class = 'text-center' > รีเซ็ตพาสเวิร์ด </a>
+						</div>
+		
+						<div class="col-md-6 p-3">
+							<h2>ข้อมูลส่วนบุคคล</h2>
+							<p><stong><li>ชื่อเล่น : </stong> {{profile.nickname}}
+							<p><stong><li>ชื่อจริง : </stong> {{profile.username.first_name}}
+							<p><stong><li>นามสกุล : </stong> {{profile.username.last_name}}
+							<p><stong><li>เบอร์ติดต่อ : </stong> {{profile.phone}}
+							<p><stong><li>user name : </stong> {{profile.username}}
+							<p><stong><li>password : </stong> {{profile.password_login}}	
+							
+							<p><stong><li>อีเมลล์ : </stong> {{profile.username.email}}<hr>
+							<a href='{% url "user-edit" profile.pk %}' ><p><stong class = 'text-center' > <i class="bi bi-database-fill"></i> แก้ใขข้อมูล</a>
+							<a href='{% url "user-delete" profile.username.pk %}' ><p><stong class = 'text-center' > ลบข้อมูลออกจากระบบ </a>
+							
+						</div>
+						
+					</div>
+						
+				</div>	
+			</div>
+		</div>
+
+		<div class="col-md-4 p-3">
+			<div class="card border-success">
+				<div class="card-body bg-dark text-light">	
+					<div class="row">
+						<div class="col-md-6 p-3 text-center">
+							<img src="{{ profile.image_bank.url }}" width="200" height="200"class="rounded-circle" >
+							<br><hr>
+
+						</div>
+		
+						<div class="col-md-6 p-3">
+							<h2>ข้อมูลทางการเงิน</h2>
+							<p><stong><li>ชื่อธนาคาร : </stong> {{profile.bank_name}}
+							<p><stong><li>ชื่อบัญชี : </stong> {{profile.bank_username}}
+							<p><stong><li>เลขบัญชี : </stong> {{profile.bank_id}}
+							<p><stong><li>เบอร์ติดต่อ : </stong> {{profile.phone}}<br><br><br>
+							<a href='#'> <i class="bi bi-database-fill"></i> ดูข้อมูลเพิ่มเติม </a>
+						</div>
+						
+					</div>
+						
+				</div>	
+			</div>
+		</div>
+		<div class="col-md-4 p-3">
+			<div class="card border-success">
+				<div class="card-body bg-dark text-light">	
+					<div class="row">
+						<div class="col-md-5 p-3 text-center">
+							<img src="{{ profile.image_bank.url }}" width="200" height="200"class="rounded-circle" >
+							<br><hr>
+
+						</div>
+		
+						<div class="col-md-7 p-3">
+							<h2>ข้อมูลการทำงาน </h2>
+							
+							<p><stong><li>สังกัด : </stong> {{profile.permission}}
+							<p><stong><li>ตำแหน่ง : </stong> {{profile.team }}
+							<p><stong><li>หน้าที่ : </stong> {{profile.working_skill}}
+							
+							<p><stong><li>ประสบการทำงาน : </stong> {{profile.working_experience}}
+							<p><stong><li>วันเริ่มงาน : </stong> {{profile.worked_date}}<br><br>
+							<a href='#'> <i class="bi bi-database-fill"></i> ดูข้อมูลเพิ่มเติม </a>
+						</div>
+						
+					</div>
+						
+				</div>	
+			</div>
+		</div>
 	</div>
 </div>
+
 
 {% endblock content %}
 

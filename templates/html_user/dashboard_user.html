@@ -6,7 +6,7 @@
 <div class="container-fluid">
 	{% include 'html_user/navbar_user.html'%}
 
-	<div class="row mt-1">
+	<div class="row">
 
 		<div class="col-md-12">
 			<div class="card border">
@@ -15,52 +15,59 @@
 				<form method="GET">
 				{% csrf_token %}
 				{{ filter_user }}
-					<button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> </button>
+					<button type="submit" class="btn btn-primary"><i class="bi bi-search" ></i> </button>
 					<a tpye='reset' class="btn btn-secondary " href="{% url 'home-user'%}"><i class="bi bi-arrow-clockwise"></i>  </a>
 					
 				</form>
 			  </div>
-			  <div class="card border-success">
+			  <div class="card border bg-dark">
 
 				<div class="card-body">
-					<a class = "btn btn-success"href="{%url 'register'%}"> <i class="bi bi-person-add"></i> เพิ่มผู้ใช้งาน</a>
-					<a class = "btn btn-success"href="{%url 'add-position'%}"><i class="bi bi-plus-circle-fill"></i> เพิมตำแหน่งงาน </a>
-					<a class = "btn btn-success"href="{%url 'add-skill'%}"><i class="bi bi-plus-circle-fill"></i> เพิ่มความสามารถ </a>
+					<a class = "btn btn-primary"href="{%url 'register'%}"> ลงทะเบียน </a>
+					<a class = "btn btn-primary"href="{%url 'add-position'%}"> เพิ่มตำแหน่งงาน</a>
+					<a class = "btn btn-primary"href="{%url 'add-skill'%}"> เพิ่มหน้าที่ทำงาน</a>
 				</div>
 			  </div>
 			</div>
 
 		</div>
+		
+
 
 		<div class="col-md-12">
 				<table class="table table-striped ">
 	
 					<thead class="bg-dark text-light">
 					  <tr>
-						<th> รูปภาพ </th>
-						<th> รหัส </th>
-						<th> ชื่อ </th>
-						<th> ตำแหน่ง </th>
-						<th> แผนก </th>        
-						<th> ความสามารถ </th>        
-						<th> วันเริ่มงาน </th>
-						<th> สถานะ </th>
+						<th class="col-sm-1" > รูปภาพ </th>
+						<th class="col-sm-1" > รหัส </th>
+						<th class="col-sm-2" > ชื่อ - นามสกุล </th>
+						<th class="col-sm-1" > ชื่อเล่น </th>
+						<th class="col-sm-1" > ตำแหน่ง </th>
+						<th class="col-sm-1" > แผนก </th>        
+						<th class="col-sm-2" > ความสามารถ </th>        
+						<th class="col-sm-2" >วันเริ่มงาน</th>
+						<th class="col-sm-1" >อัพเดด</th>
 					  </tr>
 					</thead>
 					
 					<tbody>
 					  {% for user in page_user.object_list %}
 					  <tr>
-						<td><img src="{{ user.image_profile.url}}"  width="50" height="50" alt="..."></td>        
-						<td> {{ user.username}}</td>
-						<td> {{ user.nickname}}</td>
-						<td> {{ user.position }}</td> 
-						<td> {{ user.team}} </td>
-						<td> {{ user.working_skill|truncatechars_html:10}} </td>
-						<td> {{ user.worked_date}} </td>
-						<td>
+						<td class="col-sm-1"><img src="{{ user.image_profile.url}}"  width="50" height="50" alt="..."></td>        
+						<td class="col-sm-1"> {{ user.username }}</td> 
+						<td class="col-sm-2"><a href="{% url 'profile-update' user.pk %}">{{ user.username.first_name}}&nbsp &nbsp{{ user.username.last_name}}</td>
+						<td class="col-sm-1"> {{ user.nickname}}</td>
+						<td class="col-sm-1"> {{ user.position }}</td> 
+						<td class="col-sm-1"> {{ user.team}} </td>
+						<td class="col-sm-2"> {{ user.working_skill|truncatechars_html:10}} </td>
+
+						<td class="col-sm-2">
+							{{ user.worked_date}}
+						</td>
+						<td class="col-sm-1 ">
 							
-							<a href="{% url 'profile-update' user.pk %}" class="btn btn-warning"><i class="bi bi-pencil"></i></a>
+							<a href="{% url 'profile-update' user.pk %}" class="btn btn-primary"><i class="bi bi-database-fill"></i> </a>
 							
 						
 						</td>
