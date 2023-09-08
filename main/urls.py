@@ -24,7 +24,6 @@ from app_login.views import *
 urlpatterns = [
 	path('admin/', admin.site.urls),
 	path('dashboard/', include("app_kpi.urls")),
-
 	path('team/', include('app_team.urls')),
 	path('user/', include('app_user.urls')),
 	path('stock/', include('app_stock.urls')),
