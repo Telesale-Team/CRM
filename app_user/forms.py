@@ -12,11 +12,11 @@ class UserForms (UserCreationForm):
 
 
 class UserUpdateForms (UserCreationForm):
-
+    email = forms.EmailField()
     
     class Meta:
         model = User
-        fields = ["password1","password2"]
+        fields = ["password1","password2","first_name","last_name","email"]
         
         
               

@@ -95,6 +95,52 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="row">
+		<div class="col-md-4">
+			
+			<div class="card border-success">
+			  <img class="card-img-top" src="holder.js/100px180/" alt="">
+			 
+			  <div class="card-body bg-dark text-light ">
+				<h2 class="card-title"> อุปกรณ์ทำงาน </h2>
+
+				
+
+					<table class="table table-striped table-hover text-light bg-dark">
+						<thead class="bg-dark ">
+							<tr>
+								<th> รูปภาพ </th>
+
+								<th>ชื่อสินค้า</th>
+								<th>แก้ใข</th>
+
+								
+
+							</tr>
+						</thead>
+						
+						<tbody >
+							{% for item in items %}
+							<tr>
+								<td>
+									<img src="{{ item.image_item.url}}"  width="50" height="50" alt="...">
+								</td>
+
+								<td> {{item.name}}</td>
+								<td> <a href="{% url 'update-stock' item.pk %}"> <i class="bi bi-database-fill"></i> </a> </td>
+
+							{% endfor %}
+						</tbody>
+					</table>
+					
+			  </div>
+			  
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 
 

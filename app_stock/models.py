@@ -17,7 +17,8 @@ class Category (models.Model):
 
     
 class Stock (models.Model):
-    
+    image_item = models.ImageField('ภาพสินค้า',upload_to='image_item',null=True,blank=True,default='notebook-default.jpg')#รูปภาพโปรไฟล์
+    item_model = models.CharField('รุ่นสินค้า',max_length=60,null=True)
     name = models.CharField('ชื่อสินค้า',max_length=60,null=True)
     serial = models.CharField("รหัสสินค้า",max_length=60,null=True)
     quatity = models.PositiveIntegerField('จำนวน',default=0)

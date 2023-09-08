@@ -246,10 +246,10 @@
 							{% for employee in Thaibaan_rank %}
 								<tr>
 								
-								<td><img src="{{ employee.user_account.profileuser.image_profile.url}}" width="35" height="35"class="rounded-circle" > {{employee.user_account}} </td>
-								<td>{{employee.quantity}} </td>
+								<td><img src="{{ employee.user_account.profileuser.image_profile.url}}" width="35" height="35"class="rounded-circle" > {{employee.user_account.profileuser.nickname}} </td>
+								<td>{{ employee.quantity }} </td>
 
-								{% if employee.quantity >= 100 %}
+								{% if employee.quantity >= 800 %}
 								<td><i class="bi bi-arrow-up-circle" style="font-size:20px;color:green;" ></i></td>
 
 								{% else %} 
@@ -287,10 +287,10 @@
 							{% for employee in Rx7_rank %}
 								<tr>
 								
-								<td><img src="{{employee.user_account.profileuser.image_profile.url}}" width="35" height="35"class="rounded-circle" > {{employee.user_account}} </td>
+								<td><img src="{{employee.user_account.profileuser.image_profile.url}}" width="35" height="35"class="rounded-circle" > {{employee.user_account.profileuser.nickname}} </td>
 								<td>{{employee.quantity}} </td>
 		
-								{% if employee.quantity >= 30 %}
+								{% if employee.quantity >= 300 %}
 								<td><i class="bi bi-arrow-up-circle" style="font-size:20px;color:green;" ></i></td>
 		
 								{% else %} 
@@ -324,7 +324,7 @@
 							{% for employee in Duckbet_rank %}
 								<tr>
 								
-								<td><img src="{{employee.user_account.profileuser.image_profile.url}}" width="35" height="35"class="rounded-circle" > {{employee.user_account}} </td>
+								<td><img src="{{employee.user_account.profileuser.image_profile.url}}" width="35" height="35"class="rounded-circle" > {{employee.user_account.profileuser.nickname}} </td>
 								<td>{{employee.quantity}} </td>
 
 								{% if employee.quantity >= 30 %}
@@ -360,7 +360,7 @@
 							<thead class="bg-dark text-light">
 							{% for employee in Mughuay_rank %}
 								<tr>
-								<td><img src="{{employee.user_account.profileuser.image_profile.url}}" width="35" height="35"class="rounded-circle" > {{employee.user_account}} </td>
+								<td><img src="{{employee.user_account.profileuser.image_profile.url}}" width="35" height="35"class="rounded-circle" > {{employee.user_account.profileuser.nickname}} </td>
 								<td>{{employee.quantity}} </td>
 								<td>ดัชนี</td>
 		
@@ -457,7 +457,7 @@
 									
 									<tr>
 		
-									<td><img src="{{employee.user_account.profileuser.image_profile.url}}" width="35" height="35"class="rounded-circle" > {{employee.user_account}}</td>
+									<td><img src="{{employee.user_account.profileuser.image_profile.url}}" width="35" height="35"class="rounded-circle" > {{employee.user_account.profileuser.nickname}}</td>
 									<td>{{employee.quantity}}</td>
 									<td>{{employee.web}}</td>
 									{% if employee.quantity >= 30 %}

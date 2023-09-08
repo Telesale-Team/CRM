@@ -1,0 +1,42 @@
+{% extends 'html_login/base.html'%}
+{% block title %} KPI Page {% endblock title%}
+{% load crispy_forms_tags %}
+
+
+{% block content%}
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card border-primary">
+        <div class="card-body bg-dark text-light" > 
+          <input class="form-control" id="myInput" type="text" placeholder="ค้นหาข้อมูลลูกค้า...">
+          <br>
+          {% for i in kpi %}
+          <ul class="list-group text-dark" id="myList">
+            <a href="{% url 'update-kpi' i.pk%}"><li class="list-group-item">{{ i.name}} </li></a>
+          </ul>
+          {% endfor %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  $(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myList li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+  });
+  </script>
+
+
+{% endblock content %}

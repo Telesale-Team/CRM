@@ -30,7 +30,7 @@ def register(request):
 		if form_user.is_valid():
 			username = form_user.save()
 			ProfileUser.objects.create(username=username)
-			return redirect('user-search')  # Redirect to user profile page
+			return redirect('home-user')  # Redirect to user profile page
 	else:
 		form_user = RegistrationForm()
 	

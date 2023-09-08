@@ -1,0 +1,45 @@
+{% extends 'base/layout.html' %}
+
+{% block title %} Human Resoure Managment Page {% endblock title %}
+{% load crispy_forms_tags %}
+
+{% block content%}
+
+
+<div class="container-fluid">
+  <div class="row mt-3">
+  {% for profile in graphic %}
+    <div class="col-md-3 mb-1">
+      <div class="card border-success bg-dark text-light ">
+
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-md-5">
+
+              <img src="{{ profile.image_profile.url}}"  width="160" height="160" alt=".."><hr>
+              <a href="{% url 'profile-update' profile.pk %}"> แก้ใขข้อมูล </a>
+
+            </div>
+        
+        
+            <div class="col-md-7">
+              
+              <p><stong><li>ชื่อเล่น : </stong> {{profile.nickname}}
+              <p><stong><li>รหัสประจำตัว : </stong> {{profile.username}}
+              <p><stong><li>สังกัดฝ่าย : </stong> {{ profile.permission }}
+              <p><stong><li>หน้าที่ : </stong> {{profile.working_skill}}
+              </div>
+          </div>
+
+        </div>
+      </div>
+    
+      
+  
+  </div>
+  {% endfor %}
+</div>
+
+
+{% endblock%}

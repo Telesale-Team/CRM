@@ -4,9 +4,18 @@
 
 {% block content%}
 <div class="container-fluid">
-	{% include 'html_user/navbar_user.html'%}
+
+	
 
 	<div class="row">
+		<div class="col-md-12">
+			<div class="card border-success">
+			  <div class="card-body bg-dark">
+				{% include 'html_user/navbar_user.html'%}
+			  </div>
+			</div>
+			
+		</div>
 
 		<div class="col-md-12">
 			<div class="card border">
@@ -31,21 +40,20 @@
 			</div>
 
 		</div>
-		
-
 
 		<div class="col-md-12">
 				<table class="table table-striped ">
 	
 					<thead class="bg-dark text-light">
 					  <tr>
-						<th class="col-sm-1" > รูปภาพ </th>
-						<th class="col-sm-1" > รหัส </th>
+
+						<th class="col-sm-1" > รหัสประจำตัว </th>
 						<th class="col-sm-2" > ชื่อ - นามสกุล </th>
 						<th class="col-sm-1" > ชื่อเล่น </th>
+						<th class="col-sm-1" > แผนก </th> 
 						<th class="col-sm-1" > ตำแหน่ง </th>
-						<th class="col-sm-1" > แผนก </th>        
-						<th class="col-sm-2" > ความสามารถ </th>        
+						       
+						<th class="col-sm-1" > ความสามารถ </th>        
 						<th class="col-sm-2" >วันเริ่มงาน</th>
 						<th class="col-sm-1" >อัพเดด</th>
 					  </tr>
@@ -54,17 +62,20 @@
 					<tbody>
 					  {% for user in page_user.object_list %}
 					  <tr>
-						<td class="col-sm-1"><img src="{{ user.image_profile.url}}"  width="50" height="50" alt="..."></td>        
-						<td class="col-sm-1"> {{ user.username }}</td> 
-						<td class="col-sm-2"><a href="{% url 'profile-update' user.pk %}">{{ user.username.first_name}}&nbsp &nbsp{{ user.username.last_name}}</td>
-						<td class="col-sm-1"> {{ user.nickname}}</td>
-						<td class="col-sm-1"> {{ user.position }}</td> 
+						
+   
+						<td class="col-sm-1"><a href="{% url 'profile-update' user.pk %}"> <strong>{{ user.username }} </strong> </a>  </td> 
+						<td class="col-sm-2">  {{ user.username.first_name}}&nbsp &nbsp{{ user.username.last_name}}</td>
+						<td class="col-sm-1"> {{ user.nickname}} </td>
 						<td class="col-sm-1"> {{ user.team}} </td>
-						<td class="col-sm-2"> {{ user.working_skill|truncatechars_html:10}} </td>
+						<td class="col-sm-1"> {{ user.position }} </td> 
+						
+						<td class="col-sm-2"> {{ user.working_skill|truncatechars_html:20}} </td>
 
 						<td class="col-sm-2">
 							{{ user.worked_date}}
 						</td>
+						
 						<td class="col-sm-1 ">
 							
 							<a href="{% url 'profile-update' user.pk %}" class="btn btn-primary"><i class="bi bi-database-fill"></i> </a>

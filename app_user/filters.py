@@ -7,7 +7,7 @@ class ProfileFilter(django_filters.FilterSet):
 		model = ProfileUser
 		fields = {
 					'username':['exact'],
-					'nickname':['icontains'],
+					'nickname':['contains'],
 					'team':['exact'],
 					'position':['exact'],
 					

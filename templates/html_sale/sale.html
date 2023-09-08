@@ -189,9 +189,6 @@
 						</div>
 
 
-						
-
-
 						<div class="col-md-4 p-2" >
 							{{ form_sale.call_back|as_crispy_field}}
 						</div>
@@ -216,18 +213,18 @@
 
 					<thead class="bg-dark text-light">
 					<tr>
-						<th> พนักงาน </th>
-						<th> ชื่อลูกค้า </th>
-						<th> เพศ </th>
-						<th> ช่วยอายุ </th>
-						<th> สมัครเว็บ </th>
-						<th> ความสนใจ </th>
+						<th class="col-sm-1"> พนักงาน </th>
+						<th class="col-sm-1"> ชื่อลูกค้า </th>
+						<th class="col-sm-1"> เพศ </th>
+						<th class="col-sm-1"> ช่วยอายุ </th>
+						<th class="col-sm-1" > สมัครเว็บ </th>
+						<th class="col-sm-1" > ความสนใจ </th>
 						
-						<th> ที่มา </th>
-						<th> ช่องทางติดต่อกลับ </th>
-						<th> วันที่ลงทะเบียน</th>
-						<th> สถานะ </th>
-						<th> แก้ใข/อัพเดด </th>
+						<th class="col-sm-1" > ที่มา </th>
+						<th class="col-sm-1" > ช่องทางติดต่อกลับ </th>
+						<th class="col-sm-1"> วันที่ลงทะเบียน</th>
+						<th class="col-sm-1"> สถานะ </th>
+						<th class="col-sm-2 text-center"> แก้ใข/อัพเดด </th>
 
 				
 				
@@ -238,26 +235,25 @@
 					{% for item in page_sale %}
 					
 					<tr>
-						<td><img src="{{item.user_account.profileuser.image_profile.url}}" width="35" height="35"class="rounded-circle" > {{employee.user_account}}</td>
-						<td> {{ item.name }}</td>
-						<td> {{ item.sex }}</td>
-						<td> {{ item.age }}</td>
-						<td> {{ item.web }} </td>
-						<td> {{ item.interest }}</td>						
-						<td> {{ item.source |truncatechars_html:10}} </td>
-						<td> {{ item.call_back }} </td>
-						<td> {{ item.create_date }}</td>
+						<td class="col-sm-1" ><img src="{{item.user_account.profileuser.image_profile.url}}" width="35" height="35"class="rounded-circle" > {{employee.user_account}}</td>
+						<td class="col-sm-1" > {{ item.name }}</td>
+						<td class="col-sm-1" > {{ item.sex }}</td>
+						<td class="col-sm-1" > {{ item.age }}</td>
+						<td class="col-sm-1" > {{ item.web }} </td>
+						<td class="col-sm-1" > {{ item.interest }}</td>						
+						<td class="col-sm-1" > {{ item.source |truncatechars_html:10}} </td>
+						<td class="col-sm-1" > {{ item.call_back }} </td>
+						<td class="col-sm-1"> {{ item.create_date }}</td>
 						{% if item.buy == 'ซื้อ'%}
 						<td> <span class="badge badge-success">ซื้อแล้ว</span></td>
 						{% else%}
 						<td> <span class="badge badge-danger">ยังไม่ซื้อ</span></td>
 						{%endif%}
-						<td>
-							
-							<a href="{% url 'update-sale' item.pk %}"class="btn btn-warning" ><i class="bi bi-pencil"></i></a>
-							<a  href="{% url 'delete-sale' item.pk %}" class="btn btn-danger"><i class="bi bi-x-circle"></i></a>
-							
-						
+
+						<td class="col-sm-2 text-center">
+							<a  href="{% url 'update-kpi' item.name %}}" class="btn btn-success"><i class="bi bi-plus-circle-dotted"></i></a>
+							<a href="{% url 'update-sale' item.pk %}"class="btn btn-primary" ><i class="bi bi-database-fill"></i></a>
+							<a  href="{% url 'delete-sale' item.pk %}" class="btn btn-danger"><i class="bi bi-x-circle"></i></a>	
 						</td>
 
 
@@ -436,8 +432,7 @@
 							{%endif%}
 							<td>
 							
-							<a href="{% url 'update-sale' item.pk %}"class="btn btn-warning" ><i class="bi bi-pencil"></i></a>
-							<a  href="{% url 'delete-sale' item.pk %}" class="btn btn-danger"><i class="bi bi-x-circle"></i></a>
+							<a href="{% url 'update-sale' item.pk %}"class="btn btn-primary" ><i class="bi bi-database-fill"></i></a>
 							
 						
 						</td>

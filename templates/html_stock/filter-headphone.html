@@ -1,0 +1,45 @@
+{% extends 'base/layout.html' %}
+
+{% block title %} Filter NoteBook Page  {% endblock title %}
+{% load crispy_forms_tags %}
+
+{% block content%}
+
+
+<div class="container-fluid">
+  <div class="row mt-3">
+  {% for item in headphone %}
+    <div class="col-md-3 mb-1">
+      <div class="card border-success bg-dark text-light ">
+
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-md-5 p-1">
+
+              <img src="{{ item.image_item.url}}"  width="160" height="160" alt=".."><hr>
+              <a href="{% url 'update-stock' item.pk %}"> แก้ใขข้อมูล </a>
+
+            </div>
+        
+        
+            <div class="col-md-7">
+              
+                <p><stong><li>รหัสสินค้า : </stong> {{ item.serial}}
+                <p><stong><li>รุ่น : </stong> {{item.item_model}}
+                <p><stong><li>สถานะสินค้า : </stong> {{ item.item_status}}
+                <p><stong><li>ผู้รับผิดชอบ : </stong> {{ item.user_account.profileuser.nickname}}
+              </div>
+          </div>
+
+        </div>
+      </div>
+    
+      
+  
+  </div>
+  {% endfor %}
+</div>
+
+
+{% endblock%}

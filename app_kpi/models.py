@@ -13,8 +13,8 @@ class Create_Interrest(models.Model):
 
 class Kpi (models.Model):
 
-    team = models.ForeignKey(Team,on_delete=models.CASCADE)
-    name = models.ForeignKey(ProfileUser,on_delete=models.CASCADE)
+    name = models.ForeignKey(User,on_delete=models.CASCADE)
+    
     new_customer = models.IntegerField(default=0)   #ลูกค้าใหม่
     slakthai = models.IntegerField(default=0) # สลากไท
     mughuay = models.IntegerField(default=0) # มักหวย
@@ -25,7 +25,7 @@ class Kpi (models.Model):
     created = models.DateTimeField(default=timezone.now) #วันที่
 
     def __str__(self):
-        return str(self.created)
+        return str(self.name)
     
 class Dashboard (models.Model):
     
@@ -44,9 +44,12 @@ class Customer_Interest (models.Model):
     user_customer = models.CharField('username ลูกค้า ',max_length=20)
     user_type = models.ForeignKey(Create_Interrest,on_delete=models.CASCADE,null=True,blank=True)
     user_telephone = models.CharField('เบอร์โทรลูกค้า ',max_length=10)
+    
     user_qutity = models.PositiveIntegerField('จำนวนการซื้อ')
     MedalType = models.TextChoices("MedalType", "บาท ใบ ครั้ง")
+    
     unit = models.CharField(blank=True, choices=MedalType.choices, max_length=10)
+    
     page_name = models.CharField('ที่มาลูกค้า',max_length=255)
     detail = models.CharField('รายละเอียดเพิ่มเติม',max_length=255)
     

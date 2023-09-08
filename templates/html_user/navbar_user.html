@@ -1,120 +1,141 @@
-<div class="row bg-dark text-center">
 
-    <div class="col-md-4 p-2">
-        <a href="{% url 'home-user'%}">
-            <div class="card border-primary bg-success text-light">
-                <div class="card-body">
-                    <h4 class="card-title">{{ count_all }}</h4>
-                    <p class="card-text">พนักงานทั้งหมด</p>
-                </div>
-            </div>
-        </a>      
-    </div>
-    <div class="col-md-2 p-2">
-        <a href="#">
-          <div class="card border-success bg-secondary text-light">
-              <div class="card-body">
-                  <h4 class="card-title">{{ admin }}</h4>
-                  <p class="card-text">ตำแหน่ง แอดมิน</p>
-              </div>
-          </div>
-          </a>
-        </div>
 
-    <div class="col-md-2 p-2">
-      <a href="#">
-        <div class="card border-success bg-secondary text-light">
-            <div class="card-body">
-                <h4 class="card-title">{{ telesale }}</h4>
-                <p class="card-text">ตำแหน่ง เทเลเซลล์</p>
-            </div>
-        </div>
-        </a>
-    </div>
-    <div class="col-md-2 p-2">
-        <a href="#">
-            <div class="card border-success bg-secondary text-light">
-                <div class="card-body">
-                    <h4 class="card-title">{{ personal }}</h4>
-                    <p class="card-text">ตำแหน่ง บุคคล</p>
-                </div>
-            </div>
-        </a>        
-    </div>
-    <div class="col-md-2 p-2">
-        <a href="#">
-            <div class="card border-success bg-secondary text-light">
-                <div class="card-body">
-                    <h4 class="card-title">{{ enterterment }}</h4>
-                    <p class="card-text">ตำแหน่ง เอนเตอร์เทนเม้นส์</p>
-                </div>
-            </div>
-          </a>        
-    </div>
-    <div class="col-md-2 p-2">
-        <a href="#">
-            <div class="card border-success bg-secondary text-light">
-                <div class="card-body">
-                    <h4 class="card-title">{{ stock }}</h4>
-                    <p class="card-text">ตำแหน่ง สต๊อกสินค้า</p>
-                </div>
-            </div>
-          </a>        
-    </div>
-    <div class="col-md-2 p-2">
-        <a href="#">
-            <div class="card border-success bg-secondary text-light">
-                <div class="card-body">
-                    <h4 class="card-title">{{account}}</h4>
-                    <p class="card-text">ตำแหน่ง การเงินและบัญชี</p>
-                </div>
-            </div>
-          </a>        
-    </div>
+<div class="row">
 
-    <div class="col-md-2 p-2">
-        <a href="#">
-            <div class="card border-success bg-secondary text-light">
-                <div class="card-body">
-                    <h4 class="card-title">{{seo}}</h4>
-                    <p class="card-text">ตำแหน่ง SEO</p>
-                </div>
-            </div>
-          </a>        
-    </div>
+	
+	<div class="col-md-2 p-2">
+		<a href="{% url 'hunter'%}">
+			<div class="card border-success bg-secondary text-light">
+				<div class="card-body">
+					<h4 class="card-title">{{ hunter }}</h4>
+					<p class="card-text">ฮันเตอร์</p>
+				</div>
+			</div>
+		</a>      
+	</div>
 
-    <div class="col-md-2 p-2">
-        <a href="#">
-            <div class="card border-success bg-secondary text-light">
-                <div class="card-body">
-                    <h4 class="card-title">{{live}}</h4>
-                    <p class="card-text">ตำแหน่ง ไลฟ์สด</p>
-                </div>
-            </div>
-          </a>        
-    </div>
+	<div class="col-md-2 p-2">
+	  <a href="{% url 'entertenment' %}">
+		<div class="card border-success bg-secondary text-light">
+			<div class="card-body">
+				<h4 class="card-title">{{ enterterment }}</h4>
+				<p class="card-text">ตำแหน่ง เอนเตอร์เทน</p>
+			</div>
+		</div>
+		</a>
+	</div>
 
-    <div class="col-md-2 p-2">
-        <a href="#">
-            <div class="card border-success bg-secondary text-light">
-                <div class="card-body">
-                    <h4 class="card-title">{{ads}}</h4>
-                    <p class="card-text">ตำแหน่ง ยิงแอด</p>
-                </div>
-            </div>
-          </a>        
-    </div>
-    <div class="col-md-2 p-2">
-        <a href="#">
-            <div class="card border-success bg-secondary text-light">
-                <div class="card-body">
-                    <h4 class="card-title">{{graphic}}</h4>
-                    <p class="card-text">ตำแหน่ง กราฟฟิค</p>
-                </div>
-            </div>
-          </a>        
-        </div>
+	<div class="col-md-2 p-2">
+	
+		<a href="{% url 'hr'%}">
+			<div class="card border-success bg-secondary text-light">
+				<div class="card-body">
+					<h4 class="card-title">{{ personal }}</h4>
+					<p class="card-text">ตำแหน่ง บุคคล</p>
+				</div>
+			</div>
+		</a>        
+	</div>
 
-    </div>
+	<div class="col-md-2 p-2">
+		<a href="{% url 'telesale'%}">
+			<div class="card border-success bg-secondary text-light">
+				<div class="card-body">
+					<h4 class="card-title">{{ telesale }}</h4>
+					<p class="card-text">ตำแหน่ง เทเลเซลล์</p>
+				</div>
+			</div>
+		  </a>        
+	</div>
+
+	<div class="col-md-2 p-2">
+		<a href="{% url 'stock-data' %}">
+			<div class="card border-success bg-secondary text-light">
+				<div class="card-body">
+					<h4 class="card-title">{{ stock }}</h4>
+					<p class="card-text">ตำแหน่ง สต๊อกสินค้า</p>
+				</div>
+			</div>
+		  </a>        
+	</div>
+
+	<div class="col-md-2 p-2">
+		<a href="{% url 'money-data'%}">
+			<div class="card border-success bg-secondary text-light">
+				<div class="card-body">
+					<h4 class="card-title">{{account}}</h4>
+					<p class="card-text">ตำแหน่ง การเงินและบัญชี</p>
+				</div>
+			</div>
+		  </a>        
+	</div>
+
+	<div class="col-md-2 p-2">
+		<a href="{% url 'seo-data'%}">
+			<div class="card border-success bg-secondary text-light">
+				<div class="card-body">
+					<h4 class="card-title">{{seo}}</h4>
+					<p class="card-text">ตำแหน่ง SEO</p>
+				</div>
+			</div>
+		  </a>        
+	</div>
+
+	<div class="col-md-2 p-2">
+		<a href="{% url 'live-data' %}">
+			<div class="card border-success bg-secondary text-light">
+				<div class="card-body">
+					<h4 class="card-title">{{live}}</h4>
+					<p class="card-text">ตำแหน่ง ไลฟ์สด</p>
+				</div>
+			</div>
+		  </a>        
+	</div>
+
+	<div class="col-md-2 p-2">
+		<a href="{% url 'ad' %}">
+			<div class="card border-success bg-secondary text-light">
+				<div class="card-body">
+					<h4 class="card-title">{{ads}}</h4>
+					<p class="card-text">ตำแหน่ง ยิงแอด</p>
+				</div>
+			</div>
+		  </a>        
+	</div>
+
+	<div class="col-md-2 p-2">
+		<a href="{% url 'graphic-data'%}">
+			<div class="card border-success bg-secondary text-light">
+				<div class="card-body">
+					<h4 class="card-title">{{graphic}}</h4>
+					<p class="card-text">ตำแหน่ง กราฟฟิค</p>
+				</div>
+			</div>
+		</a>        
+	</div>
+
+	<div class="col-md-2 p-2">
+		<a href="{% url 'admin-data'%}">
+			<div class="card border-success bg-secondary text-light">
+				<div class="card-body">
+					<h4 class="card-title">{{admin}}</h4>
+					<p class="card-text">ตำแหน่ง แอดมิน</p>
+				</div>
+			</div>
+		</a>        
+	</div>
+
+
+	<div class="col-md-2 p-2">
+		<a href="{% url 'home-user'%}">
+			<div class="card border-primary bg-success text-light text-center">
+				<div class="card-body">
+					<h4 class="card-title">{{ count_all }}</h4>
+					<p class="card-text">พนักงานทั้งหมด</p>
+				</div>
+			</div>
+		</a>      
+	</div>
+	
 
 </div>

@@ -241,5 +241,53 @@ def Thaibans (request):
      
     return render (request,'html_kpi/thaiban.html',context)   
 
+def KPI (request):
+
+    
+    kpi = Sale.objects.all()[:3]
+
+    context = {
+
+        "kpi": kpi,
+
+    }
+     
+    return render (request,'html_kpi/kpi.html',context)
 
 
+
+
+def Check_Kpi (request,name):
+
+    username = request.user.username
+    username = User.objects.get(username=username) 
+    Check_data = Sale.objects.filter(user_account=username,name=name)
+    
+    if Check_data :
+        new_record = Kpi()
+        new_record.name = username
+        new_record.new_customer = name
+        new_record.save()
+        return redirect("kpi")
+    else:
+        new_record = Kpi()
+        new_record.name = username
+        new_record.new_customer = name
+        new_record.save()
+        return redirect("kpi")
+    
+    
+    context = {
+        "Check_data":Check_data,
+    }
+     
+    return render (request,'html_kpi/check_kpi.html',context)      
+
+def Update_Kpi (request,name):
+
+
+    context = {
+        "name":name,
+    }
+     
+    return render (request,'html_kpi/check_kpi.html',context)   

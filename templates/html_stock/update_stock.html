@@ -8,17 +8,18 @@
 	<div class="row ">
 		<div class="col-md-3 ">
 			<div class="card border">
-			  <img class="card-img-top" src="{{ profile.image.url}}" alt="">
+			  <img class="card-img-top" src="{{ item.image_item.url}}" alt="">
 
 			</div>
 		
 			
 		</div>
+		
 		<div class="col-md-6">
 			<div class="border p-3 bg-dark text-light ">
 				<div class="card bg-success ">
 					<div class="card-body text-center">
-					  <h4 class="card-text"> อัพเดท/แก้ใข ข้อมูลพนักงาน </h4>
+					  <h4 class="card-text"> อัพเดท/แก้ใข ข้อมูลสินค้า </h4>
 					</div>
 				</div>
 				<hr>
@@ -40,6 +41,11 @@
 						<div class="col-md-6">
 							{{ form_update_stock.category|as_crispy_field}}
 						</div>
+
+						<div class="col-md-6">
+							{{ form_update_stock.item_model|as_crispy_field}}
+						</div>
+
 						<div class="col-md-6">
 							{{ form_update_stock.user_account|as_crispy_field}}
 						</div>
@@ -50,6 +56,10 @@
 
 						<div class="col-md-6">
 							{{ form_update_stock.stock_status|as_crispy_field}}
+						</div>
+
+						<div class="col-md-6">
+							{{ form_update_stock.image_item|as_crispy_field}}
 						</div>
 
 						<div class="col-md-6">

@@ -17,7 +17,7 @@ def dashboard (request):
 	item_stock = filter_item.qs
 		
 	if request.method == "POST":
-		form_stock = StockForm(request.POST)
+		form_stock = StockForm(request.POST,request.FILES)
 		if form_stock.is_valid():
 			form_stock.save()
 			return redirect("/stock")
@@ -164,3 +164,80 @@ def Delete_Category(request, pk):
 	else:
 		return render(request, 'html_stock/delete_category.html', {'category': category})
 
+
+
+@login_required(login_url="/")
+def Filter_Notebook (request ): 
+    notebook = Stock.objects.all().filter(category=8) 
+    context = {"notebook":notebook,}
+    return render (request,'html_stock/filter-notebook.html',context)
+
+
+@login_required(login_url="/")
+def Filter_Pc (request ):
+    pc = Stock.objects.all().filter(category=13)
+    context = {"pc":pc,}
+    return render (request,'html_stock/filter-pc.html',context)
+
+
+
+#Data Count 
+	#โน๊ตบุ๊ก (8) สายสัญญาณ (9) อุปกรณ์ออฟฟิต (10) โทรศัพท์ (11) คอมตั้งโต๊ะ (13) อุปกรณ์เสริม (14)
+	#เมาส์ (15) แป้นพิมพ์ (16) หูฟัง (17) แผ่นรองเม้าส์ (18) ทั่วไป (19)
+
+@login_required(login_url="/")
+def Filter_Monitor (request ):
+    monitor = Stock.objects.all().filter(category=19)
+    context = {"monitor":monitor,}
+    return render (request,'html_stock/filter-monitor.html',context)
+
+
+
+@login_required(login_url="/")
+def Filter_Headphone (request ):
+    headphone = Stock.objects.all().filter(category=17)
+    context = {"headphone":headphone,}
+    return render (request,'html_stock/filter-headphone.html',context)
+
+
+@login_required(login_url="/")
+def Filter_Keyboard (request ):
+    keyboard = Stock.objects.all().filter(category=16)
+    context = {"keyboard":keyboard,}
+    return render (request,'html_stock/filter-keyboard.html',context)
+
+@login_required(login_url="/")
+def Filter_Mount (request ):
+    Mount = Stock.objects.all().filter(category=15)
+    context = {"Mount":Mount,}
+    return render (request,'html_stock/filter-Mount.html',context)
+
+@login_required(login_url="/")
+def Filter_Extension (request ):
+    Exception = Stock.objects.all().filter(category=14)
+    context = {"Exception":Exception,}
+    return render (request,'html_stock/filter-Exception.html',context)
+
+@login_required(login_url="/")
+def Filter_Office(request ):
+    Office = Stock.objects.all().filter(category=10)
+    context = {"Office":Office,}
+    return render (request,'html_stock/filter-Office.html',context)
+
+@login_required(login_url="/")
+def Filter_Cable(request ):
+    Cable = Stock.objects.all().filter(category=9)
+    context = {"Cable":Cable,}
+    return render (request,'html_stock/filter-Cable.html',context)
+
+@login_required(login_url="/")
+def Filter_Padmount(request ):
+    Padmount = Stock.objects.all().filter(category=18)
+    context = {"Padmount":Padmount,}
+    return render (request,'html_stock/filter-Padmount.html',context)
+
+@login_required(login_url="/")
+def Filter_Phone(request ):
+    Phone = Stock.objects.all().filter(category=11)
+    context = {"Phone":Phone,}
+    return render (request,'html_stock/filter-Phone.html',context)

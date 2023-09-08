@@ -18,7 +18,7 @@
 								
 									<div class="row">
 
-										<div class="col-md-10">
+										<div class="col-md-12">
 											{{ form_update_sale.name|as_crispy_field}}						
 										</div>
 				
@@ -73,7 +73,9 @@
 								
 									<div class="row">
 
-										<div class="col-md-10">
+										
+
+										<div class="col-md-12">
 											{{ form_update_sale.web|as_crispy_field}}
 										</div>
 				
@@ -85,14 +87,20 @@
 											{{ form_update_sale.source|as_crispy_field}}
 										</div>
 
+										<div class="col-md-4">
+											{{ form_update_sale.buy|as_crispy_field}}
+										</div>
 
-										<div class="col-md-6">
+
+										<div class="col-md-4">
 											{{ form_update_sale.quantity|as_crispy_field}}
 										</div>
 
-										<div class="col-md-6">
+										<div class="col-md-4">
 											{{ form_update_sale.unit|as_crispy_field}}
 										</div>
+
+
 
 										<div class="col-md-6">
 											{{ form_update_sale.call_back|as_crispy_field}}
@@ -132,7 +140,7 @@
 						</div>
 
 						<div class="col-md-12 mt-1">
-							<a href='#'class="btn btn-secondary btn-block">ยกเลิก</a>
+							<a href='{% url "sale-home"%}'class="btn btn-secondary btn-block">ยกเลิก</a>
 						</div>
 
 					  </div>

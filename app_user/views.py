@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from app_login.forms import RegistrationForm
+from app_stock.models import *
 from .forms import *
 from .models import *
 from .filters import *
@@ -21,10 +22,10 @@ def Dashboard (request):
 	user = user_filter.qs
 	all_unit = user.count()
  
- 
+
 
 	if request.method == 'POST':
-		form_user = RegistrationForm(request.POST)
+		form_user = RegistrationForm(request.POST,request.FILES)
 		if form_user.is_valid():
 			username = form_user.save()
 			ProfileUser.objects.create(username=username)
@@ -49,6 +50,7 @@ def Dashboard (request):
 	graphic = ProfileUser.objects.all().filter(position='1').count()
 	seo = ProfileUser.objects.all().filter(position='9').count()
 	admin = ProfileUser.objects.all().filter(position='10').count()
+	hunter = ProfileUser.objects.filter(position=12).count
  
 	
 	context = {
@@ -67,7 +69,9 @@ def Dashboard (request):
 		"ads":ads,
 		"graphic":graphic,
 		"seo":seo,
+		"hunter":hunter,
 		"admin":admin,
+
 
 
 	}
@@ -103,7 +107,7 @@ def Edit_user (request,pk ):
 	user_profile = ProfileUser.objects.get( pk = pk )
 
 	if request.method == "POST":
-		form = ProfileForm(request.POST,instance=user_profile)
+		form = ProfileForm(request.POST,request.FILES,instance=user_profile)
 		if form.is_valid():
 			form.save()
 			return redirect("/user")
@@ -120,6 +124,12 @@ def Edit_user (request,pk ):
 
 def Update_profile (request,pk):
 	profile = ProfileUser.objects.get(pk=pk)
+	print(type(profile))
+
+	user = User.objects.get(username= profile)
+	print('User :',type(user))
+	item = Stock.objects.filter(user_account=user)
+	print("สินค้าของ",item)
 	if request.method == 'POST':
 		profile_form= ProfileForm(request.POST,request.FILES,instance=profile)
 		if profile_form.is_valid():
@@ -132,7 +142,9 @@ def Update_profile (request,pk):
 	context = {
 
 		"profile_form":profile_form,
-		"profile":profile
+		"profile":profile,
+		"items":item,
+
 	}
 	return render(request, 'html_user/update-profile.html', context)
 
@@ -150,14 +162,14 @@ def Delete_user(request,pk):
 		return render(request, 'html_user/delete_user.html', {'Remove_User': Remove_User})
 
 def Update_user (request,pk):
-    
+	
 	user_data = User.objects.get(pk=pk)
  
 	if request.method == 'POST':
 		user_form= UserUpdateForms(request.POST,instance = user_data)
 		if user_form.is_valid():
 			user_form.save()
-			return redirect('/register')
+			return redirect('home-user')
 
 	else:
 		user_form= UserUpdateForms(instance=user_data)
@@ -393,33 +405,69 @@ def Report_user (request):
 
 
 @login_required(login_url="/")
-def Hr (request):
-	return render(request,'html_user/hr.html')
+def Hr (request):	
+	hr = ProfileUser.objects.filter(position=6)
+	context = {"hr":hr,} 
+	return render(request,'html_user/hr.html',context)
 
 @login_required(login_url="/")
-def At (request):
-	return render(request,'html_user/at.html')
+def Hunter (request):
+	hunter = ProfileUser.objects.filter(position=12)
+	context = {"hunter":hunter,} 
+	return render(request,'html_user/hunter-page.html',context)
 
 
 @login_required(login_url="/")
-def Mt (request):
-	return render(request,'html_user/mt.html')
+def Telesale (request):
+	telesale = ProfileUser.objects.filter(position=7)
+	context = {"telesale":telesale,}
+	return render(request,'html_user/mt.html',context)
 
 @login_required(login_url="/")
-def St (request):
-	return render(request,'html_user/st.html')
+def Entertenment (request):	
+	entertenment = ProfileUser.objects.filter(position=8)
+	context = {"entertenment":entertenment,}	
+	return render(request,'html_user/entertenment.html',context)
 
 @login_required(login_url="/")
 def Ad (request):
-	return render(request,'html_user/ad.html')
+	ad = ProfileUser.objects.filter(position=2)
+	context = {"ad":ad,}
+	return render(request,'html_user/ad.html',context)
 
 
 @login_required(login_url="/")
-def It (request):
-	
-	user = ProfileUser.objects.all()
-	context = {
-		"user":user,
-	}
-
+def Data_Stock (request):
+	st = ProfileUser.objects.filter(position=5)
+	context = {	"st":st,}
 	return render(request,'html_user/it.html',context)
+
+@login_required(login_url="/")
+def Data_Money (request):	
+	money = ProfileUser.objects.filter(position=4)
+	context = {"money":money,}
+	return render(request,'html_user/finance-page.html',context)
+
+@login_required(login_url="/")
+def Data_Seo(request):
+	Seo = ProfileUser.objects.filter(position=9)
+	context = {"Seo":Seo,}
+	return render(request,'html_user/seo-page.html',context)
+
+@login_required(login_url="/")
+def Data_live(request):
+	live = ProfileUser.objects.filter(position=3)
+	context = {"live":live,}
+	return render(request,'html_user/live-page.html',context)
+
+@login_required(login_url="/")
+def Data_Graphic(request):
+	graphic = ProfileUser.objects.filter(position=1)
+	context = {"graphic":graphic,}
+	return render(request,'html_user/graphic-page.html',context)
+
+@login_required(login_url="/")
+def Data_admin(request):
+	admin = ProfileUser.objects.filter(position=10)
+	context = {"admin":admin,}
+	return render(request,'html_user/admin-page.html',context)
